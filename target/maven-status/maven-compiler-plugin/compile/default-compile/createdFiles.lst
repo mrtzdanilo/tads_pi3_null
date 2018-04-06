@@ -1,0 +1,14 @@
+models\Endereco.class
+com\tadspi3null\servletProduto\ExcluiProduto.class
+models\Filial.class
+com\tadspi3null\servletProduto\AtualizaProduto.class
+com\tadspi3null\servletProduto\CadastraProduto.class
+models\Livro.class
+com\tadspi3null\servletFilial\AtualizaFilial.class
+com\tadspi3null\connect\ConnectionUtils.class
+models\Produto.class
+com\tadspi3null\servletFilial\BuscaFilial.class
+com\tadspi3null\servletFilial\CadastraFilial.class
+models\Categoria.class
+com\tadspi3null\servletFilial\ExcluiFilial.class
+com\tadspi3null\servletProduto\BuscaProduto.class

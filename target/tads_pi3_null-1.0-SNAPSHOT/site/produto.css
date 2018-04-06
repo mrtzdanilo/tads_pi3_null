@@ -1,0 +1,286 @@
+body {
+	font-family: "Crimson Text", "Times New Roman", serif;
+	background-color: #F2FFFC;
+	line-height: 1.5;
+}
+
+main form {
+}
+
+.form-pos {
+    width: 96px;
+    height: 24px;
+    position: relative; top: 20px; left: 50px;
+
+}
+
+h1, h2 {
+	font-family: "Open Sans Condensed", "Arial", sans-serif;
+}
+
+
+* {
+  padding:0;
+  margin:0;
+}
+.intro {
+  display: table;
+  width: 100%;
+  height: 100vh;
+  padding: 10px 0;
+  color: white;
+  background-position: 30% 45%;
+  background-size: cover;
+}
+
+.abas {
+    position: relative;
+}
+.aba {
+    display: inline;
+}
+.aba > a {
+    float: left;
+    padding: 0.5em 1em;
+    background: linear-gradient(#FFF, #EEE);
+    border-width: 1px;
+    border-style: solid;
+    border-color: #CCC #CCC #FFF;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+}
+.aba:not(:target) a {
+    border-bottom: 0 none;
+}
+.aba:target a, a:hover {
+    background: white;
+}
+.conteudo {
+    position: absolute;
+    left: 0;
+    top: calc(2em + 4px); /* altura do link + bordas */
+    z-index: -2;
+    border: 1px solid #CCC;
+    background-color: white;
+}
+.aba:target .conteudo {
+    z-index: -1;
+}
+
+
+div h1 {
+	font-family: "Open Sans Condensed";
+	text-align:  left;
+	background-color: #851944;
+	color: #e98844;
+	border-bottom: 10px solid black;
+	font-size: 40px;
+}
+
+font-face {
+    font-family: "StMarieThin";
+    src: url('StMarie-Thin-webfont.eot');
+    src: url('StMarie-Thin-webfont.eot?#iefix') format("embedded-opentype"),
+    url('StMarie-Thin-webfont.woff') format('woff'),
+    url('StMarie-Thin-webfont.ttf') format('truetype'),
+    url('StMarie-Thin-webfont.svg#StMarieThin') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/* No aruivo css este é o conteúdo que mais nos interessa */
+.fullheight {
+  /*com isso o header ficará sempre com o tamanho da tela */
+  height: 100vh;
+  /*background geralmente uso o modo compacto, mas aqui vou colocar separadamente para explicar cada parte*/
+  /* aqui defino a imagem maior*/
+  background-image: url("imagens/livros.jpg");
+  /*deixa o background com efeito paralax*/
+  background-attachment: fixed;
+  /* cover é para nunca deixar espaço sem imagem*/
+  background-size: cover;
+}
+/* aqui troco a imagem pra cada resolução na ordem do maior pro menor */
+@media screen and (max-width: 1500px) {
+  .header.fullheight {
+    background-image: url("imagens/livros.jpg");
+  }
+}
+@media screen and (max-width: 1000px) {
+  .header.fullheight {
+    background-image: url("imagens/livros.jpg");
+  }
+}
+@media screen and (max-width: 800px) {
+  .header.fullheight {
+    background-image: url("imagens/livros.jpg");
+  }
+}
+@media screen and (max-width: 600px) {
+  .header.fullheight {
+    background-image: url("imagens/livros.jpg");
+  }
+}
+@media screen and (max-width: 400px) {
+  .header.fullheight {
+    background-image: url("imagens/livros.jpg");
+  }
+}
+@media screen and (max-width: 320px) {
+  .fullheight {
+    background-image: url("imagens/livros.jpg");
+  }
+}
+p { 
+	text-align: justify;
+	margin: 20px 0;
+}
+
+blockquote {
+	background-color: #D9E5E3;
+	border: 10px solid #C2CCCA;
+	width: 250px;
+	box-sizing: border-box;
+	margin: 20px 40px;
+}
+
+aside {
+	
+	width: 606px;
+	height: 160px;
+	background-position: left;
+	background-repeat: repeat;
+	color: #F2FFFC;
+}
+
+footer {
+	background-color: #000;
+	color: #F2FFFC;
+}
+
+nav a {
+	color: #F2FFFC;
+}
+
+main a {
+	color: #851944;
+}
+
+aside a {
+	color: inherit;
+	font-family: "Open Sans Condensed", sans-serif;
+}
+
+blockquote, aside, footer {
+    padding: 20px;
+}
+
+main div label.livro {
+    width: 100px;
+    padding: 20px 0;
+}
+main div label {
+
+    font-family: "Open Sans Condensed";
+    font-size: 18px
+
+}
+aside {
+	text-align: center;
+    width: 1280px;
+    height: 90px;
+    background-position: center;
+    background-repeat: repeat;
+    color: #F2FFFC;
+}
+
+aside h1 {
+	font-size: 30px;
+	margin-bottom: 25px;
+}
+
+strong {
+	font-weight: bold;
+}
+
+em {
+	font-style: italic;
+}
+
+h2 {
+	font-size: 30px;
+}
+
+aside li {
+	display: inline-block;
+}
+.input-titulo {
+    position: relative; top: 30px; left: 180px; bottom: -20px;
+    width: 129px;
+    height: 100px;
+    margin-left: 10px 
+}
+.input-autor {
+    position: relative; right: 100px; top: -68px ;left: 300px;
+    width: 129px;
+    height: 100px;
+    margin-left: 200px
+}
+.input-edit {
+    position: relative; top: -50px; left: 194px; right: 200px;
+    width: 129px;
+    height: 100px;
+
+}
+.input-edicao {
+
+    position: relative; top: -140px; left: 500px; right: 200px; 
+    width: 129px;
+    height: 100px;
+}
+.input-isbn {
+
+    position: relative; top: -38px; left: 200px; right: 100px; 
+    width: 129px;
+    height: 100px;
+}
+.format {
+    position: relative; top: -400px; right: 0px; left: 500px;
+    width: 170px;
+    height: 140px;
+
+}
+label.livro {
+    
+    display: block;
+    }
+    div {
+        margin: none;
+    }
+.posi{
+display: block;
+    }
+.bt{
+border:1px solid;
+border-radius:4px;
+display:inline-block;
+cursor:pointer;
+font-family:Verdana;
+font-weight:bold;
+font-size:13px;
+padding:6px 10px;
+text-decoration:none;
+}
+.posi-bt{
+width: 300px;
+    position: relative; top: -200px; left: 310px;
+}
+select.aa{
+  position: relative; left: 50px; top: 20px;
+  font-size: 27px;
+  font-family: "Open Sans Condensed";
+  height: 45px;
+   width: 200px;
+
+}

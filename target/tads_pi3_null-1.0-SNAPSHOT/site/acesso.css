@@ -1,0 +1,216 @@
+body {
+	font-family: "Crimson Text", "Times New Roman", serif;
+	background-color: #F2FFFC;
+	font-size: 120%;
+	line-height: 1.5;
+}
+
+main form {
+}
+
+.form-pos {
+position: relative; top: 20px; left: 50px;
+
+}
+
+h1, h2 {
+	font-family: "Open Sans Condensed", "Arial", sans-serif;
+}
+
+
+* {
+  padding:0;
+  margin:0;
+}
+.intro {
+  display: table;
+  width: 100%;
+  height: 100vh;
+  padding: 100px 0;
+  color: white;
+  background: url('livros.jpg') no-repeat bottom center scroll;
+  background-position: 30% 45%;
+  background-size: cover;
+}
+
+.abas {
+    position: relative;
+    }
+    .aba {
+    display: inline;
+    }
+    .aba > a {
+    float: left;
+    padding: 0.5em 1em;
+    background: linear-gradient(#FFF, #EEE);
+    border-width: 1px;
+    border-style: solid;
+    border-color: #CCC #CCC #FFF;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    }
+    .aba:not(:target) a {
+    border-bottom: 0 none;
+    }
+    .aba:target a, a:hover {
+    background: white;
+    }
+    .conteudo {
+    position: absolute;
+    left: 0;
+    top: calc(2em + 4px); /* altura do link + bordas */
+    z-index: -2;
+    border: 1px solid #CCC;
+    background-color: white;
+    }
+    .aba:target .conteudo {
+    z-index: -1;
+    }
+
+
+div h1 {
+	font-family: "Open Sans Condensed";
+	text-align:  left;
+	background-color: #851944;
+	color: #e98844;
+	border-bottom: 10px solid black;
+	font-size: 40px;
+}
+
+font-face {
+font-family: "StMarieThin";
+src: url('StMarie-Thin-webfont.eot');
+src: url('StMarie-Thin-webfont.eot?#iefix') format("embedded-opentype"),
+url('StMarie-Thin-webfont.woff') format('woff'),
+url('StMarie-Thin-webfont.ttf') format('truetype'),
+url('StMarie-Thin-webfont.svg#StMarieThin') format('svg');
+font-weight: normal;
+font-style: normal;
+}
+
+
+@media (min-width: 1200px) {
+   .login-page
+{
+    background-image: url('livros.jpg');
+    background-repeat: no-repeat;
+    bottom: 0;
+    color: black;
+    left: 0;
+    overflow: auto;
+    padding: 3em;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+
+}
+}
+
+
+p { 
+	text-align: justify;
+	margin: 20px 0;
+}
+
+blockquote {
+	background-color: #D9E5E3;
+	border: 10px solid #C2CCCA;
+	width: 250px;
+	box-sizing: border-box;
+	margin: 20px 40px;
+}
+
+aside {
+	
+	width: 606px;
+	height: 160px;
+	background-image: url(livros.jpg);
+	background-position: left;
+	background-repeat: repeat;
+	color: #F2FFFC;
+}
+
+footer {
+	background-color: #000;
+	color: #F2FFFC;
+}
+
+nav a {
+	color: #F2FFFC;
+}
+
+main a {
+	color: #851944;
+}
+
+aside a {
+	color: inherit;
+	font-family: "Open Sans Condensed", sans-serif;
+}
+
+blockquote, aside, footer {
+    padding: 20px;
+}
+
+main div {
+	width: 720px;
+	margin: auto;
+	padding: 32px 0;
+}
+main div td {
+
+    font-family: "Open Sans Condensed";
+    font-size: 18px
+
+}
+aside {
+	text-align: center;
+    width: 1280px;
+	height: 90px;
+	background-position: center;
+	background-repeat: repeat;
+	color: #F2FFFC;
+}
+
+aside h1 {
+	font-size: 30px;
+	margin-bottom: 25px;
+}
+
+strong {
+	font-weight: bold;
+}
+
+em {
+	font-style: italic;
+}
+
+h2 {
+	font-size: 30px;
+}
+
+aside li {
+	display: inline-block;
+}
+.input-titulo {
+
+    position: relative; top: 30px; left: 50px;
+}
+.input-autor {
+
+    position: relative; top: 70px; left: 50px;
+}
+.input-aa {
+
+    position: relative; top: -79px; left: 350px; right: 200px;
+}
+.input-ab {
+
+    position: relative; top: -39px; left: 350px; right: 200px; 
+}
+
