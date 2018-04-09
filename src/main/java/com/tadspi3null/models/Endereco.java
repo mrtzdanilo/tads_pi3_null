@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package models;
+package com.tadspi3null.models;
 
 /**
  *
@@ -16,7 +16,6 @@ public class Endereco {
     private String estado;
     private String cidade;
     private String numero;
-    private String complemento;
     private String cep; 
 
     public Integer getId() {
@@ -61,14 +60,6 @@ public class Endereco {
 
     public void setNumero(String numero) {
         this.numero = numero;
-    }
-
-    public String getComplemento() {
-        return complemento;
-    }
-
-    public void setComplemento(String complemento) {
-        this.complemento = complemento;
     }
 
     public String getCep() {

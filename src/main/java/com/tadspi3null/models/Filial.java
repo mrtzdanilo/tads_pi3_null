@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package models;
+package com.tadspi3null.models;
+
 
 /**
  *
@@ -11,7 +12,7 @@ package models;
  */
 public class Filial {
     
-    private long id; 
+    private Integer id; 
     
     private Endereco endereco;
     
@@ -36,7 +37,7 @@ public class Filial {
         this.email = email;
     }
     
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 

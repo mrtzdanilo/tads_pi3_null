@@ -34,7 +34,8 @@ CREATE TABLE filial (
     telefone VARCHAR(20),
     email VARCHAR(100),
     fax VARCHAR(20), 
-)
+    FOREIGN KEY (id_endereco) REFERENCES Endereco(id)
+);
 
 
 
