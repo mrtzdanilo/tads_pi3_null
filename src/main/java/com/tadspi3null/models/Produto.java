@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package models;
+package com.tadspi3null.models;
 
 import java.util.ArrayList;
 
@@ -21,6 +21,22 @@ public class Produto {
 
     public void addCategoria(Categoria categoria){
         this.categorias.add(categoria);
+    }
+    
+    public void setCategoria(ArrayList<Categoria> listaCategoria){
+        this.categorias = listaCategoria;
+    }
+
+    public ArrayList<Categoria> getCategorias() {
+        return categorias;
+    }
+
+    public void setCategorias(ArrayList<Categoria> categorias) {
+        this.categorias = categorias;
+    }
+    
+    public void setId(long id){
+        this.id = id;
     }
 
     public long getId() {

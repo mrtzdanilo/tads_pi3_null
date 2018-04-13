@@ -1,7 +1,12 @@
 package com.tadspi3null.servletProduto;
 
+import com.tadspi3null.dao.DaoProduto;
+import com.tadspi3null.models.Livro;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,12 +30,12 @@ public class CadastraProduto extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        double valor = Double.parseDouble(request.getParameter("valor"));
+        double valor = 0.0;
         String nome = request.getParameter("nome");
         String descricao = request.getParameter("descricao");
         // implementar modo de insercao de categorias;
@@ -41,10 +46,14 @@ public class CadastraProduto extends HttpServlet {
         String edicao = request.getParameter("edicao");
         String numeroPaginas = request.getParameter("numeroPaginas");
         String isbn = request.getParameter("isbn");
-//        
-//        Livro livro = new Livro(valor, nome, descricao, idioma, autor, editora,
-//                edicao, numeroPaginas, isbn);
-//        
-//        ServiceLivro.inserir(livro);
+        
+        Livro livro = new Livro(idioma,autor, editora, edicao, numeroPaginas, isbn);
+        
+        
+        try {
+            DaoProduto.inserirLivro(livro);
+        } catch (SQLException ex) {
+            Logger.getLogger(CadastraProduto.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package models;
+package com.tadspi3null.models;
 
-import java.util.ArrayList;
 
 /**
  *
@@ -28,6 +27,11 @@ public class Livro extends Produto{
         this.numeroPaginas = numeroPaginas;
         this.isbn = isbn;
     }
+    
+    public Livro(){
+        
+    }
+
     
     public String getIsbn() {
         return isbn;

@@ -20,7 +20,7 @@ public class DaoFilial {
         
         long id_endereco = DaoEndereco.inserirEndereco(filial);
         
-        String query = "INSERT INTO filial (nome_fantasia, nome, CNPJ, "
+        String query = "INSERT INTO filial (nome_fantasia, nome, cnpj, "
                 + "inscricao_estadual, telefone, fax, email, id_endereco) VALUES (?,?,?,?,?,?,?,?)";
         
         try (Connection conn = ConnectionUtils.getConnection();
@@ -28,7 +28,7 @@ public class DaoFilial {
             
             stmt.setString(0, filial.getNomeFantasia());
             stmt.setString(1, filial.getNome());
-            stmt.setString(2, filial.getCNPJ());
+            stmt.setString(2, filial.getCnpj());
             stmt.setString(3, filial.getInscricaoEstadual());
             stmt.setString(4, filial.getTelefone());
             stmt.setString(5, filial.getFax());
@@ -41,8 +41,8 @@ public class DaoFilial {
     }
     
      public static Filial atualizarFilial(Filial filial) throws SQLException{
-        String query = "UPDATE filial SET nome_fantasia=?, nome=?, CNPJ=?, "
-                + "inscricao_estadual=?, telefone=?, fax=?, email=?) VALUES (?,?,?,?,?,?,?)"
+        String query = "UPDATE filial SET (nome_fantasia=?, nome=?, CNPJ=?, "
+                + "inscricao_estadual=?, telefone=?, fax=?, email=?)"
                 + " WHERE (id=?)";
         
         try (Connection conn = ConnectionUtils.getConnection();
@@ -50,7 +50,7 @@ public class DaoFilial {
             
             stmt.setString(0, filial.getNomeFantasia());
             stmt.setString(1, filial.getNome());
-            stmt.setString(2, filial.getCNPJ());
+            stmt.setString(2, filial.getCnpj());
             stmt.setString(3, filial.getInscricaoEstadual());
             stmt.setString(4, filial.getTelefone());
             stmt.setString(5, filial.getFax());

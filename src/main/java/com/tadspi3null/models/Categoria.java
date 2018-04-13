@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package models;
+package com.tadspi3null.models;
 
 /**
  *
@@ -14,6 +14,11 @@ public class Categoria {
     private long id; 
     private String nome;
     private String descricao;
+
+    public void setId(long id) {
+        this.id = id;
+    }
+    
 
     public long getId() {
         return id;

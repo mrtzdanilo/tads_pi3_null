@@ -12,7 +12,7 @@ CREATE DATABASE IF NOT EXISTS ProjetoIntegrador3;
 
 USE projetointegrador3;
 
-CREATE TABLE livro (
+CREATE TABLE Produto (
     id INTEGER PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR (100) NOT NULL,
     valor VARCHAR (20) NOT NULL,
@@ -22,9 +22,25 @@ CREATE TABLE livro (
     editora VARCHAR (100) NOT NULL,
     edicao VARCHAR (5) NOT NULL,
     numero_paginas VARCHAR (10),
-    isbn VARCHAR (20) NOT NULL,
-    FOREIGN KEY (id_categoria) REFERENCES Categoria(id)
+    isbn VARCHAR (20) NOT NULL
 );
+
+CREATE TABLE Categoria (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR (100) NOT NULL,
+    descricao VARCHAR (255)
+);
+
+CREATE TABLE endereco (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    rua VARCHAR (100) NOT NULL,
+    bairro VARCHAR (100) NOT NULL,
+    estado VARCHAR (100) NOT NULL,
+    cidade VARCHAR (100) NOT NULL,
+    numero VARCHAR (100) NOT NULL,
+    cep VARCHAR (100) NOT NULL
+);
+
 
 CREATE TABLE filial (
     id INTEGER PRIMARY KEY AUTO_INCREMENT,
@@ -34,18 +50,27 @@ CREATE TABLE filial (
     telefone VARCHAR(20),
     email VARCHAR(100),
     fax VARCHAR(20), 
-    FOREIGN KEY (id_endereco) REFERENCES Endereco(id)
+    FOREIGN KEY (id) REFERENCES Endereco(id)
+);
+
+CREATE TABLE produto_filial (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    estoque INTEGER NOT NULL,
+    id_filial INTEGER NOT NULL,
+    id_produto INTEGER NOT NULL,
+    FOREIGN KEY (id_produto) REFERENCES Produto (id),
+    FOREIGN KEY (id_filial) REFERENCES Filial (id)
+);
+
+CREATE TABLE produto_categoria (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    id_categoria INTEGER NOT NULL,
+    id_produto INTEGER NOT NULL,
+    FOREIGN KEY (id_produto) REFERENCES Produto (id),
+    FOREIGN KEY (id_categoria) REFERENCES Categoria (id)
 );
 
 
 
-private Endereco endereco;
-    
-    private String nomeFantasia;
-    private String nome;
-    private String CNPJ;
-    private String inscricaoEstadual;
-    
-    private String telefone;
-    private String fax;
-    private String email;
+
+

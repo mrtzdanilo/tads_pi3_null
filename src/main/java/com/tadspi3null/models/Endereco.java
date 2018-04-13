@@ -18,6 +18,11 @@ public class Endereco {
     private String numero;
     private String cep; 
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    
     public Integer getId() {
         return id;
     }
