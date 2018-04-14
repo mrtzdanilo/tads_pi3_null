@@ -26,8 +26,8 @@ public class DaoProduto {
         
         long id_produto = 0;
         
-        String query = "INSERT INTO livro (nome,valor,descricao,idioma,autor,"
-                + "edicao,numero_paginas,isbn) VALUES (?,?,?,?,?,?,?,?,)";
+        String query = "INSERT INTO livro (titulo,valor,descricao,idioma,autor,"
+                + "edicao,numero_paginas,isbn) VALUES (?,?,?,?,?,?,?,?)";
         
         try (Connection conn = ConnectionUtils.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
@@ -35,14 +35,14 @@ public class DaoProduto {
             if(produto instanceof Livro){
                 Livro temp = (Livro) produto;
                 
-                stmt.setString(0, temp.getNome());
-                stmt.setDouble(1, temp.getValor());
-                stmt.setString(2, temp.getDescricao());
-                stmt.setString(3, temp.getIdioma());
-                stmt.setString(4, temp.getAutor());
-                stmt.setString(5, temp.getEdicao());
-                stmt.setString(6, temp.getNumeroPaginas());
-                stmt.setString(7, temp.getIsbn());
+                stmt.setString(1, temp.getTitulo());
+                stmt.setDouble(2, temp.getValor());
+                stmt.setString(3, temp.getDescricao());
+                stmt.setString(4, temp.getIdioma());
+                stmt.setString(5, temp.getAutor());
+                stmt.setString(6, temp.getEdicao());
+                stmt.setString(7, temp.getNumeroPaginas());
+                stmt.setString(8, temp.getIsbn());
                 
                 stmt.executeUpdate();
                 
@@ -62,7 +62,7 @@ public class DaoProduto {
     
     public static void atualizarProduto(Produto produto) throws SQLException{
         
-        String query = "UPDATE livro SET nome=?, valor=?, descricao=?,"
+        String query = "UPDATE livro SET titulo=?, valor=?, descricao=?,"
                 + "idioma=?, autor=?, edicao=?, numero_paginas=?, isbn=? "
                 + " WHERE (id=?)";
         
@@ -72,7 +72,7 @@ public class DaoProduto {
             if(produto instanceof Livro){
                 Livro temp = (Livro) produto;
                 
-                stmt.setString(0, temp.getNome());
+                stmt.setString(0, temp.getTitulo());
                 stmt.setDouble(1, temp.getValor());
                 stmt.setString(2, temp.getDescricao());
                 stmt.setString(3, temp.getIdioma());
@@ -118,7 +118,7 @@ public class DaoProduto {
                 Livro livro = new Livro();
                 
                 livro.setId(result.getInt("id"));
-                livro.setNome(result.getString("nome"));
+                livro.setTitulo(result.getString("nome"));
                 livro.setAutor(result.getString("autor"));
                 livro.setEditora(result.getString("editora"));
                 livro.setEdicao(result.getString("edicao"));
@@ -152,7 +152,7 @@ public class DaoProduto {
                 Livro livro = new Livro();
                 
                 livro.setId(result.getInt("id"));
-                livro.setNome(result.getString("nome"));
+                livro.setTitulo(result.getString("nome"));
                 livro.setAutor(result.getString("autor"));
                 livro.setEditora(result.getString("editora"));
                 livro.setEdicao(result.getString("edicao"));

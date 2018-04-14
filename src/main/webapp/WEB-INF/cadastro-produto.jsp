@@ -52,32 +52,38 @@
 		</div>	
 		<div class="input-titulo">
 			<label for = "input4" class="format, livro"> Titulo: </label>
-			<input type="text" id= "input4">	
+                        <input type="text" id= "input4" name="titulo">	
 		</div>
 
 		<div class="input-autor">
 
 			<label for = "input3" class="format, livro"> Autor: </label>
-			<input type="text" id= "input3">
+                        <input type="text" id= "input3" name="autor">
+		</div>	
+            
+                <div class="input-autor">
+
+			<label for = "input3" class="format, livro"> Numero de Páginas </label>
+                        <input type="text" id= "input3" name="numeroPaginas">
 		</div>	
 
 		<div class="input-edit">
 
 			<label for = "input2" class="format, livro"> Editora: </label>
-			<input type="text" id= "input2">
+                        <input type="text" id= "input2" name="editora">
 
 		</div>
 
 		<div class="input-isbn">
 
 			<label for = "input1" class="format, livro"> ISBN: </label>
-			<input type="text" id= "input1">
+                        <input type="text" id= "input1" name="isbn">
 
 		</div>
 
 		<div class="input-edicao">
 			<label for = "input5" class="format, livro"> Edição: </label>
-			<input type="text" id= "input5">
+			<input type="text" id= "input5" name="edicao">
 		</div>
 
 		<div class="format" style="">
@@ -85,7 +91,7 @@
 				<div>
 
 					<label id="genero" class="format, livro"> Gênero: </label>
-					<select name="genero">
+					<select name="categoria">
 						<option value="Masculino">Masculino</option>
 						<option value="Feminino">Feminino</option>
 						<option value="indefinido">Indefinido</option>
@@ -96,10 +102,10 @@
 				<div>
 
 					<label id="genero" class="format, livro"> Idioma: </label>
-					<select name="genero">
-						<option value="Masculino">Português-Br</option>
-						<option value="Feminino">Português-Pt</option>
-						<option value="indefinido">Língua-Estrangeira</option>
+					<select name="idioma">
+						<option value="Português-Br">Português-Br</option>
+						<option value="Ingles">Inglês</option>
+						<option value="outros">Outros</option>
 					</select>
 				</div>
 			</table>

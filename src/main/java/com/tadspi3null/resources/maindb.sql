@@ -1,20 +1,11 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/**
- * Author:  mverissimo
- * Created: Mar 31, 2018
- */
 
 CREATE DATABASE IF NOT EXISTS ProjetoIntegrador3;
 
 USE projetointegrador3;
 
-CREATE TABLE Produto (
+CREATE TABLE livro (
     id INTEGER PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR (100) NOT NULL,
+    titulo VARCHAR (100) NOT NULL,
     valor VARCHAR (20) NOT NULL,
     descricao VARCHAR (255),
     idioma VARCHAR (50) NOT NULL,
@@ -25,7 +16,7 @@ CREATE TABLE Produto (
     isbn VARCHAR (20) NOT NULL
 );
 
-CREATE TABLE Categoria (
+CREATE TABLE categoria (
     id INTEGER PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR (100) NOT NULL,
     descricao VARCHAR (255)
@@ -57,16 +48,16 @@ CREATE TABLE produto_filial (
     id INTEGER PRIMARY KEY AUTO_INCREMENT,
     estoque INTEGER NOT NULL,
     id_filial INTEGER NOT NULL,
-    id_produto INTEGER NOT NULL,
-    FOREIGN KEY (id_produto) REFERENCES Produto (id),
+    id_livro INTEGER NOT NULL,
+    FOREIGN KEY (id_livro) REFERENCES livro (id),
     FOREIGN KEY (id_filial) REFERENCES Filial (id)
 );
 
-CREATE TABLE produto_categoria (
+CREATE TABLE livro_categoria (
     id INTEGER PRIMARY KEY AUTO_INCREMENT,
     id_categoria INTEGER NOT NULL,
-    id_produto INTEGER NOT NULL,
-    FOREIGN KEY (id_produto) REFERENCES Produto (id),
+    id_livro INTEGER NOT NULL,
+    FOREIGN KEY (id_livro) REFERENCES livro (id),
     FOREIGN KEY (id_categoria) REFERENCES Categoria (id)
 );
 

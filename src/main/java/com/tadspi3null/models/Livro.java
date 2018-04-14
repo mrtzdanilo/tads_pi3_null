@@ -19,7 +19,9 @@ public class Livro extends Produto{
     private String numeroPaginas;
     private String isbn;
 
-    public Livro(String idioma, String autor, String editora, String edicao, String numeroPaginas, String isbn) {
+    public Livro(String titulo,String idioma, String autor, String editora, String edicao, 
+            String numeroPaginas, String isbn,Double valor, String descricao) {
+        super(valor, titulo, descricao);
         this.idioma = idioma;
         this.autor = autor;
         this.editora = editora;

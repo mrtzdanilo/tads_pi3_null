@@ -21,12 +21,12 @@ public class ConnectionUtils {
         if (connection == null || connection.isClosed()) {
             
             //Declaração de endereço de conexão com o banco de dados
-            String dbUrl = "jdbc:mysql://localhost:3306/projetointegrador3?autoReconnect=true&useSSL=false";
+            String dbUrl = "jdbc:mysql://localhost:3306/projetointegrador3?user=root";
             
-            //Propriedades para armazenamento do usuário e da senha do banco
+            //Propriedades para armazenamento do usuário e da senh a do banco
             Properties properties = new Properties();
-            properties.put("user", "root");
-            properties.put("password", "admin");
+//            properties.put("user", "pi3null");
+//            //properties.put("password", "");
             
             //Realiza a conexão com o banco
             connection = DriverManager.getConnection(dbUrl, properties);

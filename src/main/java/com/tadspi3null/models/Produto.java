@@ -15,9 +15,20 @@ public class Produto {
     
     private long id;
     private double valor;
-    private String nome;
+    private String titulo;
     private String descricao;
-    private ArrayList<Categoria> categorias;
+    private ArrayList<Categoria> categorias = new ArrayList<>();
+    
+    public Produto(){
+        
+    }
+
+    public Produto(double valor, String titulo, String descricao) {
+        this.valor = valor;
+        this.titulo = titulo;
+        this.descricao = descricao;
+    }
+    
 
     public void addCategoria(Categoria categoria){
         this.categorias.add(categoria);
@@ -51,12 +62,12 @@ public class Produto {
         this.valor = valor;
     }
 
-    public String getNome() {
-        return nome;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
     public String getDescricao() {

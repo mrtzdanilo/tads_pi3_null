@@ -1,6 +1,7 @@
 package com.tadspi3null.servletProduto;
 
 import com.tadspi3null.dao.DaoProduto;
+import com.tadspi3null.models.Categoria;
 import com.tadspi3null.models.Livro;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -36,7 +37,7 @@ public class CadastraProduto extends HttpServlet {
             throws ServletException, IOException {
         
         double valor = 0.0;
-        String nome = request.getParameter("nome");
+        String titulo = request.getParameter("titulo");
         String descricao = request.getParameter("descricao");
         // implementar modo de insercao de categorias;
         
@@ -47,7 +48,21 @@ public class CadastraProduto extends HttpServlet {
         String numeroPaginas = request.getParameter("numeroPaginas");
         String isbn = request.getParameter("isbn");
         
-        Livro livro = new Livro(idioma,autor, editora, edicao, numeroPaginas, isbn);
+        Categoria categoria = new Categoria();
+        
+        categoria.setId(1);
+        categoria.setDescricao("teste");
+        categoria.setNome("categoria1");
+        
+        
+        
+        
+  
+        
+        Livro livro = new Livro(titulo, idioma, autor, editora, edicao, 
+                numeroPaginas, isbn, valor, descricao);
+        
+        livro.addCategoria(categoria);
         
         
         try {
