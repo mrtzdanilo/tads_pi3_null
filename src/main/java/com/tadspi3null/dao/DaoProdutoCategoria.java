@@ -22,13 +22,13 @@ public class DaoProdutoCategoria {
     
     public static void inserirProdutoCategoria(Produto produto, Categoria categoria) throws SQLException{
         
-        String query = "INSERT INTO produto_categoria (id_produto,id_categoria) VALUES (?,?)";
+        String query = "INSERT INTO livro_categoria (id_livro,id_categoria) VALUES (?,?)";
         
         try (Connection conn = ConnectionUtils.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(query)) {
             
-            stmt.setLong(0, produto.getId());
-            stmt.setLong(1, categoria.getId());
+            stmt.setLong(1, produto.getId());
+            stmt.setLong(2, categoria.getId());
             
             stmt.executeUpdate();
         }
@@ -38,13 +38,13 @@ public class DaoProdutoCategoria {
         ArrayList<Categoria> listaCategoria = new ArrayList<>();
         
         String query = " SELECT * FORM categoria INNER JOIN produto_categoria "
-                + "ON  categoria.id  = produto_categoria.id_categoria"
-                + " AND produto_categoria.id_produto = ?";
+                + "ON  categoria.id  = livro_categoria.id_categoria"
+                + " AND livro_categoria.id_livro = ?";
         
          try (Connection conn = ConnectionUtils.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(query)) {
             
-            stmt.setLong(0, produto.getId());
+            stmt.setLong(1, produto.getId());
             
             try (ResultSet result = stmt.executeQuery()) {
                 Categoria categoria = new Categoria();

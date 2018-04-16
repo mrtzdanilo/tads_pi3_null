@@ -28,8 +28,8 @@ public class DaoCategoria {
         try (Connection conn = ConnectionUtils.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
         
-            stmt.setString(0, categoria.getNome());
-            stmt.setString(1, categoria.getDescricao());
+            stmt.setString(1, categoria.getNome());
+            stmt.setString(2, categoria.getDescricao());
             
             stmt.executeUpdate();
             
@@ -51,9 +51,9 @@ public class DaoCategoria {
         try (Connection conn = ConnectionUtils.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(query)) {
             
-            stmt.setString(0, categoria.getNome());
-            stmt.setString(1, categoria.getDescricao());
-            stmt.setLong(2, categoria.getId());
+            stmt.setString(1, categoria.getNome());
+            stmt.setString(2, categoria.getDescricao());
+            stmt.setLong(3, categoria.getId());
             
             stmt.executeUpdate();
         }
@@ -68,7 +68,7 @@ public class DaoCategoria {
         try (Connection conn = ConnectionUtils.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(query)) {
             
-            stmt.setLong(0, id);
+            stmt.setLong(1, id);
             
             try (ResultSet resultados = stmt.executeQuery()) {
                 
@@ -90,7 +90,7 @@ public class DaoCategoria {
         try (Connection conn = ConnectionUtils.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(query)) {
             
-            stmt.setString(0, nome);
+            stmt.setString(1, nome);
             
             try (ResultSet resultados = stmt.executeQuery()) {
                 

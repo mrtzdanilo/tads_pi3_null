@@ -27,7 +27,7 @@ public class DaoProduto {
         long id_produto = 0;
         
         String query = "INSERT INTO livro (titulo,valor,descricao,idioma,autor,"
-                + "edicao,numero_paginas,isbn) VALUES (?,?,?,?,?,?,?,?)";
+                + "edicao,numero_paginas,isbn,editora) VALUES (?,?,?,?,?,?,?,?,?)";
         
         try (Connection conn = ConnectionUtils.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
@@ -43,6 +43,7 @@ public class DaoProduto {
                 stmt.setString(6, temp.getEdicao());
                 stmt.setString(7, temp.getNumeroPaginas());
                 stmt.setString(8, temp.getIsbn());
+                stmt.setString(9, temp.getEditora());
                 
                 stmt.executeUpdate();
                 
@@ -63,7 +64,7 @@ public class DaoProduto {
     public static void atualizarProduto(Produto produto) throws SQLException{
         
         String query = "UPDATE livro SET titulo=?, valor=?, descricao=?,"
-                + "idioma=?, autor=?, edicao=?, numero_paginas=?, isbn=? "
+                + "idioma=?, autor=?, edicao=?, numero_paginas=?, isbn=?, editora=? "
                 + " WHERE (id=?)";
         
         try (Connection conn = ConnectionUtils.getConnection();
@@ -72,14 +73,15 @@ public class DaoProduto {
             if(produto instanceof Livro){
                 Livro temp = (Livro) produto;
                 
-                stmt.setString(0, temp.getTitulo());
-                stmt.setDouble(1, temp.getValor());
-                stmt.setString(2, temp.getDescricao());
-                stmt.setString(3, temp.getIdioma());
-                stmt.setString(4, temp.getAutor());
-                stmt.setString(5, temp.getEdicao());
-                stmt.setString(6, temp.getNumeroPaginas());
-                stmt.setString(7, temp.getIsbn());
+                stmt.setString(1, temp.getTitulo());
+                stmt.setDouble(2, temp.getValor());
+                stmt.setString(3, temp.getDescricao());
+                stmt.setString(4, temp.getIdioma());
+                stmt.setString(5, temp.getAutor());
+                stmt.setString(6, temp.getEdicao());
+                stmt.setString(7, temp.getNumeroPaginas());
+                stmt.setString(8, temp.getIsbn());
+                stmt.setString(9, temp.getEditora());
                 
                 stmt.executeUpdate();
             }
@@ -111,7 +113,7 @@ public class DaoProduto {
         try (Connection conn = ConnectionUtils.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(query)) {
             
-            stmt.setString(0, nome);
+            stmt.setString(1, nome);
             
             try (ResultSet result = stmt.executeQuery()) {
                 
@@ -145,7 +147,7 @@ public class DaoProduto {
         try (Connection conn = ConnectionUtils.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(query)) {
             
-            stmt.setString(0, nome);
+            stmt.setString(1, nome);
             
             try (ResultSet result = stmt.executeQuery()) {
                 
@@ -170,7 +172,4 @@ public class DaoProduto {
         }
         return listaLivro;
     }
-    
-    
-    
 }

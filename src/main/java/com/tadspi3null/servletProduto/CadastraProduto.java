@@ -1,5 +1,6 @@
 package com.tadspi3null.servletProduto;
 
+import com.tadspi3null.dao.DaoCategoria;
 import com.tadspi3null.dao.DaoProduto;
 import com.tadspi3null.models.Categoria;
 import com.tadspi3null.models.Livro;
@@ -50,14 +51,11 @@ public class CadastraProduto extends HttpServlet {
         
         Categoria categoria = new Categoria();
         
-        categoria.setId(1);
-        categoria.setDescricao("teste");
-        categoria.setNome("categoria1");
-        
-        
-        
-        
-  
+        try {
+           categoria = DaoCategoria.obterCategoria(1L);
+        } catch (SQLException ex) {
+            Logger.getLogger(CadastraProduto.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         Livro livro = new Livro(titulo, idioma, autor, editora, edicao, 
                 numeroPaginas, isbn, valor, descricao);
