@@ -1,5 +1,5 @@
 <%-- 
-    Document   : cadastro produto
+    Document   : cadastro livro
     Created on : 06/04/2018, 14:54:38
     Author     : Danilo
 --%>
@@ -12,7 +12,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-	<title>Produtos</title>
+	<title>Livros</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width">
 
@@ -28,7 +28,7 @@
 	<div>
 
 
-		<h1>Produto Cadastro</h1>
+		<h1>Cadastro Livro</h1>
 
 	</div>
 
@@ -38,15 +38,12 @@
 	height: 700px;
 	">
 
-	<form action="${pageContext.request.contextPath}/cadastro-produto"
+	<form action="${pageContext.request.contextPath}/cadastrar-livro"
 	    method="post">
 
 		<div>
 			<select class="aa" name="Categoria">
 				<option value="Livros">Livros</option>
-				<option value="Jogos">Jogos</option>
-				<option value="eletronicos">Eletronicos</option>
-				<option value="acess">Acessorios</option>
 			</select>
 
 		</div>	

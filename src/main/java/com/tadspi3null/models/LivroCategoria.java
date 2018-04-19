@@ -11,17 +11,17 @@ import java.util.ArrayList;
  *
  * @author Danilo
  */
-public class ProdutoCategoria {
+public class LivroCategoria {
     
-    private Produto produto;
+    private Livro livro;
     private ArrayList<Categoria> listaCategoria;
 
-    public Produto getProduto() {
-        return produto;
+    public Livro getLivro() {
+        return livro;
     }
 
-    public void setProduto(Produto produto) {
-        this.produto = produto;
+    public void setLivro(Livro livro) {
+        this.livro = livro;
     }
 
     public ArrayList<Categoria> getListaCategoria() {

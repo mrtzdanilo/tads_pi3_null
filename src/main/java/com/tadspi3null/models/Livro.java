@@ -5,13 +5,20 @@
  */
 package com.tadspi3null.models;
 
+import java.util.ArrayList;
+
 
 /**
  *
  * @author mverissimo
  */
-public class Livro extends Produto{
+public class Livro{
     
+    private long id;
+    private double valor;
+    private String titulo;
+    private String descricao;
+    private ArrayList<Categoria> categorias = new ArrayList<>();
     private String idioma;
     private String autor;
     private String editora;
@@ -21,7 +28,9 @@ public class Livro extends Produto{
 
     public Livro(String titulo,String idioma, String autor, String editora, String edicao, 
             String numeroPaginas, String isbn,Double valor, String descricao) {
-        super(valor, titulo, descricao);
+        this.valor = valor;
+        this.titulo = titulo;
+        this.descricao = descricao;
         this.idioma = idioma;
         this.autor = autor;
         this.editora = editora;
@@ -29,7 +38,54 @@ public class Livro extends Produto{
         this.numeroPaginas = numeroPaginas;
         this.isbn = isbn;
     }
+
+    public void setCategorias(ArrayList<Categoria> categorias) {
+        this.categorias = categorias;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
     
+    public long getId() {
+        return this.id;
+    }
+    
+    public void addCategoria(Categoria categoria){
+        this.categorias.add(categoria);
+    }
+
+    public ArrayList<Categoria> getCategorias() {
+        return categorias;
+    }
+    public void removeCategoria(Categoria categoria){
+        this.categorias.remove(categoria);
+    }
+
+    public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+   
     public Livro(){
         
     }

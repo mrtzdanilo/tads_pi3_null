@@ -1,4 +1,4 @@
-package com.tadspi3null.servletProduto;
+package com.tadspi3null.servletLivro;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,15 +13,15 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Danilo
  */
-@WebServlet(name = "ServletProduto", urlPatterns = {"/atualiza-produto"})
-public class AtualizaProduto extends HttpServlet {
+@WebServlet(name = "AtualizarLivro", urlPatterns = {"/atualizar-livro"})
+public class AtualizarLivro extends HttpServlet {
 
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher dispatcher
-           = request.getRequestDispatcher("WEB-INF/jsp/autaliza-produto.jsp");
+           = request.getRequestDispatcher("WEB-INF/jsp/autalizar-livro.jsp");
         dispatcher.forward(request, response);
     }
 

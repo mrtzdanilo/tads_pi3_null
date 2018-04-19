@@ -1,7 +1,7 @@
-package com.tadspi3null.servletProduto;
+package com.tadspi3null.servletLivro;
 
 import com.tadspi3null.dao.DaoCategoria;
-import com.tadspi3null.dao.DaoProduto;
+import com.tadspi3null.dao.DaoLivro;
 import com.tadspi3null.models.Categoria;
 import com.tadspi3null.models.Livro;
 import java.io.IOException;
@@ -20,15 +20,15 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Danilo
  */
-@WebServlet(name = "CadastraProduto", urlPatterns = {"/cadastro-produto"})
-public class CadastraProduto extends HttpServlet {
+@WebServlet(name = "CadastrarLivro", urlPatterns = {"/cadastrar-livro"})
+public class CadastrarLivro extends HttpServlet {
 
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher dispatcher
-           = request.getRequestDispatcher("WEB-INF/cadastro-produto.jsp");
+           = request.getRequestDispatcher("WEB-INF/cadastrar-livro.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -54,7 +54,7 @@ public class CadastraProduto extends HttpServlet {
         try {
            categoria = DaoCategoria.obterCategoria(1L);
         } catch (SQLException ex) {
-            Logger.getLogger(CadastraProduto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CadastrarLivro.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         Livro livro = new Livro(titulo, idioma, autor, editora, edicao, 
@@ -64,9 +64,9 @@ public class CadastraProduto extends HttpServlet {
         
         
         try {
-            DaoProduto.inserirLivro(livro);
+            DaoLivro.inserirLivro(livro);
         } catch (SQLException ex) {
-            Logger.getLogger(CadastraProduto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CadastrarLivro.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

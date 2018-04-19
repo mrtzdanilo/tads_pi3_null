@@ -9,19 +9,19 @@ package com.tadspi3null.models;
  *
  * @author Danilo
  */
-public class ProdutoFilial {
+public class LivroFilial {
     
     
-    private Produto produto;
+    private Livro livro;
     private Filial filial;
     private Integer estoque;
 
-    public Produto getProduto() {
-        return produto;
+    public Livro getLivro() {
+        return livro;
     }
 
-    public void setProduto(Produto produto) {
-        this.produto = produto;
+    public void setLivro(Livro livro) {
+        this.livro = livro;
     }
 
     public Filial getFilial() {
@@ -38,10 +38,5 @@ public class ProdutoFilial {
 
     public void setEstoque(Integer estoque) {
         this.estoque = estoque;
-    }
-    
-    
-    
-    
-    
+    }   
 }

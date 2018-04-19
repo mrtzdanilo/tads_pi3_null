@@ -13,7 +13,8 @@ CREATE TABLE livro (
     editora VARCHAR (100) NOT NULL,
     edicao VARCHAR (5) NOT NULL,
     numero_paginas VARCHAR (10),
-    isbn VARCHAR (20) NOT NULL
+    isbn VARCHAR (20) NOT NULL,
+    removido BOOLEAN NOT NULL DEFAULT FALSE
 );
 
 CREATE TABLE categoria (
@@ -44,7 +45,7 @@ CREATE TABLE filial (
     FOREIGN KEY (id) REFERENCES Endereco(id)
 );
 
-CREATE TABLE produto_filial (
+CREATE TABLE livro_filial (
     id INTEGER PRIMARY KEY AUTO_INCREMENT,
     estoque INTEGER NOT NULL,
     id_filial INTEGER NOT NULL,
