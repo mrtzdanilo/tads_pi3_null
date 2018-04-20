@@ -68,5 +68,9 @@ public class CadastrarLivro extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(CadastrarLivro.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        RequestDispatcher dispatcher = 
+	    request.getRequestDispatcher("Produto.html");
+        dispatcher.forward(request, response);
     }
 }

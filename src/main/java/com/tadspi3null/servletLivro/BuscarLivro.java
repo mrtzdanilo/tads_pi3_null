@@ -18,13 +18,15 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Danilo
  */
-@WebServlet(name = "BuscarLivro", urlPatterns = {"/buscar-livros"})
+@WebServlet(name = "BuscarLivro", urlPatterns = {"/consultar-livro"})
 public class BuscarLivro extends HttpServlet {
 
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        
         
         String categoria = request.getParameter("categoria");
         String titulo = request.getParameter("titulo");
@@ -38,6 +40,8 @@ public class BuscarLivro extends HttpServlet {
             
             response.getWriter().println("Hello World!");
             
+            request.setAttribute("listaLivros", listaLivros);
+            
         } catch (SQLException ex) {
             Logger.getLogger(BuscarLivro.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -46,7 +50,7 @@ public class BuscarLivro extends HttpServlet {
         
 
         RequestDispatcher dispatcher = 
-	    request.getRequestDispatcher("WEB-INF/jsp/buscar-livros.jsp");
+	    request.getRequestDispatcher("WEB-INF/jsp/consultar-livro.jsp");
         dispatcher.forward(request, response);
     }
 }
