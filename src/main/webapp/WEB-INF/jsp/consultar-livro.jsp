@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <meta charset="utf-8" />
     <title>Consulta de Produto</title>
     <link rel="stylesheet" type="text/css" media="screen" href="./css/ConsultarProduto.css" />
@@ -47,7 +48,7 @@
             <input type="submit" value="Consultar">
             </form>
         </div>
-
+               
             <fieldset>
                 <legend> Resultado da Consulta </legend>
                     <table border="0" class="tabela">
@@ -57,19 +58,20 @@
                             <th width="110">Editora</th>
                             <th width="110">Edição</th>
                             <th width="110">ISBN</th>
-                            <th width="110">Categoria</th>
                         </tr>
-                        <tr>
-                            <td align="center">teste</td>
-                            <td align="center">teste</td>
-                            <td align="center">teste</td>
-                            <td align="center">teste</td>
-                            <td align="center">teste</td>
-                            <td align="center">teste</td>
-                        </tr>
+                            <c:forEach items="${listaLivros}" var="livro">                                
+                                <tr>
+                                    <td align="center"><a href="${pageContext.request.contextPath}/detalhe-livro?id=<c:out value="${livro.id}"/>"><c:out value="${livro.titulo}"/> <a/></td>
+                                    <td align="center"><c:out value="${livro.autor}"/></td>
+                                    <td align="center"><c:out value="${livro.editora}"/></td>
+                                    <td align="center"><c:out value="${livro.edicao}"/></td>
+                                    <td align="center"><c:out value="${livro.isbn}"/></td>
+                                    
+                                </tr>
+                                 
+                            </c:forEach>
                     </table>
             </fieldset>
-
 
         </form>
     </div>

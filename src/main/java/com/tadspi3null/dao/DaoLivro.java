@@ -160,7 +160,7 @@ public class DaoLivro {
         
         String query = "SELECT * FROM livro";
         if (!titulo.isEmpty()){
-            query = "SELECT * FROM livro WHERE ((UPPER(livro.titulo) LIKE (UPPER ?) ";
+            query = "SELECT * FROM livro WHERE livro.titulo LIKE ? ";
         }
      
         try (Connection conn = ConnectionUtils.getConnection();
@@ -172,25 +172,28 @@ public class DaoLivro {
             
             try (ResultSet result = stmt.executeQuery()) {
                 
-                Livro livro = new Livro();
+                while (result.next()){
+                    Livro livro = new Livro();
                 
-                livro.setId(result.getInt("id"));
-                livro.setTitulo(result.getString("nome"));
-                livro.setAutor(result.getString("autor"));
-                livro.setEditora(result.getString("editora"));
-                livro.setEdicao(result.getString("edicao"));
-                livro.setIdioma(result.getString("idioma"));
-                livro.setIsbn(result.getString("isbn"));
-                livro.setValor(result.getDouble("valor"));
-                livro.setNumeroPaginas(result.getString("numero_paginas"));
+                    livro.setId(result.getLong("id"));
+                    livro.setTitulo(result.getString("titulo"));
+                    livro.setAutor(result.getString("autor"));
+                    livro.setEditora(result.getString("editora"));
+                    livro.setEdicao(result.getString("edicao"));
+                    livro.setIdioma(result.getString("idioma"));
+                    livro.setIsbn(result.getString("isbn"));
+                    livro.setValor(result.getDouble("valor"));
+                    livro.setNumeroPaginas(result.getString("numero_paginas"));
                 
                 listaLivro.add(livro);
+                    
+                }
             }
         }
         
-        for(Livro livro: listaLivro){
-            livro.setCategorias(DaoLivroCategoria.obterCategorias(livro));
-        }
+//        for(Livro livro: listaLivro){
+//            livro.setCategorias(DaoLivroCategoria.obterCategorias(livro));
+//        }
         return listaLivro;
     }
     public static ArrayList<Livro> consultarLivroCategoria(String nome) throws SQLException{

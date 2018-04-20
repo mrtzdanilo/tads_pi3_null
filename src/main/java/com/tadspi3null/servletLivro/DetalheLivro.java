@@ -18,36 +18,30 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Danilo
  */
-@WebServlet(name = "BuscarLivro", urlPatterns = {"/consultar-livro"})
-public class BuscarLivro extends HttpServlet {
+@WebServlet(name = "DetalheLivro", urlPatterns = {"/detalhe-livro"})
+public class DetalheLivro extends HttpServlet {
 
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String titulo = "";
-        if (request.getParameter("titulo") != null){
-            titulo = request.getParameter("titulo");
-        }
-        
-        String categoria = request.getParameter("categoria");
-        String editora = request.getParameter("editora");
-        String autor = request.getParameter("autor");
+        String id = request.getParameter("id");
+        Long long_id = Long.parseLong(id);
         
         
         ArrayList<Livro> listaLivros = null;
         try {
-            listaLivros = DaoLivro.consutarLivros(titulo);
+            Livro livro = DaoLivro.consultaPorId(id);
             
-            request.setAttribute("listaLivros", listaLivros);
+            request.setAttribute("livro", livro);
             
         } catch (SQLException ex) {
-            Logger.getLogger(BuscarLivro.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DetalheLivro.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         RequestDispatcher dispatcher = 
-	    request.getRequestDispatcher("WEB-INF/jsp/consultar-livro.jsp");
+	    request.getRequestDispatcher("WEB-INF/jsp/detalhe-livro.jsp");
         dispatcher.forward(request, response);
     }
 }
