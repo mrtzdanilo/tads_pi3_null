@@ -1,159 +1,98 @@
-<%-- 
-    Document   : cadastro livro
-    Created on : 06/04/2018, 14:54:38
-    Author     : Danilo
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-  
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-	<title>Livros</title>
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width">
-
-	<link rel="icon" href="imagens/favicon.png">
-	<link rel="stylesheet" href="./site/reset.css">
-	<link rel="stylesheet" href="./site/produto.css">
-	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Crimson+Text:400,400italic,600">
-	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700">
-
+    <meta charset="utf-8" />
+    <title>Cadastro de Produto</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/CadastroProduto.css" />
 </head>
-<body class="fullheight">
 
-	<div>
+<body>
+	<div class="area">
+            <form class="quadro" class="form" autocomplete="off" 
+                  action="${pageContext.request.contextPath}/cadastrar-livro"
+                  method="post">
+
+			<fieldset>
+				<legend> Cadastro de Produto </legend>
+			
+			<div class="form1">
+
+				<label for="Categoria">Categoria:</label><br>
+				<select name="categoria">
+					<option value="Selecione"> Selecione </option>
+					<option value="Terror"> Terror </option>
+					<option value="Ficção Cientifica"> Ficção Cientifica </option>
+					<option value="Ação"> Ação </option>
+					<option value="Drama"> Drama </option>
+					<option value="Biografias"> Biografias </option>
+				</select><br><br>
+
+				<label for="titulo">Titulo:</label>
+				<input type="text" class="form-control" id="Titulo" name="titulo"><br><br>
+				
+				<label for="Valor">Valor:</label>
+				<input type="text" class="form-control" id="Valor" name="valor"><br><br>
+				
+				<label for="Descrição">Descrição:</label>
+				<input type="text" class="form-control" id="Descrição" name="descrição"><br><br>
+				
+				<label for="idioma">Idioma:</label><br>
+				<select name="idioma">
+					<option value="Selecione"> Selecione </option>
+					<option value="Portugues"> Portugues </option>
+					<option value="Inglês"> Inglês </option>
+					<option value="Espanhol"> Espanhol </option>
+				</select>
+
+			</div>
+
+			<div class="form2">
 
 
-		<h1>Cadastro Livro</h1>
+				<label for="Autor">Autor:</label>
+				<input type="text" class="form-control" id="Autor" name="autor"><br><br>
+				
+				<label for="Editora">Editora:</label>
+				<input type="text" class="form-control" id="Editora" name="editora"><br><br>
+			
+				<label for="Edição">Edição:</label>
+				<input type="text" class="form-control" id="Edição" name="edicao"><br><br>
+			
+				<label for="Número de Paginas">Número de Paginas:</label>
+				<input type="text" class="form-control" id="numPag" name="numeroPaginas"><br><br>
+				
+				<label for="ISBN">ISBN:</label>
+				<input type="text" class="form-control" id="ISBN" name="isbn"><br><br>
 
+			</div>
+
+			<div class="pull-left"><br><br>
+				<button type="submit" class="btn btn-primary" onclick="alert('Cadastro realizado com sucesso!'); return true">
+     			<span class="glyphicon glyphicon-thumbs-up"></span>
+     			Confirmar Cadastro
+ 				</button>
+ 			</div>
+
+			<div class="pull-right"><br><br>
+				<button type="reset" class="btn btn-primary" onclick="alert('Dados apagados com sucesso!'); return true">
+     			<span class="glyphicon glyphicon-thumbs-up"></span>
+     			Apagar Dados
+ 				</button>
+ 			</div>
+
+			</fieldset>
+
+		</form>
 	</div>
 
-	<main class="" style=" 
-	padding-bottom: 0px;
-	padding-top: 0px;
-	height: 700px;
-	">
-
-	<form action="${pageContext.request.contextPath}/cadastrar-livro"
-	    method="post">
-
-		<div>
-			<select class="aa" name="Categoria">
-				<option value="Livros">Livros</option>
-			</select>
-
-		</div>	
-		<div class="input-titulo">
-			<label for = "input4" class="format, livro"> Titulo: </label>
-                        <input type="text" id= "input4" name="titulo">	
-		</div>
-
-		<div class="input-autor">
-
-			<label for = "input3" class="format, livro"> Autor: </label>
-                        <input type="text" id= "input3" name="autor">
-		</div>	
-            
-                <div class="input-autor">
-
-			<label for = "input3" class="format, livro"> Numero de PÃ¡ginas </label>
-                        <input type="text" id= "input3" name="numeroPaginas">
-		</div>	
-
-		<div class="input-edit">
-
-			<label for = "input2" class="format, livro"> Editora: </label>
-                        <input type="text" id= "input2" name="editora">
-
-		</div>
-
-		<div class="input-isbn">
-
-			<label for = "input1" class="format, livro"> ISBN: </label>
-                        <input type="text" id= "input1" name="isbn">
-
-		</div>
-
-		<div class="input-edicao">
-			<label for = "input5" class="format, livro"> EdiÃ§Ã£o: </label>
-			<input type="text" id= "input5" name="edicao">
-		</div>
-
-		<div class="format" style="">
-			<table class="format">
-				<div>
-
-					<label id="genero" class="format, livro"> GÃªnero: </label>
-					<select name="categoria">
-						<option value="Masculino">Masculino</option>
-						<option value="Feminino">Feminino</option>
-						<option value="indefinido">Indefinido</option>
-						<option value="LGBT">LGBT</option>
-					</select>
-				</div>
-
-				<div>
-
-					<label id="genero" class="format, livro"> Idioma: </label>
-					<select name="idioma">
-						<option value="PortuguÃªs-Br">PortuguÃªs-Br</option>
-						<option value="Ingles">InglÃªs</option>
-						<option value="outros">Outros</option>
-					</select>
-				</div>
-			</table>
-		</div>	
-
-	</div>
-	<div class="posi-bt">
-
-		<input class="bt" type="submit" value="Pesquisar" />
-		<input class="bt" type="reset" value="Cancelar" />
-		<input class="bt" type="submit" value="Salvar" />
-	</div>
-
-	
-</form>
-
-</main>
-
-<aside class="" style="
-padding-bottom: 0px;
-padding-top: 0px;
-height: 90px;
-background-position: 0px 0px;
-">
-<h1>Xgh Books</h1>
-<nav>
-	<ul>
-		<li><a href="index.html">Home</a></li>
-		<li><a href="contato.html">Contato</a></li>
-	</ul>
-</nav>
-<ul>
-	<li>
-		<a href="https://github.com/joaodasilva">
-			<img src="site/imagens/github.png" alt="Github">
-		</a>
-	</li>
-	<li>
-		<a href="https://twitter.com/joaodasilva">
-			<img src="site/imagens/twitter.png" alt="Twitter">
-		</a>
-	</li>
-	<li>
-		<a href="https://br.linkedin.com/pub/joÃ£o-da-silva/32/4/508">
-			<img src="site/imagens/linkedin.png" alt="LinkedIn">
-		</a>
-	</li>
-</ul>
-
-<footer>
-	&copy; Null - 2018
-</footer>
+    <div class="navbar">
+        <a style="text-decoration: none" href="TelaPrincipal.html"><h1 class="title"></h1></a>
+        
+        <div class="menu">
+            <ul>
+                <li><a class="button" id="home" >Retornar</a></li>
+            </ul>
+    </div>
+    
 </body>
 </html>
