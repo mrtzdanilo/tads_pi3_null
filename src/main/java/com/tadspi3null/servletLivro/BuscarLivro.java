@@ -1,7 +1,12 @@
 package com.tadspi3null.servletLivro;
 
+import com.tadspi3null.dao.DaoLivro;
+import com.tadspi3null.models.Livro;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,17 +31,22 @@ public class BuscarLivro extends HttpServlet {
         String editora = request.getParameter("editora");
         String autor = request.getParameter("autor");
         
+        
+        ArrayList<Livro> listaLivros = null;
+        try {
+            listaLivros = DaoLivro.consutarLivros(titulo);
+            
+            response.getWriter().println("Hello World!");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(BuscarLivro.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
 
         RequestDispatcher dispatcher = 
 	    request.getRequestDispatcher("WEB-INF/jsp/buscar-livros.jsp");
         dispatcher.forward(request, response);
-    }
-
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-        
     }
 }

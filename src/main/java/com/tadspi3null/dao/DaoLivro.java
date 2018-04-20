@@ -154,16 +154,21 @@ public class DaoLivro {
         }
     }
     
-    public static ArrayList<Livro> consutarLivro(String nome) throws SQLException{
+    public static ArrayList<Livro> consutarLivros(String titulo) throws SQLException{
         
         ArrayList <Livro> listaLivro = new ArrayList<>();
         
-        String query = "SELECT * FROM livro WHERE ((UPPER(livro.titulo) LIKE (UPPER ?) ";
-        
+        String query = "SELECT * FROM livro";
+        if (!titulo.isEmpty()){
+            query = "SELECT * FROM livro WHERE ((UPPER(livro.titulo) LIKE (UPPER ?) ";
+        }
+     
         try (Connection conn = ConnectionUtils.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(query)) {
             
-            stmt.setString(1, nome);
+            if (!titulo.isEmpty()){
+                stmt.setString(1, titulo);
+            }
             
             try (ResultSet result = stmt.executeQuery()) {
                 
