@@ -122,7 +122,7 @@ public class DaoLivro {
         Returns an unique book record, because this search is done by id
         */
         
-        String query = "SELECT * FROM livro WHERE livro.id=?";
+        String query = "SELECT * FROM livro WHERE livro.id=? AND livro.removido = false";
         
         try (Connection conn = ConnectionUtils.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -158,9 +158,9 @@ public class DaoLivro {
         
         ArrayList <Livro> listaLivro = new ArrayList<>();
         
-        String query = "SELECT * FROM livro";
+        String query = "SELECT * FROM livro WHERE livro.removido = false";
         if (!titulo.isEmpty()){
-            query = "SELECT * FROM livro WHERE livro.titulo LIKE ? ";
+            query = "SELECT * FROM livro WHERE livro.titulo LIKE ? AND livro.removido = false";
         }
      
         try (Connection conn = ConnectionUtils.getConnection();

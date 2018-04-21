@@ -64,6 +64,8 @@
 			</div>
 
 			<div class="pull-left"><br><br>
+                            
+                                
 				<button type="submit" class="btn btn-primary" formaction="Produto.html" onclick="alert('Produto excluido com sucesso!'); return true">
      			<span class="glyphicon glyphicon-thumbs-up"></span>
      			Excluir Produto
@@ -80,6 +82,15 @@
 			</fieldset>
 
 		</form>
+                <form class="form" autocomplete="off" 
+                  action="${pageContext.request.contextPath}/excluir-livro"
+                  method="post">
+                    
+                    <input type="hidden" name="id_livro" value="${livro.id}">
+                    
+                    <button type="submit">DELETE 2</button>
+                    
+                </form>
 	</div>
 
     <div class="navbar">

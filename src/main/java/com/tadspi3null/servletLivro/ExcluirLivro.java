@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ExcluirLivro extends HttpServlet {
 
     @Override
-    protected void doDelete(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
         String id_livro = request.getParameter("id_livro");
