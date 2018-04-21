@@ -38,11 +38,9 @@ public class ExcluirLivro extends HttpServlet {
             else{
                 System.out.println("Book not found when excluding");
             }
+	    response.sendRedirect("/tads_pi3_null-1.0-SNAPSHOT/consultar-livro");
         } catch (SQLException ex) {
             Logger.getLogger(ExcluirLivro.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-        
     }
 }
