@@ -137,6 +137,7 @@ public class DaoLivro {
                 
                 livro.setId(result.getInt("id"));
                 livro.setTitulo(result.getString("titulo"));
+                livro.setDescricao(result.getString("descricao"));
                 livro.setAutor(result.getString("autor"));
                 livro.setEditora(result.getString("editora"));
                 livro.setEdicao(result.getString("edicao"));

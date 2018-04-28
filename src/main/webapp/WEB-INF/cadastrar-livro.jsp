@@ -31,10 +31,10 @@
 				<input type="text" class="form-control" id="Titulo" name="titulo"><br><br>
 				
 				<label for="Valor">Valor:</label>
-				<input type="text" class="form-control" id="Valor" name="valor"><br><br>
+				<input type="number" class="form-control" id="Valor" name="valor"><br><br>
 				
 				<label for="Descrição">Descrição:</label>
-				<input type="text" class="form-control" id="Descrição" name="descrição"><br><br>
+				<input type="text" class="form-control" id="Descrição" name="descricao"><br><br>
 				
 				<label for="idioma">Idioma:</label><br>
 				<select name="idioma">

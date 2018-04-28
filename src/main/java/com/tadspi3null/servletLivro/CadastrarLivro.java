@@ -6,7 +6,6 @@ import com.tadspi3null.models.Categoria;
 import com.tadspi3null.models.Livro;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -37,7 +36,7 @@ public class CadastrarLivro extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        double valor = 0.0;
+        double valor = Double.parseDouble(request.getParameter("valor"));
         String titulo = request.getParameter("titulo");
         String descricao = request.getParameter("descricao");
         // implementar modo de insercao de categorias;

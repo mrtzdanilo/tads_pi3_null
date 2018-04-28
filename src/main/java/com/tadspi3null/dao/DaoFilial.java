@@ -26,14 +26,14 @@ public class DaoFilial {
         try (Connection conn = ConnectionUtils.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(query)) {
             
-            stmt.setString(0, filial.getNomeFantasia());
-            stmt.setString(1, filial.getNome());
-            stmt.setString(2, filial.getCnpj());
-            stmt.setString(3, filial.getInscricaoEstadual());
-            stmt.setString(4, filial.getTelefone());
-            stmt.setString(5, filial.getFax());
-            stmt.setString(6, filial.getEmail());
-            stmt.setLong(7, id_endereco);
+            stmt.setString(1, filial.getNomeFantasia());
+            stmt.setString(2, filial.getNome());
+            stmt.setString(3, filial.getCnpj());
+            stmt.setString(4, filial.getInscricaoEstadual());
+            stmt.setString(5, filial.getTelefone());
+            stmt.setString(6, filial.getFax());
+            stmt.setString(7, filial.getEmail());
+            stmt.setLong(8, id_endereco);
             
             stmt.executeUpdate(query);
         }
@@ -48,14 +48,14 @@ public class DaoFilial {
         try (Connection conn = ConnectionUtils.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(query)) {
             
-            stmt.setString(0, filial.getNomeFantasia());
-            stmt.setString(1, filial.getNome());
-            stmt.setString(2, filial.getCnpj());
-            stmt.setString(3, filial.getInscricaoEstadual());
-            stmt.setString(4, filial.getTelefone());
-            stmt.setString(5, filial.getFax());
-            stmt.setString(6, filial.getEmail());
-            stmt.setInt(7, filial.getId());
+            stmt.setString(1, filial.getNomeFantasia());
+            stmt.setString(2, filial.getNome());
+            stmt.setString(3, filial.getCnpj());
+            stmt.setString(4, filial.getInscricaoEstadual());
+            stmt.setString(5, filial.getTelefone());
+            stmt.setString(6, filial.getFax());
+            stmt.setString(7, filial.getEmail());
+            stmt.setInt(8, filial.getId());
             
             stmt.executeUpdate(query);
         }

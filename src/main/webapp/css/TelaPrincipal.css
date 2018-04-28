@@ -13,7 +13,7 @@
 }
 .title {
     float: left;
-    background: url(../ProjetoPI/Imagens/null-logo.png) no-repeat;
+    background: url(./imagens/null-logo.png) no-repeat;
     margin-top: 13px;
     font-size: 26px;
     color: #b9c941;

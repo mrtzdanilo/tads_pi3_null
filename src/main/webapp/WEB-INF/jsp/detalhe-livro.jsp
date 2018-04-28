@@ -17,7 +17,7 @@
 			<div class="form1">
 
 				<label for="Categoria">Categoria:</label><br>
-				<select name="Categoria">
+				<select name="categoria">
 					<option value="Categoria"> Selecione </option>
 					<option value="Categoria"> Terror </option>
 					<option value="Categoria"> Ficção Cientifica </option>
@@ -34,7 +34,7 @@
 				<input type="text" class="form-control" id="Descrição" name="descricao" value="${livro.descricao}"><br><br>
 				
 				<label for="idioma">Idioma:</label><br>
-				<select name="Idioma">
+				<select name="idioma">
 					<option value="idioma"> Selecione </option>
 					<option value="idioma"> Portugues </option>
 					<option value="idioma"> Inglês </option>
@@ -82,6 +82,8 @@
 			</fieldset>
 
 		</form>
+                                
+                                
                 <form class="form" autocomplete="off" 
                   action="${pageContext.request.contextPath}/excluir-livro"
                   method="post">
