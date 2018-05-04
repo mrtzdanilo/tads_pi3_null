@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *
@@ -104,4 +105,26 @@ public class DaoCategoria {
         return categoria;
     }
     
+    public static ArrayList<Categoria> getCategorias() throws SQLException{
+        String query = "SELECT * FROM categoria";
+        
+        ArrayList<Categoria> categorias = new ArrayList<>();
+        
+        try (Connection conn = ConnectionUtils.getConnection();
+                PreparedStatement stmt = conn.prepareStatement(query)) {
+            
+            try (ResultSet resultados = stmt.executeQuery()) {
+                
+                while(resultados.next()){
+                    Categoria categoria = new Categoria();
+                    categoria.setId(resultados.getLong("id"));
+                    categoria.setNome(resultados.getString("nome"));
+                    categoria.setDescricao(resultados.getString("descricao"));
+                    
+                    categorias.add(categoria);
+                }
+            }
+        }
+        return categorias;      
+    }
 }

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <meta charset="utf-8" />
     <title>Cadastro de Produto</title>
     <link rel="stylesheet" type="text/css" media="screen" href="./css/CadastroProduto.css" />
@@ -18,15 +19,14 @@
 			<div class="form1">
 
 				<label for="Categoria">Categoria:</label><br>
-				<select name="categoria">
-					<option value="Selecione"> Selecione </option>
-					<option value="Terror"> Terror </option>
-					<option value="Ficção Cientifica"> Ficção Cientifica </option>
-					<option value="Ação"> Ação </option>
-					<option value="Drama"> Drama </option>
-					<option value="Biografias"> Biografias </option>
-				</select><br><br>
-
+                                <select name="categoria">
+                                
+                                <c:forEach items="${categorias}" var="categoria">                                
+                                    <option value="${categoria.id}"> ${categoria.nome} </option>              
+                                </c:forEach>
+                                    
+                                </select><br><br>
+				
 				<label for="titulo">Titulo:</label>
 				<input type="text" class="form-control" id="Titulo" name="titulo"><br><br>
 				

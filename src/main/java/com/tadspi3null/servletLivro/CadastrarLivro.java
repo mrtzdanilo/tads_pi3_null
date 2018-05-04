@@ -6,6 +6,7 @@ import com.tadspi3null.models.Categoria;
 import com.tadspi3null.models.Livro;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -28,7 +29,18 @@ public class CadastrarLivro extends HttpServlet {
             throws ServletException, IOException {
         RequestDispatcher dispatcher
            = request.getRequestDispatcher("WEB-INF/cadastrar-livro.jsp");
-        dispatcher.forward(request, response);
+        
+        ArrayList<Categoria> listaCategoria = null;
+        try {
+            listaCategoria = DaoCategoria.getCategorias();
+            
+            request.setAttribute("categorias", listaCategoria);
+            
+            dispatcher.forward(request, response);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DetalheLivro.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }
 
     
