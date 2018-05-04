@@ -26,9 +26,9 @@ public class ExcluiFilial extends HttpServlet {
         
         //caso queira imprimir qual os dados da filial exluida (tem que criar o jsp
         //aqui possui apenas o endpoint ja com as informacoes da filial)
-         RequestDispatcher dispatcher = 
-	    request.getRequestDispatcher("WEB-INF/jsp/filial-excluida.jsp");
-        dispatcher.forward(request, response);
+//         RequestDispatcher dispatcher = 
+//	    request.getRequestDispatcher("WEB-INF/jsp/filial-excluida.jsp");
+//        dispatcher.forward(request, response);
         
     }
 

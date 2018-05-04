@@ -6,10 +6,13 @@
 package com.tadspi3null.dao;
 
 import com.tadspi3null.connect.ConnectionUtils;
+import com.tadspi3null.models.Endereco;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import com.tadspi3null.models.Filial;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -73,6 +76,41 @@ public class DaoFilial {
             stmt.executeUpdate();
         }
         return filial;
+    }
+    
+    public static ArrayList<Filial> consultaFilial(String nomeFantasia) throws SQLException{
+        ArrayList<Filial> listaFilial = new ArrayList<>();
+        
+        String query = "SELECT * FROM filial WHERE filial.nome LIKE ?";
+        
+         try (Connection conn = ConnectionUtils.getConnection();
+                PreparedStatement stmt = conn.prepareStatement(query)) {
+            
+             stmt.setString(1, nomeFantasia);
+             
+            try (ResultSet resultados = stmt.executeQuery()) {
+                
+                while(resultados.next()){
+                    
+                    Filial filial = new Filial();
+                    
+                    filial.setCnpj(resultados.getString("cnpj"));
+                    filial.setNomeFantasia(resultados.getString("nome_fantasia"));
+                    filial.setInscricaoEstadual(resultados.getString("inscricao_estadual"));
+                    filial.setEmail(resultados.getString("email"));
+                    filial.setTelefone(resultados.getString("telefone"));
+                    filial.setFax(resultados.getString("fax"));
+                    filial.getEndereco().setId(resultados.getInt("id_endereco"));
+                    listaFilial.add(filial);
+                }
+            }
+         }
+         
+         for(Filial filialTemp: listaFilial){
+             filialTemp.setEndereco(DaoEndereco.obterEndereco(filialTemp.getEndereco().getId()));
+         }
+        
+        return listaFilial;
     }
      
      

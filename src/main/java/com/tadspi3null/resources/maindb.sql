@@ -38,7 +38,7 @@ CREATE TABLE filial (
     id INTEGER PRIMARY KEY AUTO_INCREMENT,
     nome_fantasia VARCHAR (100) NOT NULL,
     inscricao_estadual VARCHAR (100) NOT NULL,
-    CNPJ VARCHAR (20) NOT NULL,
+    cnpj VARCHAR (20) NOT NULL,
     telefone VARCHAR(20),
     email VARCHAR(100),
     fax VARCHAR(20), 
@@ -62,6 +62,6 @@ CREATE TABLE livro_categoria (
     FOREIGN KEY (id_categoria) REFERENCES Categoria (id)
 );
 
-INSERT INTO table_name (nome, descricao)
-VALUES (Autobiografia, Autobiografia é um gênero literário em que uma pessoa narra a história da sua vida, trata-se de uma biografia escrita ou narrada pela pessoa biografada.),
-(Suspense, Livros de suspense são assim: páginas repletas de mistérios, que prendem a nossa atenção. E se você curte obras desse gênero.)
+INSERT INTO categoria (nome, descricao)
+VALUES ('Autobiografia','Autobiografia é um gênero literário em que uma pessoa narra a história da sua vida, trata-se de uma biografia escrita ou narrada pela pessoa biografada.'),
+('Suspense', 'Livros de suspense são assim: páginas repletas de mistérios, que prendem a nossa atenção. E se você curte obras desse gênero.')

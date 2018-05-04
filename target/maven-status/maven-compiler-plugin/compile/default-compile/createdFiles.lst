@@ -7,12 +7,14 @@ com\tadspi3null\models\LivroFilial.class
 com\tadspi3null\servletLivro\CadastrarLivro.class
 com\tadspi3null\dao\DaoLivroCategoria.class
 com\tadspi3null\models\Filial.class
+com\tadspi3null\models\Usuario.class
 com\tadspi3null\servletFilial\AtualizaFilial.class
+com\tadspi3null\servletLivro\DetalheLivro.class
 com\tadspi3null\models\Endereco.class
 com\tadspi3null\models\LivroCategoria.class
 com\tadspi3null\connect\ConnectionUtils.class
+com\tadspi3null\servletFilial\ConsultaFilial.class
 com\tadspi3null\dao\DaoLivro.class
-com\tadspi3null\servletFilial\BuscaFilial.class
 com\tadspi3null\servletLivro\AtualizarLivro.class
 com\tadspi3null\servletFilial\CadastraFilial.class
 com\tadspi3null\dao\DaoEndereco.class

@@ -107,4 +107,31 @@ public class DaoEndereco {
         }
         return endereco;
     }
+    
+    public static Endereco obterEndereco(Integer id) throws SQLException{
+        Endereco endereco = new Endereco();
+        
+        String query = "SELECT * FROM endereco WHERE endereco.id = ?";
+        
+        try (Connection conn = ConnectionUtils.getConnection();
+                PreparedStatement stmt = conn.prepareStatement(query)) {
+            
+            stmt.setInt(1, id);
+            
+            try (ResultSet resultados = stmt.executeQuery()) {
+                while(resultados.next()){
+                    endereco.setBairro(resultados.getString("bairro"));
+                    endereco.setCep(resultados.getString("cep"));
+                    endereco.setCidade(resultados.getString("cidade"));
+                    endereco.setEstado(resultados.getString("estado"));
+                    endereco.setNumero(resultados.getString("numero"));
+                    endereco.setRua(resultados.getString("rua"));
+                    
+                }
+            }
+        
+        }
+        
+        return endereco;
+    }
 }

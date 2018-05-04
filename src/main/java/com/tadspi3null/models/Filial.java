@@ -24,6 +24,9 @@ public class Filial {
     private String telefone;
     private String fax;
     private String email;
+    
+    public Filial(){
+    }
 
     public Filial(Endereco endereco, String nomeFantasia, String nome, 
                   String cnpj, String inscricaoEstadual, String telefone, String fax, String email) {
@@ -69,8 +72,8 @@ public class Filial {
         return cnpj;
     }
 
-    public void setCNPJ(String CNPJ) {
-        this.cnpj = CNPJ;
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
     }
 
     public String getInscricaoEstadual() {

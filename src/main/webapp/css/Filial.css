@@ -1,0 +1,73 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    padding: 0px 16px;
+    background-color: white;
+    float: left;
+    align-items: center;
+    box-shadow: 5px 5px 10px black, -5px -5px 10px black;
+}
+
+.title {
+    float: left;
+    background: url(../ProjetoPI/Imagens/null-logo.png) no-repeat;
+    margin-top: 13px;
+    font-size: 26px;
+    color: #b9c941;
+    width: 100px;
+    height: 100px;
+}
+.menu {
+    display: block;
+    float: center;
+    padding-top: 30px;
+    padding-right: 20%; 
+}
+.menu ul{
+    list-style-type: none;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.menu li {
+    float: left;
+}
+.menu a {
+    display: block;
+    padding: 10px 14px;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    font-family: 'Trebuchet MS';
+    background-color: white;
+}
+.menu a:hover{
+    background-color: gray;
+    color: #fff;
+}
+.activated {
+    background-color: #b9c941 !important;
+    color: #fff !important;
+}
+.button {
+    cursor: pointer;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
+
+body {
+    background-color: #F3F3F3;
+}
+
+.format{
+    text-align: center;
+    margin-top: 250px;
+    font-size: 50px;
+}            
