@@ -9,7 +9,10 @@
 
 <body>
 	<div class="area">
-		<form class="quadro" class="form" autocomplete="off">
+            
+                <form class="quadro" class="form" autocomplete="off" 
+                  action="${pageContext.request.contextPath}/atualizar-livro"
+                  method="post" id="form_livro">
 
 			<fieldset>
 				<legend> Detalhe do Produto </legend>
@@ -17,12 +20,13 @@
 			<div class="form1">
 
 				<label for="Categoria">Categoria:</label><br>
-				<select name="categoria">
-					<option value="Categoria"> Selecione </option>
-					<option value="Categoria"> Terror </option>
-					<option value="Categoria"> Ficção Cientifica </option>
-					<option value="Categoria"> Ação </option>
-				</select><br><br>
+                                <select name="categoria">
+                                
+                                <c:forEach items="${categorias}" var="categoria">                                
+                                    <option value="${categoria.id}" <c:if test="${categoria.id==livro.categoria.id}">selected</c:if> > ${categoria.nome} </option>              
+                                </c:forEach>
+                                    
+                                </select><br><br>
 
 				<label for="Titulo">Titulo:</label>
 				<input type="text" class="form-control" id="Titulo" name="titulo" value="${livro.titulo}"><br><br>
@@ -40,6 +44,8 @@
 					<option value="idioma"> Inglês </option>
 					<option value="idioma"> Espanhol </option>
 				</select>
+                                
+                                <input type="hidden" name="id_livro" value="${livro.id}">
 
 			</div>
 
@@ -63,20 +69,8 @@
 
 			</div>
 
-			<div class="pull-left"><br><br>
-                            
-                                
-				<button type="submit" class="btn btn-primary" formaction="Produto.html" onclick="alert('Produto excluido com sucesso!'); return true">
-     			<span class="glyphicon glyphicon-thumbs-up"></span>
-     			Excluir Produto
- 				</button>
- 			</div>
-
 			<div class="pull-right"><br><br>
-				<button type="submit" class="btn btn-primary" onclick="alert('Dados alterados com sucesso!'); return true">
-     			<span class="glyphicon glyphicon-thumbs-up"></span>
-     			Alterar Dados
- 				</button>
+                            <button type="submit" form="form_livro">ALTERAR DADOS</button>
  			</div>
 
 			</fieldset>

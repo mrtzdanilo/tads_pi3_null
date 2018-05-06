@@ -1,6 +1,8 @@
 package com.tadspi3null.servletLivro;
 
+import com.tadspi3null.dao.DaoCategoria;
 import com.tadspi3null.dao.DaoLivro;
+import com.tadspi3null.models.Categoria;
 import com.tadspi3null.models.Livro;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -31,10 +33,15 @@ public class DetalheLivro extends HttpServlet {
         
         
         ArrayList<Livro> listaLivros = null;
+        ArrayList<Categoria> listaCategoria = new ArrayList<Categoria>();
+        
         try {
             Livro livro = DaoLivro.consultaPorId(id);
             
             request.setAttribute("livro", livro);
+            
+            listaCategoria = DaoCategoria.getCategorias();
+            request.setAttribute("categorias", listaCategoria);
             
         } catch (SQLException ex) {
             Logger.getLogger(DetalheLivro.class.getName()).log(Level.SEVERE, null, ex);

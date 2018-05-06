@@ -1,6 +1,8 @@
 package com.tadspi3null.servletLivro;
 
+import com.tadspi3null.dao.DaoCategoria;
 import com.tadspi3null.dao.DaoLivro;
+import com.tadspi3null.models.Categoria;
 import com.tadspi3null.models.Livro;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -26,6 +28,8 @@ public class BuscarLivro extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        ArrayList<Categoria> listaCategoria = new ArrayList<Categoria>();
+        
         String titulo = "";
         if (request.getParameter("titulo") != null){
             titulo = request.getParameter("titulo");
@@ -39,6 +43,9 @@ public class BuscarLivro extends HttpServlet {
         ArrayList<Livro> listaLivros = null;
         try {
             listaLivros = DaoLivro.consutarLivros(titulo);
+            
+            listaCategoria = DaoCategoria.getCategorias();
+            request.setAttribute("categorias", listaCategoria);
             
             request.setAttribute("listaLivros", listaLivros);
             

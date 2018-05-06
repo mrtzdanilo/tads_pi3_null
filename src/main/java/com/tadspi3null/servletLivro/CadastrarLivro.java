@@ -59,21 +59,18 @@ public class CadastrarLivro extends HttpServlet {
         String edicao = request.getParameter("edicao");
         String numeroPaginas = request.getParameter("numeroPaginas");
         String isbn = request.getParameter("isbn");
+        Long idCategoria = Long.parseLong(request.getParameter("categoria"));
         
         Categoria categoria = new Categoria();
         
         try {
-           categoria = DaoCategoria.obterCategoria(1L);
+           categoria = DaoCategoria.obterCategoria(idCategoria);
         } catch (SQLException ex) {
             Logger.getLogger(CadastrarLivro.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         Livro livro = new Livro(titulo, idioma, autor, editora, edicao, 
-                numeroPaginas, isbn, valor, descricao);
-        
-        livro.addCategoria(categoria);
-        
-        
+                numeroPaginas, isbn, valor, descricao, categoria);
         try {
             DaoLivro.inserirLivro(livro);
         } catch (SQLException ex) {

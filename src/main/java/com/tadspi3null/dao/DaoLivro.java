@@ -26,7 +26,7 @@ public class DaoLivro {
         long id_livro = 0;
         
         String query = "INSERT INTO livro (titulo,valor,descricao,idioma,autor,"
-                + "edicao,numero_paginas,isbn,editora) VALUES (?,?,?,?,?,?,?,?,?)";
+                + "edicao,numero_paginas,isbn,editora, id_categoria) VALUES (?,?,?,?,?,?,?,?,?,?)";
         
         try (Connection conn = ConnectionUtils.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
@@ -40,6 +40,7 @@ public class DaoLivro {
                 stmt.setString(7, livro.getNumeroPaginas());
                 stmt.setString(8, livro.getIsbn());
                 stmt.setString(9, livro.getEditora());
+                stmt.setLong(10, livro.getCategoria().getId());
                 
                 stmt.executeUpdate();
                 
@@ -50,16 +51,12 @@ public class DaoLivro {
                 
                 livro.setId(id_livro);
             }
-        
-        for(Categoria categoria: livro.getCategorias()){
-            DaoLivroCategoria.inserirLivroCategoria(livro, categoria);
-        }    
     }
     
     public static void atualizarLivro(Livro livro) throws SQLException{
         
         String query = "UPDATE livro SET titulo=?, valor=?, descricao=?,"
-                + "idioma=?, autor=?, edicao=?, numero_paginas=?, isbn=?, editora=? "
+                + "idioma=?, autor=?, edicao=?, numero_paginas=?, isbn=?, editora=?, id_categoria=? "
                 + " WHERE (id=?)";
         
         try (Connection conn = ConnectionUtils.getConnection();
@@ -74,6 +71,7 @@ public class DaoLivro {
                 stmt.setString(7, livro.getNumeroPaginas());
                 stmt.setString(8, livro.getIsbn());
                 stmt.setString(9, livro.getEditora());
+                stmt.setLong(10, livro.getCategoria().getId());
                 
                 stmt.executeUpdate();
             }
@@ -146,6 +144,9 @@ public class DaoLivro {
                 livro.setValor(result.getDouble("valor"));
                 livro.setNumeroPaginas(result.getString("numero_paginas"));
                 
+                Categoria categoria = DaoCategoria.obterCategoria(result.getLong("id_categoria"));
+                livro.setCategoria(categoria);
+                
                 return livro;
             }
             catch(Exception e){
@@ -185,50 +186,23 @@ public class DaoLivro {
                     livro.setIsbn(result.getString("isbn"));
                     livro.setValor(result.getDouble("valor"));
                     livro.setNumeroPaginas(result.getString("numero_paginas"));
-                
-                listaLivro.add(livro);
                     
+                    Categoria categoria = DaoCategoria.obterCategoria(result.getLong("id_categoria"));
+                    livro.setCategoria(categoria);
+                    
+                    listaLivro.add(livro);
+                
                 }
             }
-        }
-        
-//        for(Livro livro: listaLivro){
-//            livro.setCategorias(DaoLivroCategoria.obterCategorias(livro));
-//        }
-        return listaLivro;
-    }
-    public static ArrayList<Livro> consultarLivroCategoria(String nome) throws SQLException{
-        
-        ArrayList <Livro> listaLivro = new ArrayList<>();
-        
-        String query = "SELECT * FROM livro WHERE UPPER(livro.titulo) LIKE (UPPER ?) ";
-        
-        try (Connection conn = ConnectionUtils.getConnection();
-                PreparedStatement stmt = conn.prepareStatement(query)) {
-            
-            stmt.setString(1, nome);
-            
-            try (ResultSet result = stmt.executeQuery()) {
-                
-                Livro livro = new Livro();
-                
-                livro.setId(result.getInt("id"));
-                livro.setTitulo(result.getString("nome"));
-                livro.setAutor(result.getString("autor"));
-                livro.setEditora(result.getString("editora"));
-                livro.setEdicao(result.getString("edicao"));
-                livro.setIdioma(result.getString("idioma"));
-                livro.setIsbn(result.getString("isbn"));
-                livro.setValor(result.getDouble("valor"));
-                livro.setNumeroPaginas(result.getString("numero_paginas"));
-                
-                listaLivro.add(livro);
+            catch (Exception e){
+                System.out.println(e);
             }
         }
-        
-        for(Livro livro: listaLivro){
-            livro.setCategorias(DaoLivroCategoria.obterCategorias(livro));
+        catch (Exception e){
+            System.out.println(e);
         }
+        
+        
         return listaLivro;
     }
 }

@@ -5,6 +5,7 @@ USE projetointegrador3;
 
 CREATE TABLE livro (
     id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    FOREIGN KEY (id_categoria) REFERENCES categoria (id),
     titulo VARCHAR (100) NOT NULL,
     valor VARCHAR (20) NOT NULL,
     descricao VARCHAR (255),
@@ -52,14 +53,6 @@ CREATE TABLE livro_filial (
     id_livro INTEGER NOT NULL,
     FOREIGN KEY (id_livro) REFERENCES livro (id),
     FOREIGN KEY (id_filial) REFERENCES Filial (id)
-);
-
-CREATE TABLE livro_categoria (
-    id INTEGER PRIMARY KEY AUTO_INCREMENT,
-    id_categoria INTEGER NOT NULL,
-    id_livro INTEGER NOT NULL,
-    FOREIGN KEY (id_livro) REFERENCES livro (id),
-    FOREIGN KEY (id_categoria) REFERENCES Categoria (id)
 );
 
 INSERT INTO categoria (nome, descricao)

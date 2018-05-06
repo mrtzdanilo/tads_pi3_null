@@ -31,15 +31,13 @@
                 <label for="Editora">Editora:</label>
                 <input type="text" class="form-control" id="Editora" name="editora"><br><br>
 
-                <label for="Categoria">Categoria:</label>
-                <select name="categoria">
-                    <option value="Selecione"> Selecione </option>
-                    <option value="Terror"> Terror </option>
-                    <option value="Ficção Cientifica"> Ficção Cientifica </option>
-                    <option value="Ação"> Ação </option>
-                    <option value="Drama"> Drama </option>
-                    <option value="Biografias"> Biografias </option>
-                </select>
+                <label for="Categoria">Categoria:</label><br>
+                <select name="categoria">  
+                    <option value="0">Todas</option>
+                    <c:forEach items="${categorias}" var="categoria">                                
+                        <option value="${categoria.id}"> ${categoria.nome} </option>              
+                    </c:forEach>                    
+                </select><br><br>
 
             </div>
 

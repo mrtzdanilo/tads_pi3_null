@@ -14,11 +14,11 @@ import java.util.ArrayList;
  */
 public class Livro{
     
+    private Categoria categoria;
     private long id;
     private double valor;
     private String titulo;
     private String descricao;
-    private ArrayList<Categoria> categorias = new ArrayList<>();
     private String idioma;
     private String autor;
     private String editora;
@@ -27,7 +27,8 @@ public class Livro{
     private String isbn;
 
     public Livro(String titulo,String idioma, String autor, String editora, String edicao, 
-            String numeroPaginas, String isbn,Double valor, String descricao) {
+            String numeroPaginas, String isbn,Double valor, String descricao,
+            Categoria categoria) {
         this.valor = valor;
         this.titulo = titulo;
         this.descricao = descricao;
@@ -37,10 +38,10 @@ public class Livro{
         this.edicao = edicao;
         this.numeroPaginas = numeroPaginas;
         this.isbn = isbn;
+        this.categoria = categoria;
     }
-
-    public void setCategorias(ArrayList<Categoria> categorias) {
-        this.categorias = categorias;
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
     public void setId(long id) {
@@ -50,22 +51,14 @@ public class Livro{
     public long getId() {
         return this.id;
     }
+    public Categoria getCategoria() {
+        return this.categoria;
+    }
     
-    public void addCategoria(Categoria categoria){
-        this.categorias.add(categoria);
-    }
-
-    public ArrayList<Categoria> getCategorias() {
-        return categorias;
-    }
-    public void removeCategoria(Categoria categoria){
-        this.categorias.remove(categoria);
-    }
-
     public double getValor() {
         return valor;
     }
-
+    
     public void setValor(double valor) {
         this.valor = valor;
     }
@@ -138,6 +131,4 @@ public class Livro{
     public void setNumeroPaginas(String numeroPaginas) {
         this.numeroPaginas = numeroPaginas;
     }
-    
-    
 }
