@@ -22,9 +22,9 @@ public class DaoFilial {
     public static Filial inserirFilial(Filial filial) throws SQLException{
         
         long id_endereco = DaoEndereco.inserirEndereco(filial);
-        
-        String query = "INSERT INTO filial (nome_fantasia, nome, cnpj, "
-                + "inscricao_estadual, telefone, fax, email, id_endereco) VALUES (?,?,?,?,?,?,?,?)";
+               
+        String query = "INSERT INTO filial (nome_fantasia,nome,cnpj,"
+                + "inscricao_estadual,telefone,fax,email,id_endereco) VALUES (?,?,?,?,?,?,?,?)";
         
         try (Connection conn = ConnectionUtils.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(query)) {

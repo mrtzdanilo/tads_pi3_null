@@ -24,18 +24,18 @@ public class DaoEndereco {
     public static long inserirEndereco(Filial filial) throws SQLException{
         
         int id_endereco = 0;
-        
-        String query = "INSERT INTO endereco (rua, bairro,  estado, cidade, numero, cep) VALUES (?,?,?,?,?,?";
+      
+        String query = "INSERT INTO endereco (rua, bairro,  estado, cidade, numero, cep) VALUES (?,?,?,?,?,?)";
         
         try (Connection conn = ConnectionUtils.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
             
-            stmt.setString(0, filial.getEndereco().getRua());
-            stmt.setString(0, filial.getEndereco().getBairro());
-            stmt.setString(0, filial.getEndereco().getEstado());
-            stmt.setString(0, filial.getEndereco().getCidade());
-            stmt.setString(0, filial.getEndereco().getNumero());
-            stmt.setString(0, filial.getEndereco().getCep());
+            stmt.setString(1, filial.getEndereco().getRua());
+            stmt.setString(2, filial.getEndereco().getBairro());
+            stmt.setString(3, filial.getEndereco().getEstado());
+            stmt.setString(4, filial.getEndereco().getCidade());
+            stmt.setString(5, filial.getEndereco().getNumero());
+            stmt.setString(6, filial.getEndereco().getCep());
             
              
             stmt.executeUpdate();
@@ -58,14 +58,13 @@ public class DaoEndereco {
         try (Connection conn = ConnectionUtils.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
             
-            stmt.setString(0, endereco.getRua());
-            stmt.setString(0, endereco.getBairro());
-            stmt.setString(0, endereco.getEstado());
-            stmt.setString(0, endereco.getCidade());
-            stmt.setString(0, endereco.getNumero());
-            stmt.setString(0, endereco.getCep());
-            
-             
+            stmt.setString(1, endereco.getRua());
+            stmt.setString(2, endereco.getBairro());
+            stmt.setString(3, endereco.getEstado());
+            stmt.setString(4, endereco.getCidade());
+            stmt.setString(5, endereco.getNumero());
+            stmt.setString(6, endereco.getCep());
+           
             stmt.executeUpdate();
             
             ResultSet generatedKeys = stmt.getGeneratedKeys();

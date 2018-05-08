@@ -18,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Danilo
  */
-@WebServlet(name = "ServletFilial", urlPatterns = {"/consultar-filial"})
-public class ConsultaFilial extends HttpServlet {
+@WebServlet(name = "ConsultarFilial", urlPatterns = {"/consultar-filial"})
+public class ConsultarFilial extends HttpServlet {
 
 
     @Override
@@ -34,17 +34,14 @@ public class ConsultaFilial extends HttpServlet {
         try {
             listaFilial = DaoFilial.consultaFilial(nomeFantasia);
         } catch (SQLException ex) {
-            Logger.getLogger(ConsultaFilial.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConsultarFilial.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         request.setAttribute("listaFilial", listaFilial);
         RequestDispatcher dispatcher = 
 	    request.getRequestDispatcher("WEB-INF/jsp/consultar-filial.jsp");
         dispatcher.forward(request, response);
-        
     }
-
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

@@ -19,9 +19,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Danilo
  */
-@WebServlet(name = "ServletFilial", urlPatterns = {"/cadastrar-filial"})
-public class CadastraFilial extends HttpServlet {
-
+@WebServlet(name = "CadastrarFilial", urlPatterns = {"/cadastrar-filial"})
+public class CadastrarFilial extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -31,8 +30,6 @@ public class CadastraFilial extends HttpServlet {
         dispatcher.forward(request, response);
         
     }
-
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -47,10 +44,10 @@ public class CadastraFilial extends HttpServlet {
         endereco.setCep(request.getParameter("cep"));
 
 
-        String nomeFantasia = request.getParameter("nomeFantasia");
+        String nomeFantasia = request.getParameter("nome_fantasia");
         String nome = request.getParameter("nome");
         String CNPJ = request.getParameter("cnpj");
-        String inscricaoEstadual = request.getParameter("inscricaoEstadual");
+        String inscricaoEstadual = request.getParameter("inscricao_estadual");
 
         String telefone = request.getParameter("telefone");
         String fax = request.getParameter("fax");
@@ -59,12 +56,7 @@ public class CadastraFilial extends HttpServlet {
 
         Filial filial = new Filial(endereco ,nomeFantasia, nome, CNPJ, 
                 inscricaoEstadual,telefone, fax, email);
-
-        try {
-            DaoEndereco.inserirEndereco(endereco);
-        } catch (SQLException ex) {
-            Logger.getLogger(CadastraFilial.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
         try {
             DaoFilial.inserirFilial(filial);
         } catch (SQLException ex) {
@@ -73,7 +65,7 @@ public class CadastraFilial extends HttpServlet {
         }
         
         RequestDispatcher dispatcher
-           = request.getRequestDispatcher("WEB-INF/jsp/cadastrar-filial.jsp");
+           = request.getRequestDispatcher("WEB-INF/jsp/consultar-filial.jsp");
         dispatcher.forward(request, response);
     }
 }

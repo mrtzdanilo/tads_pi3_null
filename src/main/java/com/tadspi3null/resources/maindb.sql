@@ -3,8 +3,15 @@ CREATE DATABASE IF NOT EXISTS ProjetoIntegrador3;
 
 USE projetointegrador3;
 
+CREATE TABLE categoria (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR (100) NOT NULL,
+    descricao VARCHAR (255)
+);
+
 CREATE TABLE livro (
     id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    id_categoria INTEGER NOT NULL,
     FOREIGN KEY (id_categoria) REFERENCES categoria (id),
     titulo VARCHAR (100) NOT NULL,
     valor VARCHAR (20) NOT NULL,
@@ -16,12 +23,6 @@ CREATE TABLE livro (
     numero_paginas VARCHAR (10),
     isbn VARCHAR (20) NOT NULL,
     removido BOOLEAN NOT NULL DEFAULT FALSE
-);
-
-CREATE TABLE categoria (
-    id INTEGER PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR (100) NOT NULL,
-    descricao VARCHAR (255)
 );
 
 CREATE TABLE endereco (
@@ -43,7 +44,8 @@ CREATE TABLE filial (
     telefone VARCHAR(20),
     email VARCHAR(100),
     fax VARCHAR(20), 
-    FOREIGN KEY (id) REFERENCES Endereco(id)
+    id_endereco INTEGER NOT NULL,
+    FOREIGN KEY (id_endereco) REFERENCES Endereco(id)
 );
 
 CREATE TABLE livro_filial (

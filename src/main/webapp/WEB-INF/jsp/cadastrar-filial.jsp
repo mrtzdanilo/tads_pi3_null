@@ -17,7 +17,7 @@
 			<div class="form1">
 
 				<label for="Nome Fantasia">Nome Fantasia:</label>
-				<input type="text" class="form-control" id="Nome Fantasia" name="nomeFantasia"><br><br>
+				<input type="text" class="form-control" id="Nome Fantasia" name="nome_fantasia"><br><br>
 				
 				<label for="CNPJ">CNPJ:</label>
 				<input type="text" class="form-control" id="CNPJ" name="cnpj"><br><br>
@@ -31,7 +31,7 @@
 
 
 				<label for="Inscrição Estadual">Inscrição Estadual:</label>
-				<input type="text" class="form-control" id="Inscrição Estadual" name="inscricaoEstadual"><br><br>
+				<input type="text" class="form-control" id="Inscrição Estadual" name="inscricao_estadual"><br><br>
 				
 				<label for="Telefone">Telefone:</label>
 				<input type="text" class="form-control" id="Telefone" name="telefone"><br><br>
@@ -75,7 +75,7 @@
 
 
 			<div class="pull-left"><br>
-				<button type="submit" class="btn btn-primary" formaction="Filial.html" onclick="alert('Cadastro realizado com sucesso!'); return true">
+				<button type="submit" class="btn btn-primary" onclick="alert('Cadastro realizado com sucesso!'); return true">
      			<span class="glyphicon glyphicon-thumbs-up"></span>
      			Confirmar Cadastro
  				</button>
