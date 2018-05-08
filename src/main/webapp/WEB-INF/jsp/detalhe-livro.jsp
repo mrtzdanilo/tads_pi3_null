@@ -68,14 +68,14 @@
 				<input type="text" class="form-control" id="ISBN" name="isbn" value="${livro.isbn}"><br><br>
 
 			</div>
-
-			<div class="pull-right"><br><br>
+			</fieldset>
+                                
+                        <div class="pull-right"><br><br>
                             <button type="submit" form="form_livro">ALTERAR DADOS</button>
  			</div>
 
-			</fieldset>
-
 		</form>
+                                
                                 
                                 
                 <form class="form" autocomplete="off" 

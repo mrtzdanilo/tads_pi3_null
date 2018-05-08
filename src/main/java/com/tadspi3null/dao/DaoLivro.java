@@ -72,6 +72,7 @@ public class DaoLivro {
                 stmt.setString(8, livro.getIsbn());
                 stmt.setString(9, livro.getEditora());
                 stmt.setLong(10, livro.getCategoria().getId());
+                stmt.setLong(11, livro.getId());
                 
                 stmt.executeUpdate();
             }

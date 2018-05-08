@@ -27,7 +27,7 @@ public class AtualizarLivro extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String id = request.getParameter("id");
+        String id = request.getParameter("id_livro");
         Long long_id = Long.parseLong(id);
         
         try {
