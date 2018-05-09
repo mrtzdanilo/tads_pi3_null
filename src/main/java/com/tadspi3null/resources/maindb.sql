@@ -45,6 +45,7 @@ CREATE TABLE filial (
     email VARCHAR(100),
     fax VARCHAR(20), 
     id_endereco INTEGER NOT NULL,
+    removido BOOLEAN NOT NULL DEFAULT FALSE,
     FOREIGN KEY (id_endereco) REFERENCES Endereco(id)
 );
 

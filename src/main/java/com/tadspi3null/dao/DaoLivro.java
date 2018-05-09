@@ -157,7 +157,7 @@ public class DaoLivro {
         }
     }
     
-    public static ArrayList<Livro> consutarLivros(String titulo) throws SQLException{
+    public static ArrayList<Livro> consultarLivros(String titulo) throws SQLException{
         
         ArrayList <Livro> listaLivro = new ArrayList<>();
         
@@ -177,7 +177,7 @@ public class DaoLivro {
                 
                 while (result.next()){
                     Livro livro = new Livro();
-                
+                    Categoria categoria = new Categoria();
                     livro.setId(result.getLong("id"));
                     livro.setTitulo(result.getString("titulo"));
                     livro.setAutor(result.getString("autor"));
@@ -188,9 +188,8 @@ public class DaoLivro {
                     livro.setValor(result.getDouble("valor"));
                     livro.setNumeroPaginas(result.getString("numero_paginas"));
                     
-                    Categoria categoria = DaoCategoria.obterCategoria(result.getLong("id_categoria"));
+                    categoria.setId(result.getLong("id_categoria"));
                     livro.setCategoria(categoria);
-                    
                     listaLivro.add(livro);
                 
                 }
@@ -203,7 +202,11 @@ public class DaoLivro {
             System.out.println(e);
         }
         
-        
+        if(!listaLivro.isEmpty()){
+            for(Livro livroTemp: listaLivro){
+                livroTemp.setCategoria(DaoCategoria.obterCategoria(livroTemp.getCategoria().getId()));
+            }
+        }
         return listaLivro;
     }
 }

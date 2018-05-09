@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Danilo
  */
-@WebServlet(name = "ServletFilial", urlPatterns = {"/exclui-filial"})
+@WebServlet(name = "ExcluiFilial", urlPatterns = {"/exclui-filial"})
 public class ExcluiFilial extends HttpServlet {
 
 

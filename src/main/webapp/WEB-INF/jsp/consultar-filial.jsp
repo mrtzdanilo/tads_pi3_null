@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <meta charset="utf-8" />
     <title>Consulta de Filial</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="./css/ConsultarFilial.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/ConsultaFilial.css" />
 </head>
 
 <body>
@@ -16,17 +17,17 @@
             <div class="form1">
 
                 <label for="Nome Fantasia">Nome Fantasia:</label>
-                <input type="text" class="form-control" id="Nome Fantasia" name="Nome Fantasia"><br><br>
+                <input type="text" class="form-control" id="Nome Fantasia" name="nomeFantasia"><br><br>
 
                 <label for="Inscrição Estadual">Inscrição Estadual:</label>
-                <input type="text" class="form-control" id="Inscrição Estadual" name="Inscrição Estadual"><br><br>
+                <input type="text" class="form-control" id="Inscrição Estadual" name="inscricaoEstadual"><br><br>
 
             </div>
 
             <div class="form2">
                 
                 <label for="CNPJ">CNPJ:</label>
-                <input type="text" class="form-control" id="CNPJ" name="CNPJ"><br><br>
+                <input type="text" class="form-control" id="CNPJ" name="cnpj"><br><br>
 
             </div>
 
@@ -46,13 +47,16 @@
                             <th width="110">Telefone</th>
                             <th width="110">Email</th>
                         </tr>
-                        <tr>
-                            <td align="center">teste</td>
-                            <td align="center">teste</td>
-                            <td align="center">teste</td>
-                            <td align="center">teste</td>
-                            <td align="center">teste</td>
-                        </tr>
+                        <c:forEach items="${listaFilial}" var="filial">
+                            <tr>
+                                <td align="center"><a href="${pageContext.request.contextPath}/detalhe-filial?id=<c:out value="${filial.id}"/>">
+                                        <c:out value="${filial.nomeFantasia}"/> <a/></td>
+                                <td align="center"><c:out value="${filial.inscricaoEstadual}"/></td>
+                                <td align="center"><c:out value="${filial.cnpj}"/></td>
+                                <td align="center"><c:out value="${filial.telefone}"/></td>
+                                <td align="center"><c:out value="${filial.email}"/></td>
+                            </tr>
+                        </c:forEach>
                     </table>
             </fieldset>
 

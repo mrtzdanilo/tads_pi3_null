@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <meta charset="utf-8" />
     <title>Detalhe da Filial</title>
     <link rel="stylesheet" type="text/css" media="screen" href="./css/CadastroFilial.css" />
@@ -16,13 +17,14 @@
 			<div class="form1">
 
 				<label for="Nome Fantasia">Nome Fantasia:</label>
-				<input type="text" class="form-control" id="Nome Fantasia" name=nomeFantasia"><br><br>
+				<input type="text" class="form-control" id="Nome Fantasia" 
+                                       name=nomeFantasia" value="${filial.nomeFantasia}"><br><br>
 				
 				<label for="CNPJ">CNPJ:</label>
-				<input type="text" class="form-control" id="CNPJ" name="cnpj"><br><br>
+				<input type="text" class="form-control" id="CNPJ" name="cnpj" value="${filial.cnpj}"><br><br>
 				
 				<label for="Email">Email:</label>
-				<input type="text" class="form-control" id="Email" name="email"><br><br>
+				<input type="text" class="form-control" id="Email" name="email" value="${filial.email}"><br><br>
 
 			</div>
 
@@ -30,13 +32,14 @@
 
 
 				<label for="Inscrição Estadual">Inscrição Estadual:</label>
-				<input type="text" class="form-control" id="Inscrição Estadual" name="inscricaoEstadual"><br><br>
+				<input type="text" class="form-control" id="Inscrição Estadual" name="inscricaoEstadual"
+                                       value="${filial.inscricaoEstadual}"><br><br>
 				
 				<label for="Telefone">Telefone:</label>
-				<input type="text" class="form-control" id="Telefone" name="telefone"><br><br>
+				<input type="text" class="form-control" id="Telefone" name="telefone" value="${filial.telefone}"><br><br>
 			
 				<label for="Fax">Fax:</label>
-				<input type="text" class="form-control" id="Fax" name="fax"><br><br>
+				<input type="text" class="form-control" id="Fax" name="fax" value="${filial.fax}"><br><br>
 
 			</div>
 
@@ -48,13 +51,16 @@
 			<div class="form1">
 
 				<label for="Rua">Rua:</label>
-				<input type="text" class="form-control" id="Rua" name="rua"><br><br>
+				<input type="text" class="form-control" id="Rua" name="rua"
+                                       value="${endereco.rua}"><br><br>
 				
 				<label for="Cidade">Cidade:</label>
-				<input type="text" class="form-control" id="Cidade" name="cidade"><br><br>
+				<input type="text" class="form-control" id="Cidade" name="cidade"
+                                       value="${endereco.cidade}"><br><br>
 				
 				<label for="Numero">Numero:</label>
-				<input type="text" class="form-control" id="Numero" name="numero"><br><br>
+				<input type="text" class="form-control" id="Numero" name="numero"
+                                       value="${endereco.numero}"><br><br>
 
 			</div>
 
@@ -62,13 +68,16 @@
 
 
 				<label for="Bairro">Bairro:</label>
-				<input type="text" class="form-control" id="Bairro" name="bairro"><br><br>
+				<input type="text" class="form-control" id="Bairro" name="bairro"
+                                       value="${endereco.bairro}"><br><br>
 				
 				<label for="Estado">Estado:</label>
-				<input type="text" class="form-control" id="Estado" name="estado"><br><br>
+				<input type="text" class="form-control" id="Estado" name="estado"
+                                       value="${endereco.estado}"><br><br>
 			
 				<label for="CEP">CEP:</label>
-				<input type="text" class="form-control" id="CEP" name="cep"><br><br>
+				<input type="text" class="form-control" id="CEP" name="cep"
+                                       value="${endereco.cep}"><br><br>
 
 			</div>
 

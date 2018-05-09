@@ -47,12 +47,14 @@ public class CadastrarLivro extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        double valor = Double.parseDouble(request.getParameter("valor"));
+        Double valor = null;
+        try{
+            valor = Double.parseDouble(request.getParameter("valor"));
+        } catch(Exception e){      
+            e.printStackTrace();
+        }
         String titulo = request.getParameter("titulo");
         String descricao = request.getParameter("descricao");
-        // implementar modo de insercao de categorias;
-        
         String idioma = request.getParameter("idioma");
         String autor = request.getParameter("autor");
         String editora = request.getParameter("editora");

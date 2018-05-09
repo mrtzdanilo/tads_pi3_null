@@ -82,13 +82,13 @@ public class DaoEndereco {
         try (Connection conn = ConnectionUtils.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(query)) {
             
-            stmt.setString(0, endereco.getRua());
-            stmt.setString(1, endereco.getBairro());
-            stmt.setString(2, endereco.getEstado());
-            stmt.setString(3, endereco.getCidade());
-            stmt.setString(4, endereco.getNumero());
-            stmt.setString(5, endereco.getCep());
-            stmt.setInt(6, endereco.getId());
+            stmt.setString(1, endereco.getRua());
+            stmt.setString(2, endereco.getBairro());
+            stmt.setString(4, endereco.getEstado());
+            stmt.setString(5, endereco.getCidade());
+            stmt.setString(6, endereco.getNumero());
+            stmt.setString(7, endereco.getCep());
+            stmt.setInt(8, endereco.getId());
              
             stmt.executeUpdate();
         }
@@ -100,7 +100,7 @@ public class DaoEndereco {
         try (Connection conn = ConnectionUtils.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(query)) {
             
-            stmt.setInt(0, endereco.getId());
+            stmt.setInt(1, endereco.getId());
             
             stmt.executeUpdate();
         }

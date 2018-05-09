@@ -42,7 +42,7 @@ public class BuscarLivro extends HttpServlet {
         
         ArrayList<Livro> listaLivros = null;
         try {
-            listaLivros = DaoLivro.consutarLivros(titulo);
+            listaLivros = DaoLivro.consultarLivros(titulo);
             
             listaCategoria = DaoCategoria.getCategorias();
             request.setAttribute("categorias", listaCategoria);

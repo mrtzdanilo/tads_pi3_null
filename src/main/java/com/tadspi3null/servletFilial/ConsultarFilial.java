@@ -26,8 +26,10 @@ public class ConsultarFilial extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String nome = request.getParameter("nome");
-        String nomeFantasia = request.getParameter("nomeFantasia");
+        String nomeFantasia = "";
+        if(request.getParameter("nomeFantasia") != null){
+            nomeFantasia = request.getParameter("nomeFantasia");
+        }
         String cnpj = request.getParameter("cnpj");
         
         ArrayList<Filial> listaFilial = new ArrayList<>();
