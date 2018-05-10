@@ -16,6 +16,10 @@
 
 			<fieldset>
 				<legend> Detalhe do Produto </legend>
+                                
+                                <c:if test="${not empty sessionScope.message}">
+                                    ${sessionScope.message}
+                                </c:if>   
 			
 			<div class="form1">
 

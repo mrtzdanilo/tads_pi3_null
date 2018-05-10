@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -22,10 +23,12 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "AtualizarLivro", urlPatterns = {"/atualizar-livro"})
 public class AtualizarLivro extends HttpServlet {
-
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        String message = "";
         
         String id = request.getParameter("id_livro");
         Long long_id = Long.parseLong(id);
@@ -46,25 +49,31 @@ public class AtualizarLivro extends HttpServlet {
         
             Categoria categoria = new Categoria();
         
-            try {
-                categoria = DaoCategoria.obterCategoria(idCategoria);
-            } catch (SQLException ex) {
-                Logger.getLogger(CadastrarLivro.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            categoria = DaoCategoria.obterCategoria(idCategoria);
         
             Livro livro = new Livro(titulo, idioma, autor, editora, edicao, 
                 numeroPaginas, isbn, valor, descricao, categoria);
             
             livro.setId(long_id);
+          
+            DaoLivro.atualizarLivro(livro);
             
-            try {
-                DaoLivro.atualizarLivro(livro);
-            } catch (SQLException ex) {
-                Logger.getLogger(CadastrarLivro.class.getName()).log(Level.SEVERE, null, ex);
-            }    
+            message = "Livro atualizado com sucesso";
+     
         } catch (Exception ex) {
-            Logger.getLogger(DetalheLivro.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DetalheLivro.class.getName()).log(Level.SEVERE,
+                                                               null, ex);
+            message = "Falha ao atualizar informações";
         }
         
+        // Armazena uma mensagem com o que ocorreu no ultimo evento
+        // em uma Session HTTP
+        HttpSession session = request.getSession();
+        session.setAttribute("message", message);
+        
+        // Redireciona para a mesma página de detalhes do livro com os
+        // dados atualizados
+        response.sendRedirect(request.getContextPath() +
+                "/detalhe-livro?id=" + Long.toString(long_id));
     }
 }
