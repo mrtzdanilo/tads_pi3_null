@@ -58,6 +58,16 @@ CREATE TABLE livro_filial (
     FOREIGN KEY (id_filial) REFERENCES Filial (id)
 );
 
+CREATE TABLE usuario (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR (100) NOT NULL,
+    sobre_nome VARCHAR (100) NOT NULL,
+    sexo VARCHAR (100) NOT NULL,
+    funcao VARCHAR (100) NOT NULL,
+    dt_admissao VARCHAR (100) NOT NULL,
+    removido BOOLEAN NOT NULL DEFAULT FALSE
+);
+
 INSERT INTO categoria (nome, descricao)
 VALUES ('Autobiografia','Autobiografia é um gênero literário em que uma pessoa narra a história da sua vida, trata-se de uma biografia escrita ou narrada pela pessoa biografada.'),
 ('Suspense', 'Livros de suspense são assim: páginas repletas de mistérios, que prendem a nossa atenção. E se você curte obras desse gênero.')
