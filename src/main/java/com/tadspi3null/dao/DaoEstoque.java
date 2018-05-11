@@ -50,6 +50,7 @@ public class DaoEstoque {
                     
                     livro.setId(result.getLong("id_livro"));
                     filial.setId(result.getInt("id_filial"));
+                    livroFilial.setEstoque(result.getInt("estoque"));
                     
                     livroFilial.setLivro(livro);
                     livroFilial.setFilial(filial);

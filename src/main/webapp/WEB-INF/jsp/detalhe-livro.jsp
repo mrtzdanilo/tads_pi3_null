@@ -101,8 +101,8 @@
 
 
 </form>	
-        <form class="botaoEstoque" action="${pageContext.request.contextPath}/estoque"
-          method="post">
+        <form class="botaoEstoque" action="${pageContext.request.contextPath}/estoque?"
+          method="get">
             <input type="hidden" name="id" value="${livro.id}">
             <button type="submit" class="botao-estoque">Gerenciar Estoque</button>
         </form>
