@@ -50,8 +50,8 @@ CREATE TABLE filial (
 );
 
 CREATE TABLE livro_filial (
-    id INTEGER PRIMARY KEY AUTO_INCREMENT,
-    estoque INTEGER NOT NULL,
+    PRIMARY KEY(id_filial, id_livro),
+    estoque INTEGER NOT NULL DEFAULT 0,
     id_filial INTEGER NOT NULL,
     id_livro INTEGER NOT NULL,
     FOREIGN KEY (id_livro) REFERENCES livro (id),
@@ -71,3 +71,33 @@ CREATE TABLE usuario (
 INSERT INTO categoria (nome, descricao)
 VALUES ('Autobiografia','Autobiografia é um gênero literário em que uma pessoa narra a história da sua vida, trata-se de uma biografia escrita ou narrada pela pessoa biografada.'),
 ('Suspense', 'Livros de suspense são assim: páginas repletas de mistérios, que prendem a nossa atenção. E se você curte obras desse gênero.')
+
+DELIMITER //
+
+CREATE TRIGGER insert_livro_filial_after_livro_insert
+AFTER INSERT
+   ON livro FOR EACH ROW
+BEGIN
+   -- Insert record into audit table
+   INSERT INTO livro_filial
+   ( id_filial,
+     id_livro)
+   SELECT id, NEW.id from filial;
+END; //
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE TRIGGER insert_livro_filial_after_filial_insert
+AFTER INSERT
+   ON filial FOR EACH ROW
+BEGIN
+   -- Insert record into audit table
+   INSERT INTO livro_filial
+   ( id_filial,
+     id_livro)
+   SELECT NEW.id, id from livro;
+END; //
+
+DELIMITER ;
