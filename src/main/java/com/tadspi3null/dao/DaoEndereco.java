@@ -84,11 +84,11 @@ public class DaoEndereco {
             
             stmt.setString(1, endereco.getRua());
             stmt.setString(2, endereco.getBairro());
-            stmt.setString(4, endereco.getEstado());
-            stmt.setString(5, endereco.getCidade());
-            stmt.setString(6, endereco.getNumero());
-            stmt.setString(7, endereco.getCep());
-            stmt.setInt(8, endereco.getId());
+            stmt.setString(3, endereco.getEstado());
+            stmt.setString(4, endereco.getCidade());
+            stmt.setString(5, endereco.getNumero());
+            stmt.setString(6, endereco.getCep());
+            stmt.setInt(7, endereco.getId());
              
             stmt.executeUpdate();
         }
@@ -119,6 +119,7 @@ public class DaoEndereco {
             
             try (ResultSet resultados = stmt.executeQuery()) {
                 while(resultados.next()){
+                    endereco.setId(resultados.getInt("id"));
                     endereco.setBairro(resultados.getString("bairro"));
                     endereco.setCep(resultados.getString("cep"));
                     endereco.setCidade(resultados.getString("cidade"));

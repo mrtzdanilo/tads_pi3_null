@@ -26,7 +26,7 @@
 				<select type="text" name="categoria" required="true" />
                                 
 				<c:forEach items="${categorias}" var="categoria">                                
-                                    <option  <c:if test="${categoria.id==livro.categoria.id}">selected</c:if> > ${categoria.nome} </option>              
+                                    <option  value="${categoria.id}" <c:if test="${categoria.id==livro.categoria.id}">selected</c:if> > ${categoria.nome} </option>              
                                 </c:forEach>
             	</select>
 			</div>
@@ -50,7 +50,7 @@
 			<div class="form-group">
 			<p>Número de Paginas <span>*</span></p>
 			<span class="icon-case"></span>
-				<input type="number" name="numeroPaginas" id="numpaginas" required="true" value="${livro.descricao}"/>
+				<input type="number" name="numeroPaginas" id="numpaginas" required="true" value="${livro.numeroPaginas}"/>
 			</div>
 	</div>
 
@@ -96,7 +96,7 @@
 	</div>
 	</div>
 
-
+<input type="hidden" name="id_livro" value="${livro.id}">
 <button type="submit" class="botao-alterar">Alterar Dados</button>
 
 

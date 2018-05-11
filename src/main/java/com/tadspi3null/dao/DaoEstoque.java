@@ -21,12 +21,19 @@ import java.util.ArrayList;
  */
 public class DaoEstoque {
     
-    public static void atualizar(ArrayList<LivroFilial> listaLivroFilial) throws SQLException{
+    public static void atualizar(LivroFilial livroFilial, int estoque) throws SQLException{
         
-        long id_livro = 0;
+        String query = "UPDATE livro_filial SET estoque=? WHERE livro_filial.id_livro=? AND livro_filial.id_filial=?";
+        try (Connection conn = ConnectionUtils.getConnection();
+                PreparedStatement stmt = conn.prepareStatement(query)) {
+            
+            stmt.setLong(1, estoque);
+            stmt.setLong(2, livroFilial.getLivro().getId());
+            stmt.setLong(3, livroFilial.getFilial().getId());
+            
+            stmt.executeUpdate();
+        }
         
-        String query = "INSERT INTO livro (titulo,valor,descricao,idioma,autor,"
-                + "edicao,numero_paginas,isbn,editora, id_categoria) VALUES (?,?,?,?,?,?,?,?,?,?)";
         
     }
     

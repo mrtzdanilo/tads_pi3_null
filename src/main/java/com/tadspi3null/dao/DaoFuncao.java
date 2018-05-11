@@ -1,0 +1,86 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.tadspi3null.dao;
+
+import com.tadspi3null.connect.ConnectionUtils;
+import com.tadspi3null.models.Funcao;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+
+/**
+ *
+ * @author Danilo
+ */
+public class DaoFuncao {
+    
+    
+    public static Long cadastrarFuncao(Funcao funcao) throws SQLException{
+        
+        String query = "INSERT INTO  funcao (nome_funcao) VALUES (?)";
+        Long id = 0L;
+        
+        try (Connection conn = ConnectionUtils.getConnection();
+                PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
+            
+            stmt.setString(1, funcao.getNomeFuncao());
+            
+            stmt.executeUpdate();
+            
+            ResultSet generatedKeys = stmt.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                    id = (generatedKeys.getLong(1));
+            }
+        }
+        
+        return id;
+    }
+    
+    public static ArrayList<Funcao> obterListaFuncao() throws SQLException{
+        
+        String query = "SELECT * FROM  funcao";
+        ArrayList<Funcao> listaFuncao = new ArrayList<>();
+        
+         try (Connection conn = ConnectionUtils.getConnection();
+                PreparedStatement stmt = conn.prepareStatement(query)) {
+            
+            try (ResultSet resultados = stmt.executeQuery()) {
+                
+                while(resultados.next()){
+                    Funcao funcao = new Funcao();
+                    funcao.setId(resultados.getLong("id"));
+                    funcao.setNomeFuncao(resultados.getString("nome_funcao"));
+                    
+                    listaFuncao.add(funcao);
+                }
+            }
+        }
+         
+         return listaFuncao;
+    }
+    
+    public static Funcao obterFuncaoPOrId(Long id) throws SQLException{
+        
+        String query = "SELECT * FROM  funcao WHERE funcao.id =?";
+        Funcao funcao = new Funcao();
+         try (Connection conn = ConnectionUtils.getConnection();
+                PreparedStatement stmt = conn.prepareStatement(query)) {
+            
+             stmt.setLong(1, funcao.getId());
+            try (ResultSet resultados = stmt.executeQuery()) {
+                
+                while(resultados.next()){
+                    funcao.setId(resultados.getLong("id"));
+                    funcao.setNomeFuncao(resultados.getString("nome_funcao"));
+                }
+            }
+        }
+        return funcao;
+    }
+}

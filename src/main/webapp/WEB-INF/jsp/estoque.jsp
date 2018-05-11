@@ -11,13 +11,14 @@
 
 <body>
   
-  <form>
+  <form action="${pageContext.request.contextPath}/estoque"
+          method="post">
         <h1>Gerenciamento de Estoque</h1>
         
     <div class="contentform">
 
         <div>
-            <p>Produto<span></span></p>
+            <p> ${livro.titulo} <span></span></p>
        </div>
 
         <div class="tabela">
@@ -29,7 +30,7 @@
                 <c:forEach items="${listaLivroFilial}" var="livroFilial">  
                 <tr>
                     <td> ${livroFilial.filial.nomeFantasia} </td>
-                    <td><input class="estoque" type="number" name="quantidade"
+                    <td><input class="estoque" type="number" name="estoque"
                                value="${livroFilial.estoque}"></td>
                 </tr>
                 </c:forEach>

@@ -43,23 +43,25 @@ public class DaoFilial {
     }
     
      public static Filial atualizarFilial(Filial filial) throws SQLException{
-        String query = "UPDATE filial SET (nome_fantasia=?, nome=?, CNPJ=?, "
-                + "inscricao_estadual=?, telefone=?, fax=?, email=?)"
+         
+        DaoEndereco.atualizarEndereco(filial.getEndereco());
+         
+        String query = "UPDATE filial SET nome_fantasia=?, cnpj=?, "
+                + "inscricao_estadual=?, telefone=?, fax=?, email=? " 
                 + " WHERE (id=?)";
         
         try (Connection conn = ConnectionUtils.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(query)) {
             
             stmt.setString(1, filial.getNomeFantasia());
-            stmt.setString(2, filial.getNome());
-            stmt.setString(3, filial.getCnpj());
-            stmt.setString(4, filial.getInscricaoEstadual());
-            stmt.setString(5, filial.getTelefone());
-            stmt.setString(6, filial.getFax());
-            stmt.setString(7, filial.getEmail());
-            stmt.setInt(8, filial.getId());
+            stmt.setString(2, filial.getCnpj());
+            stmt.setString(3, filial.getInscricaoEstadual());
+            stmt.setString(4, filial.getTelefone());
+            stmt.setString(5, filial.getFax());
+            stmt.setString(6, filial.getEmail());
+            stmt.setInt(7, filial.getId());
             
-            stmt.executeUpdate(query);
+            stmt.executeUpdate();
         }
         return filial;
     }

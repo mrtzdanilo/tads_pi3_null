@@ -49,14 +49,14 @@
                 <th>Email</th>
             </tr>
             
-            <c:forEach items="${filial}" var="filial">
+            <c:forEach items="${listaFilial}" var="filial">
                 
             <tr>
-                <td> <a href="${pageContext.request.contextPath}/detalhe-filial?id=<c:out value="${livro.id}"/>"><c:out value="${livro.titulo}"/> <a/></td>
-                <td value="${filial.inscricaoEstadual}">  </td>
-                <td value="${filial.cnpj}"> </td>
-                <td value="${filial.telefone}"> </td>
-                <td value="${filial.email}"> </td>
+                <td> <a href="${pageContext.request.contextPath}/detalhe-filial?id=<c:out value="${filial.id}"/>"><c:out value="${filial.nomeFantasia}"/> <a/></td>
+                <td> ${filial.inscricaoEstadual} </td>
+                <td> ${filial.cnpj} </td>
+                <td> ${filial.telefone} </td>
+                <td> ${filial.email} </td>
             </tr>
             
             </c:forEach>

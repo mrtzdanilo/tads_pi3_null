@@ -32,7 +32,7 @@ public class ConsultarFilial extends HttpServlet {
         }
         String cnpj = request.getParameter("cnpj");
         
-        ArrayList<Filial> listaFilial = new ArrayList<>();
+        ArrayList<Filial> listaFilial = new ArrayList<Filial>();
         try {
             listaFilial = DaoFilial.consultaFilial(nomeFantasia);
         } catch (SQLException ex) {

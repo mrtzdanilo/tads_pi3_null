@@ -6,9 +6,10 @@
 package com.tadspi3null.servletEstoque;
 
 import com.tadspi3null.dao.DaoEstoque;
+import com.tadspi3null.dao.DaoLivro;
+import com.tadspi3null.models.Livro;
 import com.tadspi3null.models.LivroFilial;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -40,6 +41,10 @@ public class ServletEstoque extends HttpServlet {
             ArrayList<LivroFilial> listaLivroFilial = DaoEstoque.obterEstoque(long_id);
 
             request.setAttribute("listaLivroFilial", listaLivroFilial);
+            
+            Livro livro = new Livro();
+            livro = DaoLivro.consultaPorId(long_id);
+            request.setAttribute("livro", livro);
 
             
             dispatcher.forward(request, response);
@@ -51,6 +56,9 @@ public class ServletEstoque extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        //ArrayList<LivroFilial> listaLivroFilial = new ArrayList<>();
+        //listaLivroFilial = (ArrayList<LivroFilial>)request.getAttribute("listaLivroFilial");
         
             
     }

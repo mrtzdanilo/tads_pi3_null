@@ -16,7 +16,7 @@ public class Usuario {
     private Long id;
     private String nome;
     private String sobreNome;
-    private String funcao;
+    private Funcao funcao;
     private String sexo;
     private String telefone;
     private String email;
@@ -49,11 +49,11 @@ public class Usuario {
         this.sobreNome = sobreNome;
     }
 
-    public String getFuncao() {
+    public Funcao getFuncao() {
         return funcao;
     }
 
-    public void setFuncao(String funcao) {
+    public void setFuncao(Funcao funcao) {
         this.funcao = funcao;
     }
 
