@@ -5,7 +5,6 @@
  */
 package com.tadspi3null.models;
 
-import java.util.ArrayList;
 
 
 /**

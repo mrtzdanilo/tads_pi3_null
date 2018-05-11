@@ -43,6 +43,15 @@ public class DetalheLivro extends HttpServlet {
             listaCategoria = DaoCategoria.getCategorias();
             request.setAttribute("categorias", listaCategoria);
             
+            // Codigo improvisado
+            // Enviar todos os idiomas e o idioma persistente neste livro                
+            ArrayList<String> listaIdioma = new ArrayList();
+            listaIdioma.add("Portuges");
+            listaIdioma.add("Inglês");
+            listaIdioma.add("Espanhol");
+            
+            request.setAttribute("idiomas", listaIdioma);
+            
         } catch (SQLException ex) {
             Logger.getLogger(DetalheLivro.class.getName()).log(Level.SEVERE, null, ex);
         }

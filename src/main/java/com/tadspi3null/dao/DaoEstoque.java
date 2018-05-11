@@ -6,10 +6,6 @@
 package com.tadspi3null.dao;
 
 import com.tadspi3null.connect.ConnectionUtils;
-import com.tadspi3null.dao.DaoCategoria;
-import com.tadspi3null.dao.DaoFilial;
-import com.tadspi3null.dao.DaoLivro;
-import com.tadspi3null.models.Categoria;
 import com.tadspi3null.models.Filial;
 import com.tadspi3null.models.Livro;
 import com.tadspi3null.models.LivroFilial;
@@ -17,7 +13,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
@@ -37,7 +32,8 @@ public class DaoEstoque {
     
     public static ArrayList<LivroFilial> obterEstoque(long id_livro) throws SQLException{
         
-        String query = "SELECT * FROM livro_filial where livro_filial.id_livro = ?";
+        String query = "SELECT * FROM livro_filial WHERE livro_filial.id_livro = ?";
+        
         ArrayList<LivroFilial> listaLivroFilial = new ArrayList<LivroFilial>();
         
         try (Connection conn = ConnectionUtils.getConnection();
@@ -57,6 +53,8 @@ public class DaoEstoque {
                     
                     livroFilial.setLivro(livro);
                     livroFilial.setFilial(filial);
+                    
+                    listaLivroFilial.add(livroFilial);
                 }
             }
             catch (Exception e){

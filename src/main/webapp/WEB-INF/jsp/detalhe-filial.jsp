@@ -3,111 +3,150 @@
 <head>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <meta charset="utf-8" />
-    <title>Detalhe da Filial</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="./css/CadastroFilial.css" />
+    <title>Detalhes da Filial</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/DetalheFilial.css" />
 </head>
 
 <body>
-	<div class="area">
-		<form class="quadro" class="form" autocomplete="off">
 
-			<fieldset>
-				<legend> Detalhe da Filial </legend>
-			
-			<div class="form1">
+<body>
+  
+  <form action="${pageContext.request.contextPath}/atualizar-filial"
+                  method="post" >
+	    <h1>Detalhes da Filial</h1>
 
-				<label for="Nome Fantasia">Nome Fantasia:</label>
-				<input type="text" class="form-control" id="Nome Fantasia" 
-                                       name=nomeFantasia" value="${filial.nomeFantasia}"><br><br>
-				
-				<label for="CNPJ">CNPJ:</label>
-				<input type="text" class="form-control" id="CNPJ" name="cnpj" value="${filial.cnpj}"><br><br>
-				
-				<label for="Email">Email:</label>
-				<input type="text" class="form-control" id="Email" name="email" value="${filial.email}"><br><br>
+    <div class="contentform">
 
+	    <h2> Identificação da Filial </h2>
+
+    	<div class="leftcontact">
+			<div class="form-group">
+			<p>Nome Fantasia<span>*</span></p>
+			<span class="icon-case"></span>
+			<input type="text" name="nomeFantasia" id="nomefantasia" required="true" value="${filial.nomeFantasia}" />
+       </div> 
+
+            <div class="form-group">
+            <p>CNPJ <span>*</span></p>
+            <span class="icon-case"></span>
+				<input type="text" name="cnpj" id="cnpj" required="true" value="${filial.cnpj}" />
 			</div>
 
-			<div class="form2">
+			<div class="form-group">
+			<p>Email <span>*</span></p>
+			<span class="icon-case"></span>
+				<input type="email" name="email" id="email" required="true" value="${filial.email}" />
+			</div>	
 
-
-				<label for="Inscrição Estadual">Inscrição Estadual:</label>
-				<input type="text" class="form-control" id="Inscrição Estadual" name="inscricaoEstadual"
-                                       value="${filial.inscricaoEstadual}"><br><br>
-				
-				<label for="Telefone">Telefone:</label>
-				<input type="text" class="form-control" id="Telefone" name="telefone" value="${filial.telefone}"><br><br>
-			
-				<label for="Fax">Fax:</label>
-				<input type="text" class="form-control" id="Fax" name="fax" value="${filial.fax}"><br><br>
-
+			<div class="form-group">
+			<p>Inscrição Estadual <span>*</span></p>
+			<span class="icon-case"></span>
+				<input type="text" name="inscricaoEstadual" id="insestadual" required="true" value="${filial.inscricaoEstadual}" />
 			</div>
 
-			</fieldset>
-
-			<fieldset>
-				<legend> Endereço </legend>
-
-			<div class="form1">
-
-				<label for="Rua">Rua:</label>
-				<input type="text" class="form-control" id="Rua" name="rua"
-                                       value="${endereco.rua}"><br><br>
-				
-				<label for="Cidade">Cidade:</label>
-				<input type="text" class="form-control" id="Cidade" name="cidade"
-                                       value="${endereco.cidade}"><br><br>
-				
-				<label for="Numero">Numero:</label>
-				<input type="text" class="form-control" id="Numero" name="numero"
-                                       value="${endereco.numero}"><br><br>
-
+			<div class="form-group">
+			<p>Telefone <span>*</span></p>
+			<span class="icon-case"></span>
+				<input type="text" name="telefone" id="telefone" required="true" value="${filial.telefone}" />
 			</div>
 
-			<div class="form2">
-
-
-				<label for="Bairro">Bairro:</label>
-				<input type="text" class="form-control" id="Bairro" name="bairro"
-                                       value="${endereco.bairro}"><br><br>
-				
-				<label for="Estado">Estado:</label>
-				<input type="text" class="form-control" id="Estado" name="estado"
-                                       value="${endereco.estado}"><br><br>
-			
-				<label for="CEP">CEP:</label>
-				<input type="text" class="form-control" id="CEP" name="cep"
-                                       value="${endereco.cep}"><br><br>
-
+			<div class="form-group">
+			<p>Fax <span></span></p>
+			<span class="icon-case"></span>
+				<input type="text" name="fax" id="fax" value="${filial.fax}"/>
 			</div>
 
-
-			<div class="pull-left"><br>
-				<button type="submit" class="btn btn-primary" formaction="Filial.html" onclick="alert('Filial excluido com sucesso!'); return true">
-     			<span class="glyphicon glyphicon-thumbs-up"></span>
-     			Excluir Filial
- 				</button>
- 			</div>
-
-			<div class="pull-right"><br>
-				<button type="reset" class="btn btn-primary" onclick="alert('Dados alterados com sucesso!'); return true">
-     			<span class="glyphicon glyphicon-thumbs-up"></span>
-     			Alterar Dados
- 				</button>
- 			</div>
-
-
-			</fieldset>
-
-		</form>
 	</div>
+
+		    <h2 align="center" class="formatatit"> Endereço </h2>
+
+	<div class="rightcontact">
+
+			<div class="form-group">
+			<p>Rua <span>*</span></p>
+			<span class="icon-case"></span>
+				<input type="text" name="rua" id="rua" required="true" value="${endereco.rua}"/>
+			</div>	
+
+			<div class="form-group">
+			<p>Cidade<span>*</span></p>	
+			<span class="icon-case"></span>
+				<input type="text" name="cidade" id="cidade" required="true" value="${endereco.cidade}" />
+			</div> 
+
+			<div class="form-group">
+			<p>Número <span>*</span></p>	
+			<span class="icon-case"></span>
+                <input type="text" name="numero" id="numero" required="true" value="${endereco.numero}" />
+			</div>
+
+			<div class="form-group">
+			<p>Bairro<span>*</span></p>	
+			<span class="icon-case"></span>
+                <input type="text" name="bairro" id="bairro" required="true" value="${endereco.bairro}" />
+			</div>
+
+
+			<div class="form-group">
+			<p>CEP<span>*</span></p>	
+			<span class="icon-case"></span>
+                <input type="text" name="cep" id="cep" required="true" value="${endereco.cep}" />
+			</div>
+
+			<div class="form-group">
+			<p>Estado <span>*</span></p>
+			<span class="icon-case"></span> 
+				<select type="text" name="estado" required="true" />
+					<option value="Selecione"> Selecione</option>
+					<option value="AC">Acre</option>
+					<option value="AL">Alagoas</option>
+					<option value="AP">Amapá</option>
+					<option value="AM">Amazonas</option>
+					<option value="BA">Bahia</option>
+					<option value="CE">Ceará</option>
+					<option value="DF">Distrito Federal</option>
+					<option value="ES">Espírito Santo</option>
+					<option value="GO">Goiás</option>
+					<option value="MA">Maranhão</option>
+					<option value="MT">Mato Grosso</option>
+					<option value="MS">Mato Grosso do Sul</option>
+					<option value="MG">Minas Gerais</option>
+					<option value="PA">Pará</option>
+					<option value="PB">Paraíba</option>
+					<option value="PR">Paraná</option>
+					<option value="PE">Pernambuco</option>
+					<option value="PI">Piauí</option>
+					<option value="RJ">Rio de Janeiro</option>
+					<option value="RN">Rio Grande do Norte</option>
+					<option value="RS">Rio Grande do Sul</option>
+					<option value="RO">Rondônia</option>
+					<option value="RR">Roraima</option>
+					<option value="SC">Santa Catarina</option>
+					<option value="SP">São Paulo</option>
+					<option value="SE">Sergipe</option>
+					<option value="TO">Tocantins</option>
+            	</select>
+			</div>
+
+	</div>
+	</div>
+
+<button type="submit" class="botao-alterar">Alterar Dados</button>
+<button type="submit" class="botao-excluir">Excluir Cadastro</button>
+
+</form>	
+
+  
+</body>
+</html>
+
 
     <div class="navbar">
         <a style="text-decoration: none" href="TelaPrincipal.html"><h1 class="title"></h1></a>
         
         <div class="menu">
             <ul>
-                <li><a class="button" id="home" href="Filial.html">Retornar</a></li>
+                <li><a class="button" id="home" href="TelaPrincipal.html">Retornar</a></li>
             </ul>
     </div>
 

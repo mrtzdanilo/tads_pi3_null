@@ -129,7 +129,7 @@ i {
 
 }
 
-.botao-excluir{
+.botao-apagar{
   background-color: red;
   color: white;
   text-align: center;
@@ -142,20 +142,7 @@ i {
   font-size: 18px;
 }
 
-.botao-alterar{
-  background-color: orange;
-  color: white;
-  text-align: center;
-  width: 100%;
-  border:0;
-  padding: 17px 25px;
-  border-radius: 0px 0px 5px 5px;
-  cursor: pointer;
-  margin-top: 0px;
-  font-size: 18px;
-}
-
-.botao-estoque{
+.botao-cadastrar{
   background-color: green;
   color: white;
   text-align: center;
@@ -269,11 +256,4 @@ i {
 .formatatit{
   margin-top: -47px;
   margin-left: 310px;
-}
-
-.botaoEstoque{
-   margin-top: -163px;
-}
-.botaoExcluir{
-  margin-top: -124px;
 }

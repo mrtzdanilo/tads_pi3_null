@@ -63,8 +63,8 @@ select {
   border-radius: 0px 5px 5px 0px;
   border: 1px solid #eee;
   margin-bottom: 15px;
-  width: 85%;
-  height: 42px;
+  width: 75%;
+  height: 40px;
   float: left;
   padding: 0px 15px;
 }
@@ -88,7 +88,7 @@ textarea {
   border: 1px solid #EEE;
   margin: 0;
   width: 75%;
-  height: 55px; 
+  height: 130px; 
   float: left;
   padding: 0px 15px;
 }
@@ -109,17 +109,6 @@ textarea {
   line-height:40px;
 }
 
-.icon-casedesc {
-  width: 35px;
-  float: left;
-  border-radius: 5px 0px 0px 5px;
-  background:#eeeeee;
-  height:58px;
-  position: relative;
-  text-align: center;
-  line-height:40px;
-}
-
 i {
   color:#555;
 }
@@ -129,7 +118,7 @@ i {
 
 }
 
-.botao-excluir{
+.botao-apagar{
   background-color: red;
   color: white;
   text-align: center;
@@ -142,20 +131,7 @@ i {
   font-size: 18px;
 }
 
-.botao-alterar{
-  background-color: orange;
-  color: white;
-  text-align: center;
-  width: 100%;
-  border:0;
-  padding: 17px 25px;
-  border-radius: 0px 0px 5px 5px;
-  cursor: pointer;
-  margin-top: 0px;
-  font-size: 18px;
-}
-
-.botao-estoque{
+.botao-cadastrar{
   background-color: green;
   color: white;
   text-align: center;
@@ -269,11 +245,4 @@ i {
 .formatatit{
   margin-top: -47px;
   margin-left: 310px;
-}
-
-.botaoEstoque{
-   margin-top: -163px;
-}
-.botaoExcluir{
-  margin-top: -124px;
 }

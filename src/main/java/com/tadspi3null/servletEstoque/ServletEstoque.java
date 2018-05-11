@@ -27,23 +27,31 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ServletEstoque", urlPatterns = {"/estoque"})
 public class ServletEstoque extends HttpServlet {
 
-   @Override
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        RequestDispatcher dispatcher
+        = request.getRequestDispatcher("WEB-INF/jsp/estoque.jsp");
         
         String id = request.getParameter("id");
         Long long_id = Long.parseLong(id);
         
-       try {
-           ArrayList<LivroFilial> listaLivroFilial = DaoEstoque.obterEstoque(long_id);
-           
-           request.setAttribute("listaLivroFilial", listaLivroFilial);
-           
-           RequestDispatcher dispatcher
-           = request.getRequestDispatcher("WEB-INF/jsp/estoque.jsp");
-           
-       } catch (SQLException ex) {
-           Logger.getLogger(ServletEstoque.class.getName()).log(Level.SEVERE, null, ex);
-       }     
+        try {
+            ArrayList<LivroFilial> listaLivroFilial = DaoEstoque.obterEstoque(long_id);
+
+            request.setAttribute("listaLivroFilial", listaLivroFilial);
+
+            
+            dispatcher.forward(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(ServletEstoque.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+    }
+    
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+            
     }
 }

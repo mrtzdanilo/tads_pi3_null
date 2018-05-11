@@ -28,7 +28,7 @@ public class CadastrarLivro extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher dispatcher
-           = request.getRequestDispatcher("WEB-INF/cadastrar-livro.jsp");
+           = request.getRequestDispatcher("WEB-INF/jsp/cadastrar-livro.jsp");
         
         ArrayList<Categoria> listaCategoria = null;
         try {

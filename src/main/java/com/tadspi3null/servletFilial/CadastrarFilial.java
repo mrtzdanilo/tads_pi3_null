@@ -44,10 +44,10 @@ public class CadastrarFilial extends HttpServlet {
         endereco.setCep(request.getParameter("cep"));
 
 
-        String nomeFantasia = request.getParameter("nome_fantasia");
+        String nomeFantasia = request.getParameter("nomeFantasia");
         String nome = request.getParameter("nome");
         String CNPJ = request.getParameter("cnpj");
-        String inscricaoEstadual = request.getParameter("inscricao_estadual");
+        String inscricaoEstadual = request.getParameter("inscricaoEstadual");
 
         String telefone = request.getParameter("telefone");
         String fax = request.getParameter("fax");
