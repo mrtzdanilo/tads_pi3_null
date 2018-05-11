@@ -32,7 +32,7 @@
                 <tr>
                     <td> ${livroFilial.filial.nomeFantasia} </td>
                     <td><input class="estoque" type="number" name="${livroFilial.filial.id}"
-                               value="${livroFilial.estoque}"></td>
+                               value="${livroFilial.estoque}" required="true" min="0"></td>
                 </tr>
                 </c:forEach>
             </tr>
