@@ -116,7 +116,7 @@ public class DaoLivro {
         return livro;
     }
     
-    public static Livro consultaPorId(String id) throws SQLException{
+    public static Livro consultaPorId(Long id) throws SQLException{
         /*
         Returns an unique book record, because this search is done by id
         */
@@ -126,7 +126,7 @@ public class DaoLivro {
         try (Connection conn = ConnectionUtils.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(query)) {
             
-            stmt.setString(1, id);
+            stmt.setLong(1, id);
             
             try (ResultSet result = stmt.executeQuery()) {
                 

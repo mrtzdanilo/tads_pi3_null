@@ -36,7 +36,7 @@ public class DetalheLivro extends HttpServlet {
         ArrayList<Categoria> listaCategoria = new ArrayList<Categoria>();
         
         try {
-            Livro livro = DaoLivro.consultaPorId(id);
+            Livro livro = DaoLivro.consultaPorId(long_id);
             
             request.setAttribute("livro", livro);
             

@@ -11,7 +11,6 @@ package com.tadspi3null.models;
  */
 public class LivroFilial {
     
-    
     private Livro livro;
     private Filial filial;
     private Integer estoque;

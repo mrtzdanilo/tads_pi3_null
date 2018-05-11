@@ -30,7 +30,7 @@ public class ExcluirLivro extends HttpServlet {
         
         try {
             //Check if the book exist
-            Livro livro = DaoLivro.consultaPorId(id_livro);
+            Livro livro = DaoLivro.consultaPorId(Long.parseLong(id_livro));
             
             if (livro != null){
                 DaoLivro.excluirLivro(livro);
