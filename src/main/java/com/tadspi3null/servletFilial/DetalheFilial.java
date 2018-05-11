@@ -30,7 +30,7 @@ public class DetalheFilial extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
          
-        String id = request.getParameter("id");
+        String id = request.getParameter("id_filial");
         Integer int_id = Integer.parseInt(id);
         
         

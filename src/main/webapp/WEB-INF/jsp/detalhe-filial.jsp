@@ -134,11 +134,16 @@
 <input type="hidden" name="id_filial" value="${filial.id}">
 <input type="hidden" name="id_endereco" value="${endereco.id}">
 <button type="submit" class="botao-alterar">Alterar Dados</button>
-<button type="submit" class="botao-excluir">Excluir Cadastro</button>
+
 
 </form>	
 
-  
+<form class="botaoExcluir" action="${pageContext.request.contextPath}/excluir-filial"
+          method="post">
+    <input type="hidden" name="id_filial" value="${filial.id}">
+    <button type="submit" class="botao-excluir">Excluir Cadastro</button>
+</form>
+
 </body>
 </html>
 

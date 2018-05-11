@@ -52,7 +52,7 @@
             <c:forEach items="${listaFilial}" var="filial">
                 
             <tr>
-                <td> <a href="${pageContext.request.contextPath}/detalhe-filial?id=<c:out value="${filial.id}"/>"><c:out value="${filial.nomeFantasia}"/> <a/></td>
+                <td> <a href="${pageContext.request.contextPath}/detalhe-filial?id_filial=<c:out value="${filial.id}"/>"><c:out value="${filial.nomeFantasia}"/> <a/></td>
                 <td> ${filial.inscricaoEstadual} </td>
                 <td> ${filial.cnpj} </td>
                 <td> ${filial.telefone} </td>

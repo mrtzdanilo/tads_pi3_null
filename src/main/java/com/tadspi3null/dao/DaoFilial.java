@@ -66,13 +66,13 @@ public class DaoFilial {
         return filial;
     }
      
-    public static Filial excluirEndereco(Filial filial) throws SQLException{
-        String query = "DELETE FROM filial WHERE (id=?)";
+    public static Filial excluirFilial(Filial filial) throws SQLException{
+        String query = "UPDATE  filial  SET removido=true WHERE (id=?)";
         
         try (Connection conn = ConnectionUtils.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(query)) {
             
-            stmt.setInt(1, filial.getEndereco().getId());
+            stmt.setInt(1, filial.getId());
             
             stmt.executeUpdate();
         }
