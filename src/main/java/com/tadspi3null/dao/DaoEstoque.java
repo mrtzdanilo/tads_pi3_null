@@ -39,8 +39,11 @@ public class DaoEstoque {
     
     public static ArrayList<LivroFilial> obterEstoque(long id_livro) throws SQLException{
         
-        String query = "SELECT * FROM livro_filial WHERE livro_filial.id_livro = ?";
-        
+        String query = "SELECT * FROM livro_filial INNER JOIN filial "
+                    + " ON livro_filial.id_filial = filial.id"
+                    + " AND livro_filial.id_livro = ?"
+                    + " AND filial.removido = false";
+                
         ArrayList<LivroFilial> listaLivroFilial = new ArrayList<LivroFilial>();
         
         try (Connection conn = ConnectionUtils.getConnection();
