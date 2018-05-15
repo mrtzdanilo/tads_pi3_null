@@ -11,7 +11,8 @@
 
 <body>
   
-  <form>
+  <form action="${pageContext.request.contextPath}/cadastrar-cliente"
+                  method="post">
 	    <h1>Cadastro de Cliente</h1>
 	    
     <div class="contentform">

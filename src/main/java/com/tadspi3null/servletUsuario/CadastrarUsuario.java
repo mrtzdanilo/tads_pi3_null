@@ -55,9 +55,9 @@ public class CadastrarUsuario extends HttpServlet {
         Funcao funcao = new Funcao();
         
         usuario.setNome(request.getParameter("nome"));
-        usuario.setNome(request.getParameter("sexo"));
-        usuario.setNome(request.getParameter("telefone"));
-        usuario.setNome(request.getParameter("sobreNome"));
+        usuario.setSexo(request.getParameter("sexo"));
+        usuario.setTelefone(request.getParameter("telefone"));
+        usuario.setSobrenome(request.getParameter("sobrenome"));
         Long idFuncao = Long.parseLong(request.getParameter("idFuncao"));
         
         try {

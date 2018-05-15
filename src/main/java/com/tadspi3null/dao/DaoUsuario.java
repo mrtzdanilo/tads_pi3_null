@@ -29,7 +29,7 @@ public class DaoUsuario {
                 PreparedStatement stmt = conn.prepareStatement(query)) {
             
             stmt.setString(1, usuario.getNome());
-            stmt.setString(2, usuario.getSobreNome());
+            stmt.setString(2, usuario.getSobrenome());
             stmt.setString(3, usuario.getSexo());
             stmt.setLong(4, usuario.getFuncao().getId());
             stmt.setString(5, usuario.getTelefone());
@@ -57,7 +57,7 @@ public class DaoUsuario {
                     
                     usuario.setId(result.getLong("id"));
                     usuario.setNome(result.getString("nome"));
-                    usuario.setNome(result.getString("sobreNome"));
+                    usuario.setSobrenome(result.getString("sobreNome"));
                     funcao.setId(result.getLong("id_funcao"));
                     usuario.setSexo(result.getString("sexo"));
                     usuario.setTelefone(result.getString("telefone"));
@@ -92,7 +92,7 @@ public class DaoUsuario {
                 PreparedStatement stmt = conn.prepareStatement(query)) {
             
             stmt.setString(1, usuario.getNome());
-            stmt.setString(2, usuario.getSobreNome());
+            stmt.setString(2, usuario.getSobrenome());
             stmt.setString(3, usuario.getSexo());
             java.sql.Date data = new java.sql.Date(usuario.getDtAdmissao().getTime());
             stmt.setDate(4, data);

@@ -15,7 +15,7 @@ import java.util.Date;
 public class Usuario {
     private Long id;
     private String nome;
-    private String sobreNome;
+    private String sobrenome;
     private Funcao funcao;
     private String sexo;
     private String telefone;
@@ -41,12 +41,12 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public String getSobreNome() {
-        return sobreNome;
+    public String getSobrenome() {
+        return sobrenome;
     }
 
-    public void setSobreNome(String sobreNome) {
-        this.sobreNome = sobreNome;
+    public void setSobrenome(String sobrenome) {
+        this.sobrenome = sobrenome;
     }
 
     public Funcao getFuncao() {

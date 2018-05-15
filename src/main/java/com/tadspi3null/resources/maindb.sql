@@ -61,10 +61,22 @@ CREATE TABLE livro_filial (
 CREATE TABLE usuario (
     id INTEGER PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR (100) NOT NULL,
-    sobre_nome VARCHAR (100) NOT NULL,
+    sobrenome VARCHAR (100) NOT NULL,
     sexo VARCHAR (100) NOT NULL,
     funcao VARCHAR (100) NOT NULL,
-    dt_admissao VARCHAR (100) NOT NULL,
+    dt_admissao DATE NOT NULL,
+    removido BOOLEAN NOT NULL DEFAULT FALSE
+);
+
+CREATE TABLE cliente (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    id_endereco INTEGER NOT NULL,
+    nome VARCHAR (100) NOT NULL,
+    sobrenome VARCHAR (100) NOT NULL,
+    sexo VARCHAR (100) NOT NULL,
+    cpf VARCHAR (20) NOT NULL,
+    dt_admissao DATE NOT NULL,
+    FOREIGN KEY (id_endereco) REFERENCES Endereco(id),
     removido BOOLEAN NOT NULL DEFAULT FALSE
 );
 

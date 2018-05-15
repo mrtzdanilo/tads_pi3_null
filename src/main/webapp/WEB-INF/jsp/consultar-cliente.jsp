@@ -11,7 +11,8 @@
 
 <body>
   
-  <form>
+  <form action="${pageContext.request.contextPath}/consultar-cliente"
+                  method="post">
         <h1>Consulta de Cliente</h1>
         
     <div class="contentform">

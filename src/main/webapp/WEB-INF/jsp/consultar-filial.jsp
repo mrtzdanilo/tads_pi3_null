@@ -11,7 +11,8 @@
 
 <body>
   
-  <form>
+  <form action="${pageContext.request.contextPath}/consultar-filial"
+                  method="post">>
         <h1>Consulta de Filial</h1>
         
     <div class="contentform">
@@ -20,13 +21,13 @@
             <div class="form-group">
             <p> Nome Fantasia <span>*</span></p>
             <span class="icon-case"></span>
-            <input type="text" name="nomefantasia" id="nomefantasia" required="true" />
+            <input type="text" name="nomeFantasia" id="nomefantasia" required="true" />
        </div> 
 
             <div class="form-group">
             <p>Inscrição Estadual<span>*</span></p>
             <span class="icon-case"></span>
-                <input type="text" name="insestadual" id="insestadual" required="true" />
+                <input type="text" name="inscricaoEstadual" id="insestadual" required="true" />
             </div>
 
     <div class="rightcontact">
