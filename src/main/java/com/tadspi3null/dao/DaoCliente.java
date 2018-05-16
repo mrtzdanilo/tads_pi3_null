@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *
@@ -26,7 +27,7 @@ public class DaoCliente {
     public static Cliente inserirCliente(Cliente cliente) throws SQLException{
         
         Long id_endereco = DaoEndereco.inserirEndereco(cliente.getEndereco());
-        String query = "INSERT INTO cliente (nome, sobrneome, cpf, dt_nasicmento, id_endereco,) VALUES (?,?,?,?,?)";
+        String query = "INSERT INTO cliente (nome, sobrenome, cpf, sexo, dt_nascimento, id_endereco) VALUES (?,?,?,?,?,?)";
         
         try (Connection conn = ConnectionUtils.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
@@ -34,10 +35,11 @@ public class DaoCliente {
             stmt.setString(1, cliente.getNome());
             stmt.setString(2, cliente.getSobrenome());
             stmt.setString(3, cliente.getCpf());
+            stmt.setString(4, cliente.getSexo());
             
             java.sql.Date data = new java.sql.Date(cliente.getDtNascimento().getTime());
-            stmt.setDate(4, data);
-            stmt.setLong(5, id_endereco);
+            stmt.setDate(5, data);
+            stmt.setLong(6, id_endereco);
              
             stmt.executeUpdate();
              
@@ -80,10 +82,13 @@ public class DaoCliente {
             
             try (ResultSet result = stmt.executeQuery()) {
                 while(result.next()){
+                    cliente.setId(result.getLong("id"));
                     cliente.setNome(result.getString("nome"));
                     cliente.setNome(result.getString("sobrenome"));
-                    cliente.setNome(result.getString("nome"));
-                    cliente.setNome(result.getString("nome"));
+                    cliente.setCpf(result.getString("cpf"));
+                    cliente.setSexo(result.getString("Sexo"));
+                    endereco.setId(result.getInt("id_endereco"));
+                    cliente.setEndereco(endereco);
                 }
             }
         }
@@ -92,5 +97,54 @@ public class DaoCliente {
             cliente.setEndereco(DaoEndereco.obterEndereco(cliente.getEndereco().getId()));
         }
         return cliente;
+    }
+    
+    public static Cliente excluirCliente(Cliente cliente) throws SQLException{
+        String query = "UPDATE cliente SET removido=true WHERE (cliente.id=?)";
+        
+        try (Connection conn = ConnectionUtils.getConnection();
+                PreparedStatement stmt = conn.prepareStatement(query)) {
+            
+            stmt.setLong(1, cliente.getId());
+            
+            stmt.executeUpdate();
+        }
+        
+        return cliente;
+    }
+    
+    public static ArrayList<Cliente> obterListaCliente() throws SQLException{
+        ArrayList<Cliente> listaCliente = new ArrayList<>();
+        
+        String query = "SELECT * FROM cliente WHERE removido=false";
+        
+        try (Connection conn = ConnectionUtils.getConnection();
+               PreparedStatement stmt = conn.prepareStatement(query)) {
+            
+            try (ResultSet result = stmt.executeQuery()) {
+                while(result.next()){
+                    
+                    Cliente cliente = new Cliente();
+                    Endereco endereco = new Endereco();
+                    
+                    cliente.setId(result.getLong("id"));
+                    cliente.setNome(result.getString("nome"));
+                    cliente.setNome(result.getString("sobrenome"));
+                    cliente.setCpf(result.getString("cpf"));
+                    cliente.setSexo(result.getString("Sexo"));
+                    endereco.setId(result.getInt("id_endereco"));
+                    cliente.setEndereco(endereco);
+                    
+                    listaCliente.add(cliente);
+                }
+            }
+        }
+        
+        for(Cliente cliente: listaCliente){
+            cliente.setEndereco(DaoEndereco.obterEndereco(cliente.getEndereco().getId()));
+        }
+        
+        return listaCliente;
+            
     }
 }

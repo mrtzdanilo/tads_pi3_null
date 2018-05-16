@@ -38,7 +38,7 @@ public class ExcluiFilial extends HttpServlet {
         }
         
          RequestDispatcher dispatcher = 
-	    request.getRequestDispatcher("WEB-INF/jsp/consultar-filial.jsp");
+	    request.getRequestDispatcher("./consultar-filial");
         dispatcher.forward(request, response);
         
     }

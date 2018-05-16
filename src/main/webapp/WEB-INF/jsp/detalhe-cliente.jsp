@@ -22,13 +22,13 @@
 			<div class="form-group">
 			<p>Nome<span>*</span></p>
 			<span class="icon-case"></span>
-			<input type="text" name="nome" id="nome" required="true" />
+			<input type="text" name="nome" id="nome" required="true" value="${cliente.nome}"/>
        </div> 
 
             <div class="form-group">
             <p>Sobrenome <span>*</span></p>
             <span class="icon-case"></span>
-				<input type="text" name="sobrenome" id="sobrenome" required="true" />
+				<input type="text" name="sobrenome" id="sobrenome" required="true" value="${cliente.sobrenome}"/>
 			</div>
 
 			<div class="form-group">
@@ -38,13 +38,13 @@
 				<option value="Selecione"> Selecione </option>
 				<option value="Masculino"> Masculino </option>
 				<option value="Feminino"> Feminino </option>
-            	</select>
+                                </select>
 			</div>
 
 			<div class="form-group">
 			<p>CPF <span>*</span></p>
 			<span class="icon-case"></span>
-				<input type="text" name="cpf" id="cpf" required="true" />
+				<input type="text" name="cpf" id="cpf" required="true" value="${cliente.cpf}" />
 			</div>
 
 			<div class="form-group">
@@ -56,7 +56,7 @@
 			<div class="form-group">
 			<p>Data de Nascimento<span>*</span></p>
 			<span class="icon-case"></span>
-				<input type="text" name="datanascimento" id="datanascimento" required="true" />
+				<input type="text" name="dtNascimento" id="datanascimento" required="true" value="${cliente.dtNascimento}" />
 			</div>
 
 
@@ -69,46 +69,79 @@
 			<div class="form-group">
 			<p>Rua <span>*</span></p>
 			<span class="icon-case"></span>
-				<input type="text" name="rua" id="rua" required="true" />
+				<input type="text" name="rua" id="rua" required="true" value="${endereco.rua}"/>
 			</div>	
 
 			<div class="form-group">
 			<p>Número: <span>*</span></p>	
 			<span class="icon-case"></span>
-				<input type="text" name="numero" id="numero" required="true" />
+				<input type="text" name="numero" id="numero" required="true" value="${endereco.numero}"/>
 			</div> 
 
 			<div class="form-group">
-			<p>Complemento: <span></span></p>	
+			<p>Estado <span>*</span></p>
 			<span class="icon-case"></span>
-                <input type="text" name="complemento" id="complemento"/>
+				<select type="text" name="estado" required="true" />
+					<option value="Selecione"> Selecione</option>
+					<option value="AC">Acre</option>
+					<option value="AL">Alagoas</option>
+					<option value="AP">Amapá</option>
+					<option value="AM">Amazonas</option>
+					<option value="BA">Bahia</option>
+					<option value="CE">Ceará</option>
+					<option value="DF">Distrito Federal</option>
+					<option value="ES">Espírito Santo</option>
+					<option value="GO">Goiás</option>
+					<option value="MA">Maranhão</option>
+					<option value="MT">Mato Grosso</option>
+					<option value="MS">Mato Grosso do Sul</option>
+					<option value="MG">Minas Gerais</option>
+					<option value="PA">Pará</option>
+					<option value="PB">Paraíba</option>
+					<option value="PR">Paraná</option>
+					<option value="PE">Pernambuco</option>
+					<option value="PI">Piauí</option>
+					<option value="RJ">Rio de Janeiro</option>
+					<option value="RN">Rio Grande do Norte</option>
+					<option value="RS">Rio Grande do Sul</option>
+					<option value="RO">Rondônia</option>
+					<option value="RR">Roraima</option>
+					<option value="SC">Santa Catarina</option>
+					<option value="SP">São Paulo</option>
+					<option value="SE">Sergipe</option>
+					<option value="TO">Tocantins</option>
+                            </select>
 			</div>
 
 			<div class="form-group">
 			<p>Bairro: <span>*</span></p>	
 			<span class="icon-case"></span>
-                <input type="text" name="bairro" id="bairro" required="true" />
+                <input type="text" name="bairro" id="bairro" required="true" value="${endereco.bairro}"/>
 			</div>
 
 			<div class="form-group">
 			<p>Cidade: <span>*</span></p>	
 			<span class="icon-case"></span>
-                <input type="text" name="cidade" id="cidade" required="true" />
+                <input type="text" name="cidade" id="cidade" required="true" value="${endereco.cidade}"/>
 			</div>
 
 			<div class="form-group">
 			<p>CEP: <span>*</span></p>	
 			<span class="icon-case"></span>
-                <input type="text" name="cep" id="cep" required="true" />
+                <input type="text" name="cep" id="cep" required="true" value="${endereco.cep}" />
 			</div>
 	</div>
 	</div>
 
 <button type="submit" class="botao-alterar">Alterar Dados</button>
-<button type="submit" class="botao-excluir">Excluir Cadastro</button>
+
 
 </form>	
 
+    <form class="botaoExcluir" action="${pageContext.request.contextPath}/excluir-cliente"
+        accept-charset="" <input type="hidden" name="id_livro" value="${cliente.id}">
+        <button type="submit" class="botao-excluir">Excluir Cadastro</button>
+    </form>
   
 </body>
 </html>

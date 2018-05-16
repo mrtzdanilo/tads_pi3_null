@@ -46,16 +46,17 @@
                 <th>Sobrenome</th>
                 <th>CPF</th>
               </tr>
-              <tr>
-                <td> System Null </td>
-                <td> Null </td>
-                <td> 000.000.000-00 </td>
-              </tr>
-              <tr>
-                <td> System Null </td>
-                <td> Null </td>
-                <td> 000.000.000-00 </td>
-              </tr>
+              
+              <c:forEach items="${listaCliente}" var="cliente">
+                
+                <tr>
+                    <td> <a href="${pageContext.request.contextPath}/detalhe-cliente?id=<c:out value="${cliente.id}"/>"><c:out value="${cliente.nome}"/> <a/></td>
+                    <td> ${cliente.sobrenome} </td>
+                    <td> ${cliente.cpf} </td>
+                </tr>
+            
+            </c:forEach>
+                
             </tr>
             </table>
         </div>

@@ -4,7 +4,7 @@
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <meta charset="utf-8" />
     <title>Cadastro de Cliente</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="./css/CadastroCliente.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/CadastrarCliente.css" />
 </head>
 
 <body>
@@ -48,16 +48,12 @@
 				<input type="text" name="cpf" id="cpf" required="true" />
 			</div>
 
-			<div class="form-group">
-			<p>RG <span></span></p>
-			<span class="icon-case"></span>
-				<input type="text" name="rg" id="rg"/>
-			</div>
+			
 
 			<div class="form-group">
 			<p>Data de Nascimento<span>*</span></p>
 			<span class="icon-case"></span>
-				<input type="text" name="datanascimento" id="datanascimento" required="true" />
+				<input type="text" name="dtNascimento" id="datanascimento" required="true" />
 			</div>
 
 
@@ -80,9 +76,38 @@
 			</div> 
 
 			<div class="form-group">
-			<p>Complemento: <span></span></p>	
+			<p>Estado <span>*</span></p>
 			<span class="icon-case"></span>
-                <input type="text" name="complemento" id="complemento"/>
+				<select type="text" name="estado" required="true" />
+					<option value="Selecione"> Selecione</option>
+					<option value="AC">Acre</option>
+					<option value="AL">Alagoas</option>
+					<option value="AP">Amapá</option>
+					<option value="AM">Amazonas</option>
+					<option value="BA">Bahia</option>
+					<option value="CE">Ceará</option>
+					<option value="DF">Distrito Federal</option>
+					<option value="ES">Espírito Santo</option>
+					<option value="GO">Goiás</option>
+					<option value="MA">Maranhão</option>
+					<option value="MT">Mato Grosso</option>
+					<option value="MS">Mato Grosso do Sul</option>
+					<option value="MG">Minas Gerais</option>
+					<option value="PA">Pará</option>
+					<option value="PB">Paraíba</option>
+					<option value="PR">Paraná</option>
+					<option value="PE">Pernambuco</option>
+					<option value="PI">Piauí</option>
+					<option value="RJ">Rio de Janeiro</option>
+					<option value="RN">Rio Grande do Norte</option>
+					<option value="RS">Rio Grande do Sul</option>
+					<option value="RO">Rondônia</option>
+					<option value="RR">Roraima</option>
+					<option value="SC">Santa Catarina</option>
+					<option value="SP">São Paulo</option>
+					<option value="SE">Sergipe</option>
+					<option value="TO">Tocantins</option>
+            	</select>
 			</div>
 
 			<div class="form-group">

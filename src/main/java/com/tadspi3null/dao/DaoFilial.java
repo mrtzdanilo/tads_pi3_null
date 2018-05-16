@@ -92,7 +92,7 @@ public class DaoFilial {
                 PreparedStatement stmt = conn.prepareStatement(query)) {
             
             if(!nomeFantasia.isEmpty()){
-                stmt.setString(1, nomeFantasia);
+                stmt.setString(1, "%" + nomeFantasia + "%");
             }
              
              

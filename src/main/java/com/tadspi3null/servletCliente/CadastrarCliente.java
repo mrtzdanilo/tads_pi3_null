@@ -12,8 +12,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,6 +29,10 @@ public class CadastrarCliente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        RequestDispatcher dispatcher
+           = request.getRequestDispatcher("WEB-INF/jsp/cadastrar-cliente.jsp");
+        dispatcher.forward(request, response);
     }
     
     @Override
@@ -41,6 +44,7 @@ public class CadastrarCliente extends HttpServlet {
         cliente.setNome(request.getParameter("nome"));
         cliente.setSobrenome(request.getParameter("sobrenome"));
         cliente.setCpf(request.getParameter("cpf"));
+        cliente.setSexo(request.getParameter("sexo"));
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         try {
             cliente.setDtNascimento(sdf.parse(request.getParameter("dtNascimento")));
@@ -52,7 +56,7 @@ public class CadastrarCliente extends HttpServlet {
         endereco.setRua(request.getParameter("rua"));
         endereco.setBairro(request.getParameter("bairro"));
         endereco.setCidade(request.getParameter("cidade"));
-        endereco.setEstado(request.getParameter("Estado"));
+        endereco.setEstado(request.getParameter("estado"));
         endereco.setNumero(request.getParameter("numero"));
         endereco.setCep(request.getParameter("cep"));
         
@@ -64,5 +68,8 @@ public class CadastrarCliente extends HttpServlet {
             System.out.println(ex.getMessage());
             ex.printStackTrace();
         }
+        
+        response.sendRedirect(request.getContextPath() + "/cadastrar-cliente");
+        
     }
 }

@@ -25,6 +25,23 @@ public class ConsultarFilial extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+       
+        ArrayList<Filial> listaFilial = new ArrayList<Filial>();
+        try {
+            listaFilial = DaoFilial.consultaFilial("");
+        } catch (SQLException ex) {
+            Logger.getLogger(ConsultarFilial.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        request.setAttribute("listaFilial", listaFilial);
+        RequestDispatcher dispatcher = 
+	    request.getRequestDispatcher("WEB-INF/jsp/consultar-filial.jsp");
+        dispatcher.forward(request, response);
+    }
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
         
         String nomeFantasia = "";
         if(request.getParameter("nomeFantasia") != null){
@@ -43,10 +60,6 @@ public class ConsultarFilial extends HttpServlet {
         RequestDispatcher dispatcher = 
 	    request.getRequestDispatcher("WEB-INF/jsp/consultar-filial.jsp");
         dispatcher.forward(request, response);
-    }
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
      
     }
 }

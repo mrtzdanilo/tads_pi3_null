@@ -75,7 +75,7 @@ CREATE TABLE cliente (
     sobrenome VARCHAR (100) NOT NULL,
     sexo VARCHAR (100) NOT NULL,
     cpf VARCHAR (20) NOT NULL,
-    dt_admissao DATE NOT NULL,
+    dt_nascimento DATE NOT NULL,
     FOREIGN KEY (id_endereco) REFERENCES Endereco(id),
     removido BOOLEAN NOT NULL DEFAULT FALSE
 );

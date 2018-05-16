@@ -16,6 +16,7 @@ public class Cliente {
     private String nome;
     private String sobrenome;
     private String cpf;
+    private String sexo;
     private Date dtNascimento;
     private Endereco endereco;
 
@@ -54,6 +55,14 @@ public class Cliente {
         this.cpf = cpf;
     }
 
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+    
     public Date getDtNascimento() {
         return dtNascimento;
     }
