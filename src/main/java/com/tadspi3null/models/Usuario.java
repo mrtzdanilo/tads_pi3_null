@@ -21,6 +21,9 @@ public class Usuario {
     private String telefone;
     private String email;
     private Date dtAdmissao;
+    private String funcaoNome;
+
+   
 
     public Usuario() {
     }
@@ -89,7 +92,13 @@ public class Usuario {
         this.dtAdmissao = dtAdmissao;
     }
     
-    
+     public String getFuncaoNome() {
+        return funcaoNome;
+    }
+
+    public void setFuncaoNome(String funcaoNome) {
+        this.funcaoNome = funcaoNome;
+    }
     
     
     

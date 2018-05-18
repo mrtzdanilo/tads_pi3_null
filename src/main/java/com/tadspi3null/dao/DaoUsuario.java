@@ -13,48 +13,57 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
  * @author Danilo
  */
 public class DaoUsuario {
-    
-    public static void inserirUsuario(Usuario usuario) throws SQLException{
-        
-        String query = "INSERT INTO usuario (nome, sobre_nome, sexo, telefone, dt_admissao, id_funcao) VALUES (?,?,?,?,?)";
-        
-        try (Connection conn = ConnectionUtils.getConnection();
-                PreparedStatement stmt = conn.prepareStatement(query)) {
-            
+
+    public static void inserirUsuario(Usuario usuario) throws SQLException {
+
+        Connection conn = ConnectionUtils.getConnection();
+
+        String query = "INSERT INTO usuario (nome, sobrenome, sexo, funcao, dt_admissao, telefone) VALUES (?,?,?,?,?,?)";
+
+        try {
+            PreparedStatement stmt = conn.prepareStatement(query);
+            Calendar dataCal = Calendar.getInstance();
+            dataCal.setTime(usuario.getDtAdmissao());
+
             stmt.setString(1, usuario.getNome());
             stmt.setString(2, usuario.getSobrenome());
             stmt.setString(3, usuario.getSexo());
-            stmt.setLong(4, usuario.getFuncao().getId());
-            stmt.setString(5, usuario.getTelefone());
-            java.sql.Date data = new java.sql.Date(usuario.getDtAdmissao().getTime());
-            stmt.setDate(6, data);
-            
+            stmt.setString(4, usuario.getFuncao().getNomeFuncao());
+            stmt.setDate(5, new java.sql.Date(dataCal.getTimeInMillis()));
+            stmt.setString(6, usuario.getTelefone());
+
             stmt.executeUpdate();
+        } catch (SQLException ex) {
+            throw new SQLException("erro ao cadastrar usuario", ex.getCause());
         }
+
     }
-    
-    public static Usuario obterUsuarioPorId(Long id) throws SQLException{
+
+    public static Usuario obterUsuarioPorId(Long id) throws SQLException {
         Usuario usuario = new Usuario();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
-        
+
         String query = "SELECT * FROM usuario WHERE usuario.id = ? AND removido = false";
         Funcao funcao = new Funcao();
         try (Connection conn = ConnectionUtils.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(query)) {
-            
+
             stmt.setLong(1, id);
-            
+
             try (ResultSet result = stmt.executeQuery()) {
-                
-                while(result.next()){
-                    
+
+                while (result.next()) {
+
                     usuario.setId(result.getLong("id"));
                     usuario.setNome(result.getString("nome"));
                     usuario.setSobrenome(result.getString("sobreNome"));
@@ -69,28 +78,28 @@ public class DaoUsuario {
         usuario.setFuncao(DaoFuncao.obterFuncaoPOrId(funcao.getId()));
         return usuario;
     }
-    
-    public static void excluirUsuario(Usuario usuario) throws SQLException{
-        
+
+    public static void excluirUsuario(Usuario usuario) throws SQLException {
+
         String query = "UPDATE usuario SET removido=true WHERE usuario.id = ?";
-        
+
         try (Connection conn = ConnectionUtils.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(query)) {
-            
+
             stmt.setLong(1, usuario.getId());
-            
+
             stmt.executeUpdate();
         }
     }
-    
-    public static void alterarUsuario(Usuario usuario) throws SQLException{
-        
+
+    public static void alterarUsuario(Usuario usuario) throws SQLException {
+
         String query = "UPDATE usuario SET nome=?, sobre_nome=?, sexo=?, da_admissao, "
                 + "funcao=? telefone=? WHERE usuario.id =?";
-        
+
         try (Connection conn = ConnectionUtils.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(query)) {
-            
+
             stmt.setString(1, usuario.getNome());
             stmt.setString(2, usuario.getSobrenome());
             stmt.setString(3, usuario.getSexo());
@@ -101,7 +110,38 @@ public class DaoUsuario {
             stmt.executeUpdate();
         }
     }
-    
-    
-}
 
+    public static List<Usuario> obterUsuarioPorNome(String nome) throws SQLException {
+
+        Connection conn = ConnectionUtils.getConnection();
+        ResultSet resultados = null;
+        List<Usuario> listUsuario = new ArrayList<>();
+
+        String query = "SELECT * FROM usuario WHERE nome = ? ";
+        try {
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setString(1, nome);
+            resultados = stmt.executeQuery();
+
+            Usuario usuario = new Usuario();
+
+            while (resultados.next()) {
+                usuario.setId(new Long (resultados.getInt("id")));
+                usuario.setNome(resultados.getString("nome"));
+                usuario.setSobrenome(resultados.getString("sobrenome"));
+                usuario.setSexo(resultados.getString("sexo"));
+                usuario.setFuncaoNome(resultados.getString("funcao"));
+                usuario.setDtAdmissao(resultados.getDate("dt_admissao"));
+                usuario.setTelefone(resultados.getString("telefone"));
+                
+                listUsuario.add(usuario);
+
+            }
+            return listUsuario;
+            
+        } catch (Exception e) {
+            throw new SQLException("erro ao consultar usuario", e.getCause());
+        }
+    }
+
+}
