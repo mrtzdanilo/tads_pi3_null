@@ -17,12 +17,11 @@
 
     <div class="contentform">
 
-	    <h2 align="center"> Identificação do Produto </h2>
+	    <h2 align="center"> Identificaï¿½ï¿½o do Produto </h2>
 
 	    	<div class="leftcontact">
 			<div class="form-group">
 			<p>Categoria <span>*</span></p>
-			<span class="icon-case"></span>
 				<select type="text" name="categoria" required="true" />
                                 
 				<c:forEach items="${categorias}" var="categoria">                                
@@ -33,23 +32,19 @@
 
 			<div class="form-group">
 			<p>Titulo<span>*</span></p>
-			<span class="icon-case"></span>
 			<input type="text" name="titulo" id="titulo" required="true" value="${livro.titulo}" />
        </div> 
 
             <div class="form-group">
             <p>Valor <span>*</span></p>
-            <span class="icon-case"></span>
 				<input type="number" name="valor" id="valor" required="true" value="${livro.valor}" />
 			</div>
 
-			<p>Descrição <span>*</span></p>
-			<span class="icon-casedesc"></span>
+			<p>Descriï¿½ï¿½o <span>*</span></p>
 			<textarea name="descricao" required="true"> ${livro.descricao}</textarea>	
 
 			<div class="form-group">
-			<p>Número de Paginas <span>*</span></p>
-			<span class="icon-case"></span>
+			<p>Nï¿½mero de Paginas <span>*</span></p>
 				<input type="number" name="numeroPaginas" id="numpaginas" required="true" value="${livro.numeroPaginas}"/>
 			</div>
 	</div>
@@ -58,7 +53,6 @@
 
 			<div class="form-group">
 			<p>Idioma <span>*</span></p>
-			<span class="icon-case"></span>
 				<select type="text" name="idioma" required="true" />
                                         
                                 <c:forEach items="${idiomas}" var="idiomaLivro">                                
@@ -71,25 +65,21 @@
 
 			<div class="form-group">
 			<p>Autor <span>*</span></p>
-			<span class="icon-case"></span>
 				<input type="text" name="autor" id="autor" required="true" value="${livro.autor}" />
 			</div>	
 
 			<div class="form-group">
 			<p>Editora<span>*</span></p>	
-			<span class="icon-case"></span>
 				<input type="text" name="editora" id="editora" required="true" value="${livro.editora}" />
 			</div> 
 
 			<div class="form-group">
-			<p>Edição <span>*</span></p>	
-			<span class="icon-case"></span>
+			<p>Ediï¿½ï¿½o <span>*</span></p>	
                 <input type="number" name="edicao" id="edicao" required="true" value="${livro.edicao}" />
 			</div>
 
 			<div class="form-group">
 			<p>ISBN<span>*</span></p>	
-			<span class="icon-case"></span>
                 <input type="number" name="isbn" id="isbn" required="true" value="${livro.isbn}" />
 			</div>
 

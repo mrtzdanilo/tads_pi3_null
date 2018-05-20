@@ -16,24 +16,21 @@
 
             <div class="contentform">
 
-                <h2> Identificação do Usuario </h2>
+                <h2> Identificaï¿½ï¿½o do Usuario </h2>
 
                 <div class="leftcontact">
                     <div class="form-group">
                         <p>Nome<span>*</span></p>
-                        <span class="icon-case"></span>
                         <input type="text" name="nome" id="nome" required="true" />
                     </div> 
 
                     <div class="form-group">
                         <p>Sobrenome <span>*</span></p>
-                        <span class="icon-case"></span>
                         <input type="text" name="sobrenome" id="sobrenome" required="true" />
                     </div>
 
                     <div class="form-group">
                         <p>Sexo <span>*</span></p>
-                        <span class="icon-case"></span>
                         <select type="text" name="sexo" required="true" />
                         <option value="Selecione"> Selecione </option>
                         <option value="Masculino"> Masculino </option>
@@ -43,7 +40,6 @@
 
                     <div class="form-group">
                         <p>Telefone <span>*</span></p>
-                        <span class="icon-case"></span>
                         <input type="text" name="telefone" id="telefone" required="true" />
                     </div>
 
@@ -56,8 +52,7 @@
                 <div class="rightcontact">	
 
                     <div class="form-group">
-                        <p>Função <span>*</span></p>
-                        <span class="icon-case"></span>
+                        <p>Funï¿½ï¿½o <span>*</span></p>
                         <select name="funcao" required="true" />
                         <c:forEach items="${listaFuncao}" var ="funcao">
                             <option value="${funcao.nomeFuncao}">${funcao.nomeFuncao}</option>
@@ -66,8 +61,7 @@
                     </div>
 
                     <div class="form-group">
-                        <p>Admissão: <span>*</span></p>	
-                        <span class="icon-case"></span>
+                        <p>Admissï¿½o: <span>*</span></p>	
                         <input type="date" name="dt_admissao" id="admissao" required="true" />
                     </div>
                 </div>

@@ -20,13 +20,11 @@
         <div>
             <div class="form-group">
             <p> Nome <span>*</span></p>
-            <span class="icon-case"></span>
             <input type="text" name="nome" id="nome" required="true" />
        </div> 
 
             <div class="form-group">
             <p>Sobrenome<span>*</span></p>
-            <span class="icon-case"></span>
                 <input type="text" name="sobrenome" id="sobrenome" required="true" />
             </div>
 
@@ -34,7 +32,6 @@
 
             <div class="form-group">
             <p>CPF<span>*</span></p>
-            <span class="icon-case"></span>
                 <input type="text" name="cpf" id="cpf" required="true" />
             </div>
     </div>

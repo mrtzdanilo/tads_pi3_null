@@ -17,112 +17,100 @@
 
     <div class="contentform">
 
-	    <h2> Identificação da Filial </h2>
+	    <h2> Identificaï¿½ï¿½o da Filial </h2>
 
     	<div class="leftcontact">
 			<div class="form-group">
 			<p>Nome Fantasia<span>*</span></p>
-			<span class="icon-case"></span>
 			<input type="text" name="nomeFantasia" id="nomefantasia" required="true" value="${filial.nomeFantasia}" />
        </div> 
 
             <div class="form-group">
             <p>CNPJ <span>*</span></p>
-            <span class="icon-case"></span>
 				<input type="text" name="cnpj" id="cnpj" required="true" value="${filial.cnpj}" />
 			</div>
 
 			<div class="form-group">
 			<p>Email <span>*</span></p>
-			<span class="icon-case"></span>
 				<input type="email" name="email" id="email" required="true" value="${filial.email}" />
 			</div>	
 
 			<div class="form-group">
-			<p>Inscrição Estadual <span>*</span></p>
-			<span class="icon-case"></span>
+			<p>Inscriï¿½ï¿½o Estadual <span>*</span></p>
 				<input type="text" name="inscricaoEstadual" id="insestadual" required="true" value="${filial.inscricaoEstadual}" />
 			</div>
 
 			<div class="form-group">
 			<p>Telefone <span>*</span></p>
-			<span class="icon-case"></span>
 				<input type="text" name="telefone" id="telefone" required="true" value="${filial.telefone}" />
 			</div>
 
 			<div class="form-group">
 			<p>Fax <span></span></p>
-			<span class="icon-case"></span>
 				<input type="text" name="fax" id="fax" value="${filial.fax}"/>
 			</div>
 
 	</div>
 
-		    <h2 align="center" class="formatatit"> Endereço </h2>
+		    <h2 align="center" class="formatatit"> Endereï¿½o </h2>
 
 	<div class="rightcontact">
 
 			<div class="form-group">
 			<p>Rua <span>*</span></p>
-			<span class="icon-case"></span>
 				<input type="text" name="rua" id="rua" required="true" value="${endereco.rua}"/>
 			</div>	
 
 			<div class="form-group">
 			<p>Cidade<span>*</span></p>	
-			<span class="icon-case"></span>
 				<input type="text" name="cidade" id="cidade" required="true" value="${endereco.cidade}" />
 			</div> 
 
 			<div class="form-group">
-			<p>Número <span>*</span></p>	
-			<span class="icon-case"></span>
+			<p>Nï¿½mero <span>*</span></p>	
                 <input type="text" name="numero" id="numero" required="true" value="${endereco.numero}" />
 			</div>
 
 			<div class="form-group">
 			<p>Bairro<span>*</span></p>	
-			<span class="icon-case"></span>
                 <input type="text" name="bairro" id="bairro" required="true" value="${endereco.bairro}" />
 			</div>
 
 
 			<div class="form-group">
 			<p>CEP<span>*</span></p>	
-			<span class="icon-case"></span>
                 <input type="text" name="cep" id="cep" required="true" value="${endereco.cep}" />
 			</div>
 
 			<div class="form-group">
 			<p>Estado <span>*</span></p>
-			<span class="icon-case"></span> 
 				<select type="text" name="estado" required="true" />
 					<option value="Selecione"> Selecione</option>
 					<option value="AC">Acre</option>
 					<option value="AL">Alagoas</option>
-					<option value="AP">Amapá</option>
+					<option value="AP">Amapï¿½</option>
 					<option value="AM">Amazonas</option>
 					<option value="BA">Bahia</option>
-					<option value="CE">Ceará</option>
+					<option value="CE">Cearï¿½</option>
 					<option value="DF">Distrito Federal</option>
-					<option value="ES">Espírito Santo</option>
-					<option value="GO">Goiás</option>
-					<option value="MA">Maranhão</option>
+					<option value="ES">Espï¿½rito Santo</option>
+					<option value="GO">Goiï¿½s</option>
+					<option value="MA">Maranhï¿½o</option>
 					<option value="MT">Mato Grosso</option>
 					<option value="MS">Mato Grosso do Sul</option>
 					<option value="MG">Minas Gerais</option>
-					<option value="PA">Pará</option>
-					<option value="PB">Paraíba</option>
-					<option value="PR">Paraná</option>
+					<option value="PA">Parï¿½</option>
+					<option value="PB">Paraï¿½ba</option>
+					<option value="PR">Paranï¿½</option>
 					<option value="PE">Pernambuco</option>
-					<option value="PI">Piauí</option>
+					<option value="PI">Piauï¿½</option>
 					<option value="RJ">Rio de Janeiro</option>
 					<option value="RN">Rio Grande do Norte</option>
 					<option value="RS">Rio Grande do Sul</option>
-					<option value="RO">Rondônia</option>
+					<option value="RO">Rondï¿½nia</option>
 					<option value="RR">Roraima</option>
 					<option value="SC">Santa Catarina</option>
-					<option value="SP">São Paulo</option>
+					<option value="SP">Sï¿½o Paulo</option>
 					<option value="SE">Sergipe</option>
 					<option value="TO">Tocantins</option>
             	</select>

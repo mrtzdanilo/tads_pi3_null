@@ -20,13 +20,11 @@
         <div>
             <div class="form-group">
             <p> Nome Fantasia <span>*</span></p>
-            <span class="icon-case"></span>
             <input type="text" name="nomeFantasia" id="nomefantasia" required="true" />
        </div> 
 
             <div class="form-group">
-            <p>Inscrição Estadual<span>*</span></p>
-            <span class="icon-case"></span>
+            <p>Inscriï¿½ï¿½o Estadual<span>*</span></p>
                 <input type="text" name="inscricaoEstadual" id="insestadual" required="true" />
             </div>
 
@@ -34,7 +32,6 @@
 
             <div class="form-group">
             <p>CNPJ<span>*</span></p>
-            <span class="icon-case"></span>
                 <input type="text" name="cnpj" id="cnpj" required="true" />
             </div>
     </div>
@@ -44,7 +41,7 @@
                 
             <tr>
                 <th>Nome Fantasia</th>
-                <th>Inscrição Estadual</th>
+                <th>Inscriï¿½ï¿½o Estadual</th>
                 <th>CNPJ</th>
                 <th>Telefone</th>
                 <th>Email</th>

@@ -21,13 +21,11 @@
                 <div>
                     <div class="form-group">
                         <p> Nome <span>*</span></p>
-                        <span class="icon-case"></span>
                         <input type="text" name="nome" id="nome"/>
                     </div> 
 
                     <div class="form-group">
                         <p>Sobrenome<span>*</span></p>
-                        <span class="icon-case"></span>
                         <input type="text" name="sobrenome" id="sobrenome" />
                     </div>
 
@@ -35,7 +33,6 @@
 
                         <div class="form-group">
                             <p>Telefone<span>*</span></p>
-                            <span class="icon-case"></span>
                             <input type="text" name="telefone" id="telefone" />
                         </div>
                     </div>
