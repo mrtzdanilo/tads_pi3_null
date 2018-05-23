@@ -23,7 +23,7 @@ public class DaoEstoque {
     
     public static void atualizar(LivroFilial livroFilial, int estoque) throws SQLException{
         
-        String query = "UPDATE livro_filial SET estoque=? WHERE livro_filial.id_livro=? AND livro_filial.id_filial=?";
+        String query = "UPDATE livro_filial SET estoque = ((livro_filial.estoque) - (?)) WHERE livro_filial.id_livro=? AND livro_filial.id_filial=?";
         try (Connection conn = ConnectionUtils.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(query)) {
             
@@ -80,5 +80,60 @@ public class DaoEstoque {
         }
         
         return listaLivroFilial;
+    }
+    
+    //atualiza o estoque do livro-filial
+    public static void atualizaEstoqueLivroFilial(Integer filial_id,Integer quantidade, Long livro_id) throws SQLException{
+        
+        String query = "UPDATE livro_filial "
+                    + "SET estoque = ((livro_filial.estoque) - (?)) "
+                    + "WHERE livro_filial.id_filial = ? "
+                    + "AND livro_filial.id_livro = ?";
+        
+        try (Connection conn = ConnectionUtils.getConnection();
+                PreparedStatement stmt = conn.prepareStatement(query)) {
+            
+            stmt.setLong(1, filial_id);
+            stmt.setInt(2, quantidade);
+            stmt.setLong(3, livro_id);
+            stmt.executeUpdate();
         }
+    }
+    
+    public static LivroFilial obterPorId(Long livro_id, Integer filial_id) throws SQLException{
+        LivroFilial livroFilial = new LivroFilial();
+        
+        String query = "SELECT * FROM livro_filial "
+                    +  "WHERE livro_filial.id_livro = ?"
+                    +  "AND livro_filial.id_filial = ?";
+        
+                    
+        try (Connection conn = ConnectionUtils.getConnection();
+                PreparedStatement stmt = conn.prepareStatement(query)) {
+            
+            stmt.setLong(1, livro_id);
+            stmt.setLong(2, filial_id);
+            
+             try (ResultSet result = stmt.executeQuery()) {
+                
+                while (result.next()){
+                    Filial filial = new Filial();
+                    Livro livro = new Livro();
+                    
+                    livro.setId(result.getLong("id_livro"));
+                    filial.setId(result.getInt("id_filial"));
+                    livroFilial.setEstoque(result.getInt("estoque"));
+                    
+                    livroFilial.setLivro(livro);
+                    livroFilial.setFilial(filial);
+                    
+                }
+          
+            }
+        livroFilial.setFilial(DaoFilial.consultaPorId(livroFilial.getFilial().getId()));
+        livroFilial.setLivro(DaoLivro.consultaPorId(livroFilial.getLivro().getId()));
+        
+        return livroFilial;
+        }
+    }
 }

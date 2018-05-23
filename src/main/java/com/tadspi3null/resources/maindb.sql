@@ -80,6 +80,27 @@ CREATE TABLE cliente (
     removido BOOLEAN NOT NULL DEFAULT FALSE
 );
 
+CREATE TABLE venda (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    id_usuario INTEGER NOT NULL,
+    id_filial INTEGER NOT NULL,
+    id_cliente INTEGER,
+    data_venda DATE NOT NULL,
+    FOREIGN KEY (id_usuario) REFERENCES usuario (id),
+    FOREIGN KEY (id_filial) REFERENCES filial (id),
+    FOREIGN KEY (id_cliente) REFERENCES cliente (id)
+);
+
+CREATE TABLE item_venda(
+    item_venda_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    id_venda INT NOT NULL,
+    id_livro INT NOT NULL,
+    valor_unitario FLOAT NOT NULL,
+    quantidade INTEGER NOT NULL,
+    FOREIGN KEY (id_livro) REFERENCES Livro (id),
+    FOREIGN KEY (id_venda) REFERENCES Venda (id)
+    );
+
 INSERT INTO categoria (nome, descricao)
 VALUES ('Autobiografia','Autobiografia é um gênero literário em que uma pessoa narra a história da sua vida, trata-se de uma biografia escrita ou narrada pela pessoa biografada.'),
 ('Suspense', 'Livros de suspense são assim: páginas repletas de mistérios, que prendem a nossa atenção. E se você curte obras desse gênero.')

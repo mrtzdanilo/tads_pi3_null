@@ -1,0 +1,111 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.tadspi3null.dao;
+
+import com.tadspi3null.connect.ConnectionUtils;
+import com.tadspi3null.models.Cliente;
+import com.tadspi3null.models.Filial;
+import com.tadspi3null.models.ItemVenda;
+import com.tadspi3null.models.Usuario;
+import com.tadspi3null.models.Venda;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Calendar;
+
+
+/**
+ *
+ * @author Danilo
+ */
+public class DaoVenda {
+    
+    
+    public static void inserirVenda(Venda venda) throws SQLException{
+        
+        String query = "INSERT INTO  venda (cliente_id, filial_id, usuario_id, data_venda) VALUES (?,?,?,?)";
+        
+        try (Connection conn = ConnectionUtils.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
+             
+            stmt.setLong(1, venda.getCliente().getId());
+            stmt.setLong(2, venda.getFilial().getId());
+            stmt.setLong(3, venda.getUsuario().getId());
+            stmt.setDate(4, new java.sql.Date(new java.util.Date().getTime()));
+             
+            ResultSet generatedKeys = stmt.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                venda.setId(generatedKeys.getLong(1));
+            }
+        }
+        
+         // executa o dao de insercao de itens de venda passando o id da venda inserida acima
+        for(ItemVenda itemVenda: venda.getListaItemVenda()){
+            DaoItemVenda.inserirItemVenda(venda.getId(), itemVenda);
+            // para cada item da lista decresce o estoque do livro relacionado
+            DaoEstoque.atualizaEstoqueLivroFilial(venda.getFilial().getId(),
+                    itemVenda.getQuantidade(), itemVenda.getLivroFilial().getLivro().getId());
+        } 
+         
+    } 
+
+    // busca todas as vendas de uma filial realizada dentro de uma semana
+    public static ArrayList<Venda> obterVendaFilial(Integer filial_id) throws SQLException{
+        ArrayList<Venda> listaVenda = new ArrayList<>();
+        String query = "SELECT * FROM venda WHERE venda.filial_id = ? AND venda.data_venda >= ?";
+        
+        try (Connection conn = ConnectionUtils.getConnection();
+                PreparedStatement stmt = conn.prepareStatement(query)) {
+            
+            stmt.setLong(1, filial_id);
+            
+            // decresce 1 semana da data da requisicao para filtrar relatorio
+            Calendar dataAtual = Calendar.getInstance();
+            dataAtual.add(Calendar.DAY_OF_MONTH, -7);
+            stmt.setDate(2, new java.sql.Date(dataAtual.getTimeInMillis()));
+            
+            try (ResultSet result = stmt.executeQuery()) {
+                while(result.next()){
+                    Venda venda  = new Venda();
+                    Cliente cliente = new Cliente();
+                    Filial filial = new Filial();
+                    Usuario usuario = new Usuario();
+                    
+                    cliente.setId(result.getLong("id_cliente"));
+                    venda.setCliente(cliente);
+                    
+                    filial.setId(result.getInt("id_filial"));
+                    venda.setFilial(filial);
+                    
+                    usuario.setId(result.getLong("id_usuario"));
+                    venda.setUsuario(usuario);
+                    
+                    venda.setId(result.getLong("id"));
+                    
+                    java.util.Date dataVenda = result.getDate("data_venda");
+                    venda.setDataVenda(dataVenda);
+                    
+                    listaVenda.add(venda);
+                }
+            }
+            
+        }
+        
+        //preenchendo venda com seus respectivos objetos
+        for(Venda venda: listaVenda){
+            venda.setCliente(DaoCliente.obterPorId(venda.getCliente().getId()));
+            venda.setFilial(DaoFilial.consultaPorId(venda.getFilial().getId()));
+            venda.setUsuario(DaoUsuario.obterUsuarioPorId(venda.getUsuario().getId()));
+            
+            venda.setListaItemVenda(DaoItemVenda.obterListaPorId(venda));
+        }
+        
+        return listaVenda;
+    }
+}
