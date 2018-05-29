@@ -2,6 +2,7 @@
 <html lang="br" >
 
 <head>
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <meta charset="UTF-8">
   <title>Cliente</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -14,7 +15,7 @@
 
 <body>
 
-<form class="steps" accept-charset="UTF-8" enctype="multipart/form-data" novalidate="">
+<form class="steps" accept-charset="UTF-8" enctype="multipart/form-data" novalidate="" method="get">
   <ul id="progressbar">
     <li class="active">Cliente</li>
     <li>Produto / Carrinho </li>
@@ -29,7 +30,7 @@
         
           <label>Cliente <a>*</a></label>
 
-          <input name="nome" required="required" type="text" data-rule-required="true" data-msg-required="Favor inserir nome do cliente." >
+          <input name="nome" type="text">
           <span class="error1" style="display: none;">
               <i class="error-log fa fa-exclamation-triangle"></i>
           </span>
@@ -39,40 +40,36 @@
         
           <label>CPF <a>*</a></label>
 
-          <input name="cpf" required="required" type="text" data-rule-required="true" data-msg-required="Favor inseir CPF do cliente." >
+          <input name="cpf" type="text">
           <span class="error1" style="display: none;">
               <i class="error-log fa fa-exclamation-triangle"></i>
           </span>
         </div>
 
-<button type="submit" class="botao-pesquisar">Pesquisar</button>
-<button type="submit" class="botao-cadastrar">Cadastrar Cliente</button>
-
+<button type="submit" class="botao-pesquisar">Pesquisar</button>    
 </div>
 
     <div class="tabela">
       <table>
         <tr>
-          <th>Selecionar</th>
-          <th>Cliente</th>
+          
+          <th>Nome</th>
+          <th>Sobrenome</th>
           <th>CPF</th>
         </tr>
-        <tr>
-          <td><input style="width: 25px; height: 15px;" type="radio" name="selecionar"></td>
-          <td> System Null </td>
-          <td> 000.000.000-00 </td>
-        </tr>
-        <tr>
-          <td><input style="width: 25px; height: 15px;" type="radio" name="selecionar"></td> 
-          <td> System Null </td>
-          <td> 000.000.000-00 </td>
-        </tr>
+        <c:forEach items="${listaCliente}" var="cliente">
+            <tr onclick="window.location='/tads_pi3_null-1.0-SNAPSHOT/selecionar-cliente?idclientevenda=${cliente.id}';">
+            <td> ${cliente.nome} </td>
+            <td> ${cliente.sobrenome} </td>
+            <td> ${cliente.cpf} </td>
+            <input type="hidden" value="${cliente.id}" name="clienteVenda">
+        </tr>    
+        </c:forEach>
       </table>
     </div>
   </div>
 
 <button type="submit" class="botao-cancelar">Cancelar Venda</button>
-<button type="submit" class="botao-avancar">Avançar</button>
 
   </fieldset>
 
@@ -82,7 +79,7 @@
 
 <script  src="./js/Avisos.js"></script>
 
-    </form>
+</form>
 
 </body>
 

@@ -129,7 +129,7 @@ public class DaoCliente {
                     
                     cliente.setId(result.getLong("id"));
                     cliente.setNome(result.getString("nome"));
-                    cliente.setNome(result.getString("sobrenome"));
+                    cliente.setSobrenome(result.getString("sobrenome"));
                     cliente.setCpf(result.getString("cpf"));
                     cliente.setSexo(result.getString("Sexo"));
                     endereco.setId(result.getInt("id_endereco"));
@@ -146,5 +146,62 @@ public class DaoCliente {
         
         return listaCliente;
             
+    }
+    
+    public static ArrayList<Cliente> searchByNameOrCPF(String nome, String cpf) throws SQLException{
+        ArrayList<Cliente> listaCliente = new ArrayList<>();
+    
+        String query = "SELECT * FROM cliente";
+        
+        
+        if (nome != null || cpf != null){
+            query = query + " WHERE";
+        }
+        if (nome != null){
+            query = query + " nome=?";
+            if (cpf != null){
+                query = query +" OR";
+            }
+        }
+        if (cpf != null){
+            query = query + " cpf=?";
+        }
+        
+        
+        try (Connection conn = ConnectionUtils.getConnection();
+                PreparedStatement stmt = conn.prepareStatement(query)) {
+            
+            if (nome != null && cpf != null){
+                stmt.setString(1, nome);
+                stmt.setString(2, cpf);
+            }
+            else if(nome != null){
+                stmt.setString(1, nome);
+            }
+            else if (cpf != null){
+                stmt.setString(1, cpf);
+            }
+            
+            
+            try (ResultSet result = stmt.executeQuery()) {
+                while(result.next()){
+                    
+                    Cliente cliente = new Cliente();
+                    Endereco endereco = new Endereco();
+                    
+                    cliente.setId(result.getLong("id"));
+                    cliente.setNome(result.getString("nome"));
+                    cliente.setSobrenome(result.getString("sobrenome"));
+                    cliente.setCpf(result.getString("cpf"));
+                    cliente.setSexo(result.getString("Sexo"));
+                    endereco.setId(result.getInt("id_endereco"));
+                    cliente.setEndereco(endereco);
+                    
+                    listaCliente.add(cliente);
+                }
+            }
+        }
+        
+        return listaCliente;
     }
 }

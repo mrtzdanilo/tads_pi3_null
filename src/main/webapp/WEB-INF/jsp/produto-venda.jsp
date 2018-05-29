@@ -2,13 +2,12 @@
 <html lang="br" >
 
 <head>
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <meta charset="UTF-8">
   <title>Produto</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   
-  
       <link rel="stylesheet" href="./css/Venda.css">
-
   
 </head>
 
@@ -29,17 +28,7 @@
         
           <label>Titulo <a>*</a></label>
 
-          <input name="nome" required="required" type="text" data-rule-required="true" data-msg-required="Favor inserir Titulo do livro." >
-          <span class="error1" style="display: none;">
-              <i class="error-log fa fa-exclamation-triangle"></i>
-          </span>
-        </div>
-
-        <div>
-        
-          <label>Autor <a>*</a></label>
-
-          <input name="text" required="required" type="text" data-rule-required="true" data-msg-required="Favor inseir Autor do livro." >
+          <input name="titulo" required="required" type="text" data-rule-required="true" data-msg-required="Favor inserir Titulo do livro." >
           <span class="error1" style="display: none;">
               <i class="error-log fa fa-exclamation-triangle"></i>
           </span>
@@ -61,17 +50,20 @@
           <th>Quantidade</th>
 
         </tr>
+                
+        <c:forEach items="${listaLivros}" var="livro">       
         <tr>
           <td><input style="width: 25px; height: 15px;" type="checkbox" name="selecionar"></td>  
-          <td> System of Thrones </td>
-          <td> System</td>
-          <td> System Editors </td>
-          <td> Ficção Cientifica </td>
-          <td> 23 </td>
-          <td> 3 </td>
-          <td> R$ 33,90</td>
+          <td> ${livro.titulo} </td>
+          <td> ${livro.autor} </td>
+          <td> ${livro.editora} </td>
+          <td> ${livro.categoria.nome} </td>
+          <td> ${livro.edicao} </td>
+          <td> ARRUMAR ESTOQUE </td>
+          <td> ${livro.edicao}</td>
           <td><input class="estoque" type="number" name="quantidade" min="1" max="999"></td>
         </tr>
+        </c:forEach>
       </table>
     </div>
 

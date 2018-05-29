@@ -162,7 +162,7 @@ public class DaoLivro {
         ArrayList <Livro> listaLivro = new ArrayList<>();
         
         String query = "SELECT * FROM livro WHERE livro.removido = false";
-        if (!titulo.isEmpty()){
+        if (titulo != null && !titulo.isEmpty()){
             query = "SELECT * FROM livro WHERE livro.titulo LIKE ? AND livro.removido = false";
         }
      
