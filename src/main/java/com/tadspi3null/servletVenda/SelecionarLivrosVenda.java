@@ -50,18 +50,20 @@ public class SelecionarLivrosVenda extends HttpServlet {
             
             ArrayList<Livro> listaLivros = new ArrayList<Livro>();
 
-            HashMap<Cliente,Integer> shopCart = (HashMap<Cliente, Integer>) session.getAttribute("shopCart");
+            HashMap<Livro, Integer> shopCart = (HashMap<Livro, Integer>) session.getAttribute("shopCart");
             if (shopCart == null){
-                shopCart = new HashMap<Cliente, Integer>();
+                shopCart = new HashMap<Livro, Integer>();
                 session.setAttribute("shopCart", shopCart);
             }
             
-            String titulo =(String) request.getAttribute("titulo");
+            String titulo =(String) request.getParameter("titulo");
             try {
                 listaLivros = DaoLivro.consultarLivros(titulo);
             } catch (SQLException ex) {
                 Logger.getLogger(SelecionarLivrosVenda.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
+            request.setAttribute("listaLivros", listaLivros);
             
             RequestDispatcher dispatcher
                = request.getRequestDispatcher("WEB-INF/jsp/produto-venda.jsp");

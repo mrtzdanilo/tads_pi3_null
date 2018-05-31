@@ -36,6 +36,10 @@
 
 <button type="submit" class="botao-consultar  ">Consultar</button>
 
+</form>
+
+<form action="${pageContext.request.contextPath}/adicionar-ao-carrinho" method="POST">
+
     <div class="tabela">
       <table>
         <tr>
@@ -52,21 +56,28 @@
         </tr>
                 
         <c:forEach items="${listaLivros}" var="livro">       
-        <tr>
-          <td><input style="width: 25px; height: 15px;" type="checkbox" name="selecionar"></td>  
-          <td> ${livro.titulo} </td>
-          <td> ${livro.autor} </td>
-          <td> ${livro.editora} </td>
-          <td> ${livro.categoria.nome} </td>
-          <td> ${livro.edicao} </td>
-          <td> ARRUMAR ESTOQUE </td>
-          <td> ${livro.edicao}</td>
-          <td><input class="estoque" type="number" name="quantidade" min="1" max="999"></td>
-        </tr>
+            <tr>
+              <td><input style="width: 25px; height: 15px;" type="radio" name="selectedItemId" value="${livro.id}"></td>  
+              <td> ${livro.titulo} </td>
+              <td> ${livro.autor} </td>
+              <td> ${livro.editora} </td>
+              <td> ${livro.categoria.nome} </td>
+              <td> ${livro.edicao} </td>
+              <td> ARRUMAR ESTOQUE </td>
+              <td> ${livro.valor}</td>
+              <td><input class="estoque" type="number" name="${livro.id}" min="1" max="999"></td>
+            </tr>
         </c:forEach>
       </table>
     </div>
+    
+    <button type="submit" class="botao-consultar  ">Adicionar ao Carrinho</button>
 
+  </form>
+    
+  
+  <form action="${pageContext.request.contextPath}/remover-do-carrinho" class="steps" accept-charset="UTF-8" enctype="multipart/form-data" novalidate="">
+      
     <h2 class="fs-titleCar"> Carrinho <i class="fa fa-shopping-cart" style="font-size: 30px;"></i></h2>
     <div class="tabela">
       <table>
@@ -79,17 +90,25 @@
           <th>Valor</th>
           <th>Retirar</th>
         </tr>
+        
+        <c:forEach items="${shopCart}" var="item">       
+            <tr>
+              <td> ${item.key.titulo} </td>
+              <td> ${item.key.autor}</td>
+              <td> ${item.key.editora} </td>
+              <td> ${item.key.edicao}</td>
+              <td> ${item.value} </td>
+              <td> ${item.key.valor}</td>
+              <td><a href="${pageContext.request.contextPath}/remover-do-carrinho?selectedItemId=<c:out value="${item.key.id}"/>">Remover<a/></td>
+            </tr>
+        </c:forEach>
         <tr>
-          <td> System of Thrones </td>
-          <td> System</td>
-          <td> System Editors </td>
-          <td> 000000000</td>
-          <td> 99 </td>
-          <td> R$ 99,99</td>
-          <td><i class="fa fa-remove" style="font-size: 30px; color: red"></i></td>
+          
         </tr>
       </table>
     </div>
+    
+  </form>
 
 <button type="submit" class="botao-cancelar">Cancelar Venda</button>
 <button type="submit" class="botao-avancar">Avançar</button>
@@ -102,7 +121,7 @@
 
 <script  src="./js/Avisos.js"></script>
 
-    </form>
+  
 
 </body>
 
