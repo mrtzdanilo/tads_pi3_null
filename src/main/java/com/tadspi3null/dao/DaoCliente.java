@@ -84,7 +84,7 @@ public class DaoCliente {
                 while(result.next()){
                     cliente.setId(result.getLong("id"));
                     cliente.setNome(result.getString("nome"));
-                    cliente.setNome(result.getString("sobrenome"));
+                    cliente.setSobrenome(result.getString("sobrenome"));
                     cliente.setCpf(result.getString("cpf"));
                     cliente.setSexo(result.getString("Sexo"));
                     endereco.setId(result.getInt("id_endereco"));

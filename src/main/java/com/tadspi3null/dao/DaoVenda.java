@@ -52,7 +52,6 @@ public class DaoVenda {
             DaoEstoque.atualizaEstoqueLivroFilial(venda.getFilial().getId(),
                     itemVenda.getQuantidade(), itemVenda.getLivroFilial().getLivro().getId());
         } 
-         
     } 
 
     // busca todas as vendas de uma filial realizada dentro de uma semana

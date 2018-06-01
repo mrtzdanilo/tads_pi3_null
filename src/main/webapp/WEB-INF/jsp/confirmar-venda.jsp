@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Confirma√ß√£o</title>
+  <title>ConfirmaÁ„o</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   
   
@@ -18,12 +18,12 @@
   <ul id="progressbar">
     <li class="active">Cliente</li>
     <li class="active">Produto / Carrinho </li>
-    <li class="active">Confirma√ß√£o</li>
+    <li class="active">ConfirmaÁ„o</li>
   </ul>
 
   <h1> VENDA </h1>
   <fieldset>
-    <h2 class="fs-title">Confirma√ß√£o <i class="fa fa-check-circle" style="font-size: 30px; color: green"></i></h2>
+    <h2 class="fs-title">ConfirmaÁ„o <i class="fa fa-check-circle" style="font-size: 30px; color: green"></i></h2>
 
 </div>
 
@@ -32,16 +32,18 @@
         <tr>
           <th>Produto</th>
           <th>Quantidade</th>
-          <th>Valor Unit√°rio</th>
+          <th>Valor Unit·rio</th>
           <th>Valor Total</th>
 
         </tr>
-        <tr>
-          <td> System of Thrones </td>
-          <td> 99</td>
-          <td> R$ 15,90 </td>
-          <td> R$ 133,90 </td>
-        </tr>
+        <c:forEach items="${shopCart}" var="item">  
+            <tr>
+              <td> ${item.key.titulo} </td>
+              <td> ${item.value}</td>
+              <td> ${item.value} </td>
+              <td> R$ 133,90 </td>
+            </tr>
+        </c:forEach>
       </table>
     </div>
 

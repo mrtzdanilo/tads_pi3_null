@@ -20,7 +20,7 @@
     <li>Confirmação</li>
   </ul>
 
-  <h1> VENDA </h1>
+  <h1> VENDA - Cliente: ${clienteVenda.nome} ${clienteVenda.sobrenome}</h1>
   <fieldset>
     <h2 class="fs-title">Produto <i class="fa fa-book" style="font-size: 30px;"></i></h2>
 
@@ -101,17 +101,21 @@
               <td> ${item.key.valor}</td>
               <td><a href="${pageContext.request.contextPath}/remover-do-carrinho?selectedItemId=<c:out value="${item.key.id}"/>">Remover<a/></td>
             </tr>
-        </c:forEach>
+        </c:forEach>   
         <tr>
           
         </tr>
       </table>
+        Total = ${total}
     </div>
     
   </form>
 
-<button type="submit" class="botao-cancelar">Cancelar Venda</button>
-<button type="submit" class="botao-avancar">Avançar</button>
+    
+<form action="${pageContext.request.contextPath}/selecionar-livros" method="post">
+    <button type="submit" class="botao-avancar">Realizar Venda</button>
+</form>
+    <button type="submit" class="botao-cancelar">Cancelar Venda</button>
 
 </fieldset>
 

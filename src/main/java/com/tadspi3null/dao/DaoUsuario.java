@@ -66,16 +66,15 @@ public class DaoUsuario {
 
                     usuario.setId(result.getLong("id"));
                     usuario.setNome(result.getString("nome"));
-                    usuario.setSobrenome(result.getString("sobreNome"));
-                    funcao.setId(result.getLong("id_funcao"));
+                    usuario.setSobrenome(result.getString("sobrenome"));
+                    //funcao.setId(result.getLong("id_funcao"));
                     usuario.setSexo(result.getString("sexo"));
-                    usuario.setTelefone(result.getString("telefone"));
-                    Date dtAdmissao = result.getDate("dt_admissao");
-                    usuario.setDtAdmissao(dtAdmissao);
+                    //Date dtAdmissao = result.getDate("dt_admissao");
+                    //usuario.setDtAdmissao(dtAdmissao);
                 }
             }
         }
-        usuario.setFuncao(DaoFuncao.obterFuncaoPOrId(funcao.getId()));
+        //usuario.setFuncao(DaoFuncao.obterFuncaoPOrId(funcao.getId()));
         return usuario;
     }
 
