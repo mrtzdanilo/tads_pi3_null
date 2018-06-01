@@ -29,7 +29,7 @@ public class DaoVenda {
     
     public static void inserirVenda(Venda venda) throws SQLException{
         
-        String query = "INSERT INTO  venda (cliente_id, filial_id, usuario_id, data_venda) VALUES (?,?,?,?)";
+        String query = "INSERT INTO  venda (id_cliente, id_filial, id_usuario, data_venda) VALUES (?,?,?,?)";
         
         try (Connection conn = ConnectionUtils.getConnection();
             PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
@@ -38,6 +38,8 @@ public class DaoVenda {
             stmt.setLong(2, venda.getFilial().getId());
             stmt.setLong(3, venda.getUsuario().getId());
             stmt.setDate(4, new java.sql.Date(new java.util.Date().getTime()));
+            
+            stmt.executeUpdate();
              
             ResultSet generatedKeys = stmt.getGeneratedKeys();
             if (generatedKeys.next()) {
