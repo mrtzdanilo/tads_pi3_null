@@ -91,8 +91,8 @@ public class DaoEstoque {
         try (Connection conn = ConnectionUtils.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(query)) {
             
-            stmt.setLong(1, filial_id);
-            stmt.setInt(2, quantidade);
+            stmt.setInt(1, quantidade);
+            stmt.setLong(2, filial_id);
             stmt.setLong(3, livro_id);
             stmt.executeUpdate();
         }
