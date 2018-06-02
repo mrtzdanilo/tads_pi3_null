@@ -27,7 +27,7 @@ import java.util.Calendar;
 public class DaoVenda {
     
     
-    public static void inserirVenda(Venda venda) throws SQLException{
+    public static Long inserirVenda(Venda venda) throws SQLException{
         
         String query = "INSERT INTO  venda (id_cliente, id_filial, id_usuario, data_venda) VALUES (?,?,?,?)";
         
@@ -54,6 +54,8 @@ public class DaoVenda {
             DaoEstoque.atualizaEstoqueLivroFilial(venda.getFilial().getId(),
                     itemVenda.getQuantidade(), itemVenda.getLivroFilial().getLivro().getId());
         } 
+        
+        return venda.getId();
     } 
 
     // busca todas as vendas de uma filial realizada dentro de uma semana
@@ -108,5 +110,52 @@ public class DaoVenda {
         }
         
         return listaVenda;
+    }
+    
+     public static Venda obterPorId(Long id) throws SQLException{
+        
+         Venda venda = new Venda();
+        
+        String query = "SELECT * FROM venda WHERE venda.id = ?";
+        
+        try (Connection conn = ConnectionUtils.getConnection();
+                PreparedStatement stmt = conn.prepareStatement(query)) {
+            
+            stmt.setLong(1, id);
+            
+            
+            try (ResultSet result = stmt.executeQuery()) {
+                while(result.next()){
+                    Cliente cliente = new Cliente();
+                    Filial filial = new Filial();
+                    Usuario usuario = new Usuario();
+                    
+                    cliente.setId(result.getLong("id_cliente"));
+                    venda.setCliente(cliente);
+                    
+                    filial.setId(result.getInt("id_filial"));
+                    venda.setFilial(filial);
+                    
+                    usuario.setId(result.getLong("id_usuario"));
+                    venda.setUsuario(usuario);
+                    
+                    venda.setId(result.getLong("id"));
+                    
+                    java.util.Date dataVenda = result.getDate("data_venda");
+                    venda.setDataVenda(dataVenda);
+                    
+                }
+            }
+            
+        }
+        
+        //preenchendo venda com seus respectivos objetos
+        venda.setCliente(DaoCliente.obterPorId(venda.getCliente().getId()));
+        venda.setFilial(DaoFilial.consultaPorId(venda.getFilial().getId()));
+        venda.setUsuario(DaoUsuario.obterUsuarioPorId(venda.getUsuario().getId()));
+        
+        venda.setListaItemVenda(DaoItemVenda.obterListaPorId(venda));
+
+        return venda;
     }
 }
