@@ -6,6 +6,7 @@
 package com.tadspi3null.servletVenda;
 
 import com.tadspi3null.dao.DaoCliente;
+import com.tadspi3null.dao.DaoEstoque;
 import com.tadspi3null.dao.DaoFilial;
 import com.tadspi3null.dao.DaoLivro;
 import com.tadspi3null.dao.DaoUsuario;
@@ -49,8 +50,11 @@ public class SelecionarLivrosVenda extends HttpServlet {
         HttpSession session = request.getSession();
         Cliente clienteVenda = (Cliente) session.getAttribute("clienteVenda");
         
-        if (clienteVenda == null){
-            
+        // TODO: Obter filial pelo usuario na sessão, e não fixo
+        Integer id_filial = Integer.parseInt("1");
+
+        
+        if (clienteVenda == null){          
             //Sends the user back to the client selection
             RequestDispatcher dispatcher = request.getRequestDispatcher("/selecionar-cliente");
             dispatcher.forward(request,response);    
@@ -64,12 +68,26 @@ public class SelecionarLivrosVenda extends HttpServlet {
                 shopCart = new HashMap<Livro, Integer>();
                 session.setAttribute("shopCart", shopCart);
             }
-            
+                     
             String titulo =(String) request.getParameter("titulo");
             try {
                 listaLivros = DaoLivro.consultarLivros(titulo);
             } catch (SQLException ex) {
                 Logger.getLogger(SelecionarLivrosVenda.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            HashMap<Long, Integer> estoque = new HashMap<Long, Integer>();
+            //Obtem o estoque para cada livro
+            for (Livro livro: listaLivros){
+                try {
+                    LivroFilial livroFilial = DaoEstoque.obterPorId(
+                            livro.getId(), id_filial);
+                    estoque.put(livroFilial.getLivro().getId(),
+                                livroFilial.getEstoque());
+                    
+                } catch (SQLException ex) {
+                    Logger.getLogger(SelecionarLivrosVenda.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
             
             Double total = 0.0;
@@ -83,6 +101,7 @@ public class SelecionarLivrosVenda extends HttpServlet {
             
             request.setAttribute("total", total);
             request.setAttribute("listaLivros", listaLivros);
+            request.setAttribute("estoque", estoque);
             
             RequestDispatcher dispatcher
                = request.getRequestDispatcher("WEB-INF/jsp/produto-venda.jsp");
@@ -100,6 +119,7 @@ public class SelecionarLivrosVenda extends HttpServlet {
         HttpSession session = request.getSession();
         Cliente clienteVenda = (Cliente) session.getAttribute("clienteVenda");
         HashMap<Livro, Integer> shopCart = (HashMap<Livro, Integer>) session.getAttribute("shopCart");
+        boolean cancelarVenda = false;
         
         
         
@@ -132,9 +152,14 @@ public class SelecionarLivrosVenda extends HttpServlet {
                     Livro livro = entry.getKey();
                     Integer quantidade = entry.getValue();
                     
-                    LivroFilial livroFilial = new LivroFilial();
-                    livroFilial.setLivro(livro);
-                    livroFilial.setFilial(filial);
+                    LivroFilial livroFilial = DaoEstoque.obterPorId(livro.getId(), filial.getId());
+                    
+                    if (quantidade > livroFilial.getEstoque()){
+
+                        cancelarVenda = true;
+                        break;
+                        
+                    }
                     
                     ItemVenda itemVenda = new ItemVenda();
                     
@@ -145,20 +170,30 @@ public class SelecionarLivrosVenda extends HttpServlet {
                     listaItemVenda.add(itemVenda);
                 }
                 
-                venda.setListaItemVenda(listaItemVenda);
-                DaoVenda.inserirVenda(venda);
+                //Check if we have enough items available to sell
+                if (cancelarVenda){
+                    String msg = "A quantidade solicitada não "
+                                + "está disponível em estoque, atualize e tente"
+                                + " novamente";
+                    session.setAttribute("msg", msg);
+                    
+                    RequestDispatcher dispatcher
+                        = request.getRequestDispatcher("WEB-INF/jsp/produto-venda.jsp");
+                        dispatcher.forward(request, response);
+                }
+                else{
+                    
+                    venda.setListaItemVenda(listaItemVenda);
+                    DaoVenda.inserirVenda(venda);
+                    
+                    RequestDispatcher dispatcher
+                    = request.getRequestDispatcher("WEB-INF/jsp/produto-venda.jsp");
+                    dispatcher.forward(request, response);
+                }
 
             } catch (SQLException ex) {
                 Logger.getLogger(SelecionarLivrosVenda.class.getName()).log(Level.SEVERE, null, ex);
             }
-
-            RequestDispatcher dispatcher
-               = request.getRequestDispatcher("WEB-INF/jsp/produto-venda.jsp");
-            dispatcher.forward(request, response);
-            
         }
     }
-    
-    
-
 }

@@ -43,27 +43,47 @@ public class AdicionarAoCarrinho extends HttpServlet {
         
         
         String livroIdString = request.getParameter("selectedItemId");
-        Integer quantidade = Integer.parseInt(request.getParameter(livroIdString));
-        Long livroIdLong = Long.parseLong(livroIdString);
+        
+        if (livroIdString == null || "".equals(livroIdString)){
+            String msg = "Selecione um item para adicionar ao carrinho com uma"
+                    + " quantidade valida";
+            
+            session.setAttribute("msg", msg);
+        }
+        else{
+            Integer quantidade = Integer.parseInt(request.getParameter(livroIdString));
+            Long livroIdLong = Long.parseLong(livroIdString); 
+            
+            if (quantidade > 0){
+                try {
+                    Livro livro = DaoLivro.consultaPorId(livroIdLong);
+                    //Check if this books is already on the shop cart
+                    Integer quantidadeNoCarrinho = shopCart.get(livro);
+                    if (quantidadeNoCarrinho == null){
+                        //Adiciona o item pela primeira vez no carrinho com a quantidade
+                        //selecionada
+                        shopCart.put(livro, quantidade);
+                    }
+                    else{
+                        //Somente adiciona mais quantidade ao item selecionado
+                        shopCart.put(livro, shopCart.get(livro) + quantidade);  
+                    }
+                    session.setAttribute("shopCart", shopCart);   
 
-        try {
-            Livro livro = DaoLivro.consultaPorId(livroIdLong);
-            //Check if this books is already on the shop cart
-            Integer quantidadeNoCarrinho = shopCart.get(livro);
-            if (quantidadeNoCarrinho == null){
-                //Adiciona o item pela primeira vez no carrinho com a quantidade
-                //selecionada
-                shopCart.put(livro, quantidade);
+                    String msg = "Item adicionado ao carrinho";
+
+                    session.setAttribute("msg", msg);
+                } 
+                catch (SQLException ex) {
+                    Logger.getLogger(AdicionarAoCarrinho.class.getName()).log(Level.SEVERE, null, ex);
+                }             
             }
             else{
-                //Somente adiciona mais quantidade ao item selecionado
-                shopCart.put(livro, shopCart.get(livro) + quantidade);  
+                String msg = "A quantidade selecionada deve ser maior que 0";
+            
+                session.setAttribute("msg", msg);
             }
-            session.setAttribute("shopCart", shopCart);   
-        } catch (SQLException ex) {
-            Logger.getLogger(AdicionarAoCarrinho.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
         response.sendRedirect(request.getContextPath() + "/selecionar-livros");
     }
 }

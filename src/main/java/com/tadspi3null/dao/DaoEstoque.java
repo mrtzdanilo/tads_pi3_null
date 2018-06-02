@@ -102,7 +102,7 @@ public class DaoEstoque {
         LivroFilial livroFilial = new LivroFilial();
         
         String query = "SELECT * FROM livro_filial "
-                    +  "WHERE livro_filial.id_livro = ?"
+                    +  "WHERE livro_filial.id_livro = ? "
                     +  "AND livro_filial.id_filial = ?";
         
                     

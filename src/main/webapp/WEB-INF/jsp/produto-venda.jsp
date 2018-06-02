@@ -63,9 +63,9 @@
               <td> ${livro.editora} </td>
               <td> ${livro.categoria.nome} </td>
               <td> ${livro.edicao} </td>
-              <td> ARRUMAR ESTOQUE </td>
+              <td> <c:out value="${estoque[livro.id]}"/> </td>
               <td> ${livro.valor}</td>
-              <td><input class="estoque" type="number" name="${livro.id}" min="1" max="999"></td>
+              <td><input class="estoque" type="number" name="${livro.id}" min="0" max="${estoque[livro.id]}" value="0"></td>
             </tr>
         </c:forEach>
       </table>
