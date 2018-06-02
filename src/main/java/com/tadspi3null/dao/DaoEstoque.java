@@ -23,7 +23,7 @@ public class DaoEstoque {
     
     public static void atualizar(LivroFilial livroFilial, int estoque) throws SQLException{
         
-        String query = "UPDATE livro_filial SET estoque = ((livro_filial.estoque) - (?)) WHERE livro_filial.id_livro=? AND livro_filial.id_filial=?";
+        String query = "UPDATE livro_filial SET estoque = ? WHERE livro_filial.id_livro=? AND livro_filial.id_filial=?";
         try (Connection conn = ConnectionUtils.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(query)) {
             
@@ -33,8 +33,6 @@ public class DaoEstoque {
             
             stmt.executeUpdate();
         }
-        
-        
     }
     
     public static ArrayList<LivroFilial> obterEstoque(long id_livro) throws SQLException{
@@ -114,7 +112,7 @@ public class DaoEstoque {
             stmt.setLong(1, livro_id);
             stmt.setLong(2, filial_id);
             
-             try (ResultSet result = stmt.executeQuery()) {
+            try (ResultSet result = stmt.executeQuery()) {
                 
                 while (result.next()){
                     Filial filial = new Filial();
@@ -126,14 +124,13 @@ public class DaoEstoque {
                     
                     livroFilial.setLivro(livro);
                     livroFilial.setFilial(filial);
-                    
                 }
-          
             }
-        livroFilial.setFilial(DaoFilial.consultaPorId(livroFilial.getFilial().getId()));
-        livroFilial.setLivro(DaoLivro.consultaPorId(livroFilial.getLivro().getId()));
-        
-        return livroFilial;
+            livroFilial.setFilial(DaoFilial.consultaPorId(livroFilial.getFilial().getId()));
+            livroFilial.setLivro(DaoLivro.consultaPorId(livroFilial.getLivro().getId()));
+
+            return livroFilial;
         }
     }
+    
 }

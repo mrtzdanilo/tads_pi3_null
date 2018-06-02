@@ -8,7 +8,6 @@ package com.tadspi3null.servletVenda;
 import com.tadspi3null.models.Cliente;
 import com.tadspi3null.models.Livro;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.HashMap;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
