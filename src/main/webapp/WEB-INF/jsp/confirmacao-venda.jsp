@@ -2,6 +2,7 @@
 <html lang="en" >
 
 <head>
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <meta charset="UTF-8">
   <title>Confirmação</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -36,19 +37,21 @@
           <th>Valor Total</th>
 
         </tr>
-        <c:forEach items="${shopCart}" var="item">  
+        <c:forEach items="${venda.listaItemVenda}" var="itemVenda">  
             <tr>
-              <td> ${item.key.titulo} </td>
-              <td> ${item.value}</td>
-              <td> ${item.value} </td>
-              <td> R$ 133,90 </td>
+              <td> ${itemVenda.livroFilial.livro.titulo} </td>
+              <td> ${itemVenda.quantidade}</td>
+              <td> ${itemVenda.valorUnitario} </td>
+              <td> ${itemVenda.quantidade * itemVenda.valorUnitario} </td>
             </tr>
         </c:forEach>
       </table>
+        Total = ${total} <br>
+        Cliente: ${venda.cliente.nome} ${venda.cliente.sobrenome} <br>
+        Filial: ${venda.filial.nomeFantasia}
     </div>
 
-<button type="submit" class="botao-cancelar">Cancelar Venda</button>
-<button type="submit" class="botao-avancar">Confirmar Venda</button>
+<button type="submit" class="botao-avancar">Retornar</button>
 
   </fieldset>
 

@@ -16,7 +16,7 @@
 <form class="steps" accept-charset="UTF-8" enctype="multipart/form-data" novalidate="">
   <ul id="progressbar">
     <li class="active">Cliente</li>
-    <li class="active">Produto / Carrinho </li>
+    <li class="active">Venda </li>
     <li>Confirmação</li>
   </ul>
 
@@ -39,7 +39,7 @@
 </form>
 
 <form action="${pageContext.request.contextPath}/adicionar-ao-carrinho" method="POST">
-
+    <br>${msg}<br>
     <div class="tabela">
       <table>
         <tr>

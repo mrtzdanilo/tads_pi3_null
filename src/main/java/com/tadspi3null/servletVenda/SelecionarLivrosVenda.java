@@ -113,17 +113,18 @@ public class SelecionarLivrosVenda extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        /* Neste método a venda é realizada */
         
         // Armazena uma mensagem com o que ocorreu no ultimo evento
         // em uma Session HTTP
         HttpSession session = request.getSession();
-        Cliente clienteVenda = (Cliente) session.getAttribute("clienteVenda");
+        Cliente cliente = (Cliente) session.getAttribute("clienteVenda");
         HashMap<Livro, Integer> shopCart = (HashMap<Livro, Integer>) session.getAttribute("shopCart");
         boolean cancelarVenda = false;
         
         
         
-        if (clienteVenda == null){
+        if (cliente == null){
             //Sends the user back to the client selection
             RequestDispatcher dispatcher = request.getRequestDispatcher("/selecionar-cliente");
             dispatcher.forward(request,response);    
@@ -136,7 +137,6 @@ public class SelecionarLivrosVenda extends HttpServlet {
         }
         else{
             try {
-                Cliente cliente = DaoCliente.obterPorId(Long.parseLong("1"));
                 Usuario usuario = DaoUsuario.obterUsuarioPorId(Long.parseLong("1"));
                 Filial filial = DaoFilial.consultaPorId(1);
                 Venda venda = new Venda();
@@ -177,23 +177,21 @@ public class SelecionarLivrosVenda extends HttpServlet {
                                 + " novamente";
                     session.setAttribute("msg", msg);
                     
-                    RequestDispatcher dispatcher
-                        = request.getRequestDispatcher("WEB-INF/jsp/produto-venda.jsp");
-                        dispatcher.forward(request, response);
+                    response.sendRedirect(request.getContextPath()
+                            + "/selecionar-livros");
                 }
                 else{
-                    
+                // Finaliza a realização da venda    
                     venda.setListaItemVenda(listaItemVenda);
                     DaoVenda.inserirVenda(venda);
-                    
-                    RequestDispatcher dispatcher
-                    = request.getRequestDispatcher("WEB-INF/jsp/produto-venda.jsp");
-                    dispatcher.forward(request, response);
+                   
+                    response.sendRedirect(request.getContextPath()
+                            + "/confirmacao-venda?idVenda="+venda.getId());
                 }
 
             } catch (SQLException ex) {
                 Logger.getLogger(SelecionarLivrosVenda.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }
+        }
 }

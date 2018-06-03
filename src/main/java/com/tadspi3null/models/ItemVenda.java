@@ -46,8 +46,5 @@ public class ItemVenda {
 
     public void setLivroFilial(LivroFilial livroFilial) {
         this.livroFilial = livroFilial;
-    }
-
-    
-    
+    }   
 }
