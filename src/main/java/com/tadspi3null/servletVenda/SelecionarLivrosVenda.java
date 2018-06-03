@@ -184,6 +184,11 @@ public class SelecionarLivrosVenda extends HttpServlet {
                 // Finaliza a realização da venda    
                     venda.setListaItemVenda(listaItemVenda);
                     DaoVenda.inserirVenda(venda);
+                    
+                    //Clean the old attributes not needed
+                    session.removeAttribute("shopCart");
+                    session.removeAttribute("clienteVenda");
+                    session.removeAttribute("msg");
                    
                     response.sendRedirect(request.getContextPath()
                             + "/confirmacao-venda?idVenda="+venda.getId());
