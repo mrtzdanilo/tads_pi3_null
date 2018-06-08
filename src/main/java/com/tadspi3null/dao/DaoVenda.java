@@ -61,7 +61,7 @@ public class DaoVenda {
     // busca todas as vendas de uma filial realizada dentro de uma semana
     public static ArrayList<Venda> obterVendaFilial(Integer filial_id) throws SQLException{
         ArrayList<Venda> listaVenda = new ArrayList<>();
-        String query = "SELECT * FROM venda WHERE venda.filial_id = ? AND venda.data_venda >= ?";
+        String query = "SELECT * FROM venda WHERE venda.id_filial = ? AND venda.data_venda >= ?";
         
         try (Connection conn = ConnectionUtils.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(query)) {

@@ -38,8 +38,11 @@ public class ConfirmacaoVenda extends HttpServlet {
         // Armazena uma mensagem com o que ocorreu no ultimo evento
         // em uma Session HTTP
         HttpSession session = request.getSession();
+        if(request.getParameter("idVenda") == null){
+           response.sendRedirect("TelaPrincipal.html");
+           return;
+        }
         Long idVenda = Long.parseLong(request.getParameter("idVenda"));
-        
         try {
             Venda venda = DaoVenda.obterPorId(idVenda);
             

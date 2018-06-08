@@ -5,7 +5,6 @@
  */
 package com.tadspi3null.servletVenda;
 
-import com.tadspi3null.dao.DaoCliente;
 import com.tadspi3null.dao.DaoEstoque;
 import com.tadspi3null.dao.DaoFilial;
 import com.tadspi3null.dao.DaoLivro;
@@ -19,7 +18,6 @@ import com.tadspi3null.models.LivroFilial;
 import com.tadspi3null.models.Usuario;
 import com.tadspi3null.models.Venda;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;

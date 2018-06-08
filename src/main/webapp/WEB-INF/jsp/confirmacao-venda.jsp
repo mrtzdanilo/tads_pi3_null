@@ -69,8 +69,11 @@
       </table>
 
     </div>
+    
+        <button type="submit" class="botao-confirmar">Confirmar Venda</button>
+        </form>
+        
 
-<button type="submit" class="botao-confirmar">Confirmar Venda</button>
 
   </fieldset>
 
@@ -80,8 +83,7 @@
 
 <script  src="./js/Avisos.js"></script>
 
-    </form>
-
+    
 </body>
 
 </html>
