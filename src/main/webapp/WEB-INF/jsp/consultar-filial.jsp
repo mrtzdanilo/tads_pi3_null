@@ -35,6 +35,8 @@
                 <input type="text" name="cnpj" id="cnpj" required="true" />
             </div>
     </div>
+            
+            <button type="submit" class="botao-consultar">Consultar</button>
 
         <div class="tabela">
             <table>
@@ -64,7 +66,7 @@
     </div>
 
 <div>
-<button type="submit" class="botao-consultar">Consultar</button>
+
 </div>
 
 </form> 
