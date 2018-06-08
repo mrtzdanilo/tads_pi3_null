@@ -46,12 +46,31 @@
             </tr>
         </c:forEach>
       </table>
-        Total = ${total} <br>
-        Cliente: ${venda.cliente.nome} ${venda.cliente.sobrenome} <br>
-        Filial: ${venda.filial.nomeFantasia}
+
+    <div class="tabela">
+      <table>
+        <tr>
+          <th class="total">Total: ${total}</th>
+        </tr>
+      </table>
+
+    <div class="tabela">
+      <table>
+        <tr>
+          <th class="cliente">Cliente: ${venda.cliente.nome} ${venda.cliente.sobrenome}</th>
+        </tr>
+      </table>
+
+    <div class="tabela">
+      <table>
+        <tr>
+          <th class="filial">Filial: ${venda.filial.nomeFantasia}</th>
+        </tr>
+      </table>
+
     </div>
 
-<button type="submit" class="botao-avancar">Retornar</button>
+<button type="submit" class="botao-confirmar">Confirmar Venda</button>
 
   </fieldset>
 

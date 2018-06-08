@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="br" >
 
 <head>
@@ -16,7 +16,7 @@
 <form class="steps" accept-charset="UTF-8" enctype="multipart/form-data" novalidate="">
   <ul id="progressbar">
     <li class="active">Cliente</li>
-    <li class="active">Venda </li>
+    <li class="active">Produto / Carrinho </li>
     <li>Confirmação</li>
   </ul>
 
@@ -106,7 +106,8 @@
           
         </tr>
       </table>
-        Total = ${total}
+        <br>
+        Total da Venda <input readonly="true" type="text" name="total" ${total}>
     </div>
     
   </form>
@@ -130,4 +131,3 @@
 </body>
 
 </html>
-

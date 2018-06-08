@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="br" >
 
 <head>
@@ -84,4 +84,3 @@
 </body>
 
 </html>
-
