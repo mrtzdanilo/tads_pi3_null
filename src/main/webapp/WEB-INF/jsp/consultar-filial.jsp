@@ -24,7 +24,7 @@
        </div> 
 
             <div class="form-group">
-            <p>Inscriï¿½ï¿½o Estadual<span>*</span></p>
+            <p>Inscrição Estadual<span>*</span></p>
                 <input type="text" name="inscricaoEstadual" id="insestadual" required="true" />
             </div>
 
@@ -41,7 +41,7 @@
                 
             <tr>
                 <th>Nome Fantasia</th>
-                <th>Inscriï¿½ï¿½o Estadual</th>
+                <th>Inscrição Estadual</th>
                 <th>CNPJ</th>
                 <th>Telefone</th>
                 <th>Email</th>

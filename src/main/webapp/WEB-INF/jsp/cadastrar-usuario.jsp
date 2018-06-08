@@ -16,7 +16,7 @@
 
             <div class="contentform">
 
-                <h2> Identificaï¿½ï¿½o do Usuario </h2>
+                <h2> Identificação do Usuário </h2>
 
                 <div class="leftcontact">
                     <div class="form-group">
@@ -52,7 +52,7 @@
                 <div class="rightcontact">	
 
                     <div class="form-group">
-                        <p>Funï¿½ï¿½o <span>*</span></p>
+                        <p>Função <span>*</span></p>
                         <select name="funcao" required="true" />
                         <c:forEach items="${listaFuncao}" var ="funcao">
                             <option value="${funcao.nomeFuncao}">${funcao.nomeFuncao}</option>
@@ -61,7 +61,7 @@
                     </div>
 
                     <div class="form-group">
-                        <p>Admissï¿½o: <span>*</span></p>	
+                        <p>Admissão: <span>*</span></p>	
                         <input type="date" name="dt_admissao" id="admissao" required="true" />
                     </div>
                 </div>

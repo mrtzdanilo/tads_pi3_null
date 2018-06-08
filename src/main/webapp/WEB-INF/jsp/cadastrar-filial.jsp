@@ -16,7 +16,7 @@
 
     <div class="contentform">
 
-	    <h2> Identificaï¿½ï¿½o da Filial </h2>
+	    <h2> Identificação da Filial </h2>
 
     	<div class="leftcontact">
 			<div class="form-group">
@@ -35,7 +35,7 @@
 			</div>	
 
 			<div class="form-group">
-			<p>Inscriï¿½ï¿½o Estadual <span>*</span></p>
+			<p>Inscrição Estadual <span>*</span></p>
 				<input type="text" name="inscricaoEstadual" id="insestadual" required="true" />
 			</div>
 
@@ -51,7 +51,7 @@
 
 	</div>
 
-		    <h2 align="center" class="formatatit"> Endereï¿½o </h2>
+		    <h2 align="center" class="formatatit"> Endereço </h2>
 
 	<div class="rightcontact">
 
@@ -66,7 +66,7 @@
 			</div> 
 
 			<div class="form-group">
-			<p>Nï¿½mero <span>*</span></p>	
+			<p>Número <span>*</span></p>	
                 <input type="text" name="numero" id="numero" required="true" />
 			</div>
 
@@ -81,29 +81,29 @@
 					<option value="Selecione"> Selecione</option>
 					<option value="AC">Acre</option>
 					<option value="AL">Alagoas</option>
-					<option value="AP">Amapï¿½</option>
+					<option value="AP">Amapá</option>
 					<option value="AM">Amazonas</option>
 					<option value="BA">Bahia</option>
-					<option value="CE">Cearï¿½</option>
+					<option value="CE">Ceará</option>
 					<option value="DF">Distrito Federal</option>
-					<option value="ES">Espï¿½rito Santo</option>
-					<option value="GO">Goiï¿½s</option>
-					<option value="MA">Maranhï¿½o</option>
+					<option value="ES">Espírito Santo</option>
+					<option value="GO">Goiás</option>
+					<option value="MA">Maranhão</option>
 					<option value="MT">Mato Grosso</option>
 					<option value="MS">Mato Grosso do Sul</option>
 					<option value="MG">Minas Gerais</option>
-					<option value="PA">Parï¿½</option>
-					<option value="PB">Paraï¿½ba</option>
-					<option value="PR">Paranï¿½</option>
+					<option value="PA">Pará</option>
+					<option value="PB">Paraíba</option>
+					<option value="PR">Paraná</option>
 					<option value="PE">Pernambuco</option>
-					<option value="PI">Piauï¿½</option>
+					<option value="PI">Piauí</option>
 					<option value="RJ">Rio de Janeiro</option>
 					<option value="RN">Rio Grande do Norte</option>
 					<option value="RS">Rio Grande do Sul</option>
-					<option value="RO">Rondï¿½nia</option>
+					<option value="RO">Rondônia</option>
 					<option value="RR">Roraima</option>
 					<option value="SC">Santa Catarina</option>
-					<option value="SP">Sï¿½o Paulo</option>
+					<option value="SP">São Paulo</option>
 					<option value="SE">Sergipe</option>
 					<option value="TO">Tocantins</option>
             	</select>

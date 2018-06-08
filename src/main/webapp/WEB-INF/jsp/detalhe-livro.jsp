@@ -17,7 +17,7 @@
 
     <div class="contentform">
 
-	    <h2 align="center"> Identificaï¿½ï¿½o do Produto </h2>
+	    <h2 align="center"> Identificação do Produto </h2>
 
 	    	<div class="leftcontact">
 			<div class="form-group">
@@ -40,11 +40,11 @@
 				<input type="number" name="valor" id="valor" required="true" value="${livro.valor}" />
 			</div>
 
-			<p>Descriï¿½ï¿½o <span>*</span></p>
+			<p>Descrição <span>*</span></p>
 			<textarea name="descricao" required="true"> ${livro.descricao}</textarea>	
 
 			<div class="form-group">
-			<p>Nï¿½mero de Paginas <span>*</span></p>
+			<p>Número de Paginas <span>*</span></p>
 				<input type="number" name="numeroPaginas" id="numpaginas" required="true" value="${livro.numeroPaginas}"/>
 			</div>
 	</div>
@@ -74,7 +74,7 @@
 			</div> 
 
 			<div class="form-group">
-			<p>Ediï¿½ï¿½o <span>*</span></p>	
+			<p>Edição <span>*</span></p>	
                 <input type="number" name="edicao" id="edicao" required="true" value="${livro.edicao}" />
 			</div>
 

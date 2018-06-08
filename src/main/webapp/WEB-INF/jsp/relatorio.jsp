@@ -22,9 +22,8 @@
                 <select type="text" name="filiais" required="true" />
                 
                     <c:forEach items="${listaFilial}" var="filiais">                                
-                        <option value="${filiais.id}"> ${filiais.nomeFantasia} </option>              
+                        <option required="true" value="${filiais.id}"> ${filiais.nomeFantasia} </option>              
                     </c:forEach>
-                    <option value="Selecione"> Selecione </option>
                 </select>
             </div>
 

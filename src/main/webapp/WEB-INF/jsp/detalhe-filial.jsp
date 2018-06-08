@@ -17,7 +17,7 @@
 
     <div class="contentform">
 
-	    <h2> Identificaï¿½ï¿½o da Filial </h2>
+	    <h2> Identificação da Filial </h2>
 
     	<div class="leftcontact">
 			<div class="form-group">
@@ -36,7 +36,7 @@
 			</div>	
 
 			<div class="form-group">
-			<p>Inscriï¿½ï¿½o Estadual <span>*</span></p>
+			<p>Inscrição Estadual <span>*</span></p>
 				<input type="text" name="inscricaoEstadual" id="insestadual" required="true" value="${filial.inscricaoEstadual}" />
 			</div>
 
@@ -67,7 +67,7 @@
 			</div> 
 
 			<div class="form-group">
-			<p>Nï¿½mero <span>*</span></p>	
+			<p>Número <span>*</span></p>	
                 <input type="text" name="numero" id="numero" required="true" value="${endereco.numero}" />
 			</div>
 

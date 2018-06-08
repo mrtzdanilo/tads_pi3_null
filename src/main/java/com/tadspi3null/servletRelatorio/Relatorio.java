@@ -63,6 +63,8 @@ public class Relatorio extends HttpServlet {
                 }
             }
             request.setAttribute("total", total);
+            ArrayList<Filial> listaFilial = DaoFilial.consultaFilial("");
+            request.setAttribute("listaFilial", listaFilial);
             RequestDispatcher dispatcher
               = request.getRequestDispatcher("WEB-INF/jsp/relatorio.jsp");
             dispatcher.forward(request, response);

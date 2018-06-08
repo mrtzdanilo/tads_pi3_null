@@ -16,7 +16,7 @@
 	    
     <div class="contentform">
 
-	    <h2> Identificaï¿½ï¿½o do Usuario </h2>
+	    <h2> Identificação do Usuario </h2>
 
     	<div class="leftcontact">
 			<div class="form-group">
@@ -57,7 +57,7 @@
 			</div>
 
 			<div class="form-group">
-			<p>Admissï¿½o: <span>*</span></p>	
+			<p>Admissão: <span>*</span></p>	
                 <input type="date" name="admissao" id="admissao" required="true" />
 			</div>
 	</div>
